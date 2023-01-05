@@ -1,0 +1,30 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 46acd5c13ad6d5f4aabb57e78d2e4daf, type: 3}
+  m_Name: AK47
+  m_EditorClassIdentifier: 
+  weaponID: AK47
+  icon: {fileID: 21300008, guid: b528708a5a8f28343aefa9e1d46670a7, type: 3}
+  weaponObject: {fileID: 3713712288743788199, guid: d7e36a478177ec149b14379d51848a9a, type: 3}
+  weaponType: 0
+  firingMechanism: 1
+  ammoType: 0
+  shortDescription: Distinctive, and reliable
+  fullDescription: "The AK-47, officially known as the Avtomat Kalashnikova, is a
+    gas-operated assault rifle that is chambered for the 7.62\xD739mm cartridge.
+    Developed in the Soviet Union by Russian small-arms designer Mikhail Kalashnikov,
+    it is the originating firearm of the Kalashnikov (or \"AK\") family of rifles.
+    After more than seven decades since its creation, the AK-47 model and its variants
+    remain the most popular and widely used rifles in the world."
+  isMagazineBased: 1
+  magazineSize: 30
+  heatMax: 0
