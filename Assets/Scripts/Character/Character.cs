@@ -182,6 +182,11 @@ public class Character : MonoBehaviour
         OverHole = true;
     }
 
+    protected virtual void HandleDodge()
+    {
+        return;
+    }
+
     protected void HandleAnimators()
     {
         if (Animator != null)

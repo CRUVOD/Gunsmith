@@ -26,7 +26,7 @@ public class CharacterStates
         Idle,
         Falling,
         Moving,
-        Dashing,
+        Dodging,
         Pushing,
     }
 }

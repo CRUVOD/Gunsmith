@@ -13,11 +13,22 @@ public class Player : Character
     public Weapon currentWeapon;
     public List<Weapon> weaponsInLoadout;
 
+    [Header("Dodge")]
+    //Can the player dodge
+    public bool dodgeAbility;
+    //If dodge is currently available
+    protected bool dodgeAvailable;
+    //How long each dodge/invuln duration last
+    public float dodgeTime;
+    //Time between dodge
+    public float dodgeCoolDown;
+    float dodgeCoolDownTimer;
+
     [Header("Audio")]
     public AudioClip moveSound;
 
     [HideInInspector]
-    // If the chracter is firing a weapon
+    //If the chracter is firing a weapon
     public bool isFiring;
     //How lomg until isFiring reverts back to false after firing
     public float isFiringThreshold;
@@ -36,12 +47,15 @@ public class Player : Character
     protected const string playerInputAnimParametreName = "PlayerInput";
     protected int firingAnimParametre;
     protected int playerInputAnimParametre;
-
-
+    //If player is using dodge roll
+    protected const string dodgeAnimParametreName = "Dodge";
+    protected int dodgeAnimParametre;
 
     protected override void Start()
     {
         base.Start();
+        //Initialise dodge to be true
+        dodgeAvailable = true;
         //Default selected weapon is the weapon at index 0
         currentWeapon = weaponsInLoadout[0];
         //Set user of weapons to be player, and disable the sprite of the other weapons
@@ -67,6 +81,7 @@ public class Player : Character
                 HandleWeapon();
                 HandleWeaponSwitch();
                 HandleOverHole();
+                HandleDodge();
             }
 
             HandleAnimators();
@@ -116,6 +131,12 @@ public class Player : Character
 
     protected override void HandleMovement()
     {
+        if (MovementState == CharacterStates.MovementStates.Dodging)
+        {
+            //If we are dodging, ignore basic movement controls
+            return;
+        }
+
         playerInput = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
 
         Vector2 targetVelocity = playerInput.normalized * moveSpeed;
@@ -193,6 +214,27 @@ public class Player : Character
         }
     }
 
+    protected override void HandleDodge()
+    {
+        if (Input.GetKeyDown(KeyCode.Space) && dodgeAbility && dodgeAvailable)
+        {
+            //Performing dodge
+            StartCoroutine(Dodge());
+            dodgeAvailable = false;
+            dodgeCoolDownTimer = dodgeCoolDown;
+        }
+
+        //Count down dodge cooldown
+        if (dodgeCoolDownTimer > 0)
+        {
+            dodgeCoolDownTimer -= Time.deltaTime;
+        }
+        else
+        {
+            dodgeAvailable = true;
+        }
+    }
+
     // Adds to base function to update healthbar
     public override void SetHealth(int newValue)
     {
@@ -204,12 +246,15 @@ public class Player : Character
     {
         RegisterAnimatorParametre(firingAnimParametreName, AnimatorControllerParameterType.Bool, out firingAnimParametre);
         RegisterAnimatorParametre(playerInputAnimParametreName, AnimatorControllerParameterType.Float, out playerInputAnimParametre);
+        RegisterAnimatorParametre(dodgeAnimParametreName, AnimatorControllerParameterType.Bool, out dodgeAnimParametre);
     }
 
     protected override void UpdateAnimatorExtra()
     {
         AnimatorExtensions.UpdateAnimatorBool(Animator, firingAnimParametreName, isFiring);
         AnimatorExtensions.UpdateAnimatorFloat(Animator, playerInputAnimParametreName, playerInput.magnitude);
+        AnimatorExtensions.UpdateAnimatorBool(Animator, dodgeAnimParametreName, MovementState == CharacterStates.MovementStates.Dodging);
+        
     }
 
     public override void Death()
@@ -352,6 +397,25 @@ public class Player : Character
         }
         // we trigger a Pause event for the GameManager and other classes that could be listening to it too
         GameEvent.Trigger(GameEvents.TogglePause, null);
+    }
+
+    /// <summary>
+    /// Initiates and executes a dodgeroll action
+    /// </summary>
+    /// <returns></returns>
+    private IEnumerator Dodge()
+    {
+        Invulnerable = true;
+        MovementState = CharacterStates.MovementStates.Dodging;
+        Vector2 targetDirection = playerInput.normalized * moveSpeed;
+        Vector2 dodgeDirection = new Vector2();
+        dodgeDirection.x = Mathf.SmoothDamp(velocity.x, targetDirection.x, ref velocityXSmoothing, accelerationTimeGrounded);
+        dodgeDirection.y = Mathf.SmoothDamp(velocity.y, targetDirection.y, ref velocityYSmoothing, accelerationTimeGrounded);
+        rb.velocity = dodgeDirection.normalized * moveSpeed * 1.5f;
+        yield return new WaitForSeconds(dodgeTime);
+
+        Invulnerable = false;
+        MovementState = CharacterStates.MovementStates.Idle;
     }
 
     #endregion
