@@ -5057,6 +5057,7 @@ MonoBehaviour:
   m_LightCookieSprite: {fileID: 0}
   m_DeprecatedPointLightCookieSprite: {fileID: 0}
   m_LightOrder: 0
+  m_AlphaBlendOnOverlap: 0
   m_OverlapOperation: 0
   m_NormalMapDistance: 3
   m_NormalMapQuality: 2
@@ -10080,9 +10081,9 @@ MonoBehaviour:
   reloadTime: 2.5
   currentAmmoInMagazine: 0
   inReload: 0
-  MinDamageCaused: 50
-  MaxDamageCaused: 60
-  impactForce: 200
+  MinDamageCaused: 60
+  MaxDamageCaused: 80
+  impactForce: 500
   TargetLayerMask:
     serializedVersion: 2
     m_Bits: 524544

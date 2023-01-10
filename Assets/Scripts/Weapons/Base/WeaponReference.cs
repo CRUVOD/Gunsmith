@@ -9,7 +9,7 @@ using System;
 /// </summary>
 
 //Type of weapon, defines general traits of the weapon, more UI and cosmetic
-public enum WeaponCategories { AR, DMR, Sniper, Pistol, Shotgun, Melee }
+public enum WeaponCategories { AR, DMR, Sniper, Pistol, Shotgun, Melee , Grenade}
 //How the weapon is fired, single-shot, hold down the mousebutton for automatic fire, used for detecting player input
 public enum FiringMechanism { Single, Auto}
 //What type of ammo the weapon uses, ballistic is magazine fed, energy builds heat, none is neither

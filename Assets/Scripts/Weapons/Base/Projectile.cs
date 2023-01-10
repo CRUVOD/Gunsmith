@@ -12,20 +12,22 @@ public class Projectile : MonoBehaviour
     private Collider2D projectileCollider;
 
     [Header("Basic Properties, these can be set by the weapon instead too")]
-    [Tooltip("The min amount of health to remove from the player's health")]
+    [Tooltip("The min amount of health to remove from the player's health on impact")]
     public int MinDamageCaused = 10;
     //The max amount of health to remove from the player's health
-    [Tooltip("The max amount of health to remove from the player's health")]
+    [Tooltip("The max amount of health to remove from the player's health on impact")]
     public int MaxDamageCaused = 10;
-    [Tooltip("The knockback force on target")]
+    [Tooltip("The knockback force on target on impact")]
     public float impactForce;
     [Tooltip("Life time till projectile dissipates")]
     public float lifeTime;
     //Timer to count down life time
-    bool lifeCountDown;
+    float lifeCountDown;
+    //If the projectile finish process has started
+    protected bool isFinishing;
 
     [Header("Bullet Penetration")]
-    public int canHitNumberOfCharacters = 2;
+    public int canHitNumberOfCharacters = 1;
 
     [Header("Invincibility")]
     /// The duration of the invincibility frames after the hit (in seconds)
@@ -86,10 +88,12 @@ public class Projectile : MonoBehaviour
     {
         charactersCollided = new List<Character>();
         projectileCollider = GetComponent<Collider2D>();
+        lifeCountDown = lifeTime;
+        isFinishing = false;
     }
 
     // Update is called once per frame
-    void Update()
+    protected virtual void Update()
     {
         CountDownLife();
     }
@@ -97,12 +101,12 @@ public class Projectile : MonoBehaviour
     // Bullet lifetime decay, calls Destroy if lifetime reaches zero
     void CountDownLife()
     {
-        if (lifeCountDown)
+        if (lifeCountDown > 0)
         {
-            lifeTime -= Time.deltaTime;
+            lifeCountDown -= Time.deltaTime;
         }
 
-        if (lifeTime < 0)
+        if (lifeCountDown < 0 && !isFinishing)
         {
             OnProjectileFinish(0);
         }
@@ -119,9 +123,10 @@ public class Projectile : MonoBehaviour
         MaxDamageCaused = max;
     }
 
-    public void SetLifeTime(float life)
+    public void SetLifeTime(float lifeTime)
     {
-        lifeTime = life;
+        this.lifeTime = lifeTime;
+        lifeCountDown = lifeTime;
     }
 
     public void SetTargetLayer(LayerMask targetMask)
@@ -312,6 +317,7 @@ public class Projectile : MonoBehaviour
     /// <param name="time"></param>
     public virtual void OnProjectileFinish(float time)
     {
+        isFinishing = true;
         SetVelocity(new Vector2(0, 0));
         projectileCollider.enabled = false;
         Destroy(this.gameObject, time);

@@ -175,7 +175,6 @@ public class MeleeWeapon : Weapon
 
     /// <summary>
     /// Describes what happens when colliding with a damageable object
-    /// By default, disables the sprite gameobject and let the feedbacks on impact play, then destroys game object
     /// </summary>
     /// <param name="health">Health.</param>
     protected virtual void OnCollideWithDamageable(Character character)
@@ -199,7 +198,6 @@ public class MeleeWeapon : Weapon
 
     /// <summary>
     /// Describes what happens when colliding with a non damageable object
-    /// By default, disables the sprite gameobject and let the feedbacks on impact play, then destroys game object
     /// </summary>
     protected virtual void OnCollideWithNonDamageable()
     {
@@ -208,7 +206,6 @@ public class MeleeWeapon : Weapon
 
     /// <summary>
     /// Describes what could happens when colliding with anything
-    /// By default, disables the sprite gameobject and let the feedbacks on impact play, then destroys game object
     /// </summary>
     protected virtual void OnAnyCollision(GameObject other)
     {

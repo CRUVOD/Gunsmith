@@ -122,13 +122,11 @@ public class DamageArea : MonoBehaviour
     {
         // if we're inactive, we do nothing
         if (!isActiveAndEnabled) { return false; }
-
         // if what we're colliding with isn't part of the target layers, we do nothing and exit
         if (!ExtraLayers.LayerInLayerMask(collider.layer, TargetLayerMask)) { return false; }
 
         // if we're on our first frame, we don't apply damage
         if (Time.time == 0f) { return false; }
-
         return true;
     }
 

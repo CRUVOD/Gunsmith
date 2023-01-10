@@ -204,6 +204,11 @@ public class Character : MonoBehaviour
 
     #region Impact
 
+    /// <summary>
+    /// Apply an impact force on this chracter
+    /// </summary>
+    /// <param name="direction"></param>
+    /// <param name="force"></param>
     public virtual void Impact(Vector3 direction, float force)
     {
         direction = direction.normalized;
