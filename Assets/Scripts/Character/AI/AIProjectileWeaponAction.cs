@@ -61,12 +61,12 @@ public class AIProjectileWeaponAction : AIAction
         isFiring = true;
         for (int i = 0; i < shotsPerBurst; i++)
         {
+            yield return new WaitForSeconds(timeBetweenFiring);
             bool success = projectileWeapon.Use();
             if (success && applyRecoil)
             {
                 core.Owner.Impact(-projectileWeapon.weaponDirection, projectileWeapon.recoil);
             }
-            yield return new WaitForSeconds(timeBetweenFiring);
         }
         timeBetweenBurstsTimer = timeBetweenBursts;
         isFiring = false;

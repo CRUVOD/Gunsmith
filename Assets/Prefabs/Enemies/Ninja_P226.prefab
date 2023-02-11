@@ -435,6 +435,68 @@ MonoBehaviour:
   MinPitch: 1
   MaxPitch: 1
   SfxAudioMixerGroup: {fileID: -2787297698005042242, guid: 60e5df65664d0814f9078b7e410b8f52, type: 2}
+--- !u!1 &3192196921208190195
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5063569880644977331}
+  - component: {fileID: 3783163274718758587}
+  - component: {fileID: 2417866089689071997}
+  m_Layer: 19
+  m_Name: Death
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5063569880644977331
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3192196921208190195}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 6813589895792495736}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &3783163274718758587
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3192196921208190195}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4b2f8f434c837be41947125bedf077bf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  InitializationMode: 0
+  Label: 
+  ag: {fileID: 3308836380075843318}
+--- !u!114 &2417866089689071997
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3192196921208190195}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c68b89b1c2468024db24e51dafb5dfd0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Label: 
+  enemy: {fileID: 3308836380075843305}
 --- !u!1 &3222557068334363444
 GameObject:
   m_ObjectHideFlags: 0
@@ -10508,6 +10570,7 @@ Transform:
   - {fileID: 7025587605176924238}
   - {fileID: 8965240153730173528}
   - {fileID: 8922521620780607102}
+  - {fileID: 5063569880644977331}
   m_Father: {fileID: 5541150388792684300}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -10534,6 +10597,9 @@ MonoBehaviour:
       - Decision: {fileID: 3585850590871792998}
         TrueState: Moving
         FalseState: 
+      - Decision: {fileID: 2417866089689071997}
+        TrueState: Death
+        FalseState: 
   - StateName: Moving
     Actions:
       array:
@@ -10545,6 +10611,9 @@ MonoBehaviour:
         FalseState: 
       - Decision: {fileID: 2990634249970681914}
         TrueState: Idle
+        FalseState: 
+      - Decision: {fileID: 2417866089689071997}
+        TrueState: Death
         FalseState: 
   - StateName: Attacking
     Actions:
@@ -10558,6 +10627,15 @@ MonoBehaviour:
       - Decision: {fileID: 8922521620780607100}
         TrueState: Moving
         FalseState: 
+      - Decision: {fileID: 2417866089689071997}
+        TrueState: Death
+        FalseState: 
+  - StateName: Death
+    Actions:
+      array:
+      - {fileID: 3783163274718758587}
+    Transitions:
+      array: []
   TimeInThisState: 0
   Target: {fileID: 0}
   _lastKnownTargetPosition: {x: 0, y: 0, z: 0}

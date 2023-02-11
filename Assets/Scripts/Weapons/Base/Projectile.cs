@@ -191,12 +191,6 @@ public class Projectile : MonoBehaviour
             return;
         }
 
-        //Limit the number of characters the projectile can hit
-        if (charactersCollided.Count >= canHitNumberOfCharacters)
-        {
-            return;
-        }
-
         Character collidedCharacter = collider.gameObject.GetComponent<Character>();
 
         // if what we're colliding with is damageable
@@ -206,12 +200,6 @@ public class Projectile : MonoBehaviour
             if (!charactersCollided.Contains(collidedCharacter))
             {
                 charactersCollided.Add(collidedCharacter);
-            }
-            else
-            {
-                //This is so that the projectile doesn't hit the same character twice
-                //Can be changed with bullets that hit multiple times for each character
-                return;
             }
 
             if (collidedCharacter.CurrentHealth > 0)

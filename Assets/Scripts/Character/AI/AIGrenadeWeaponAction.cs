@@ -29,7 +29,7 @@ public class AIGrenadeWeaponAction : AIAction
 
     private void Update()
     {
-        if (timeBetweenBurstsTimer > 0)
+        if (timeBetweenBurstsTimer >= 0)
         {
             timeBetweenBurstsTimer -= Time.deltaTime;
         }

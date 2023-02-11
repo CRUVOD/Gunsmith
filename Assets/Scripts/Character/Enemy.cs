@@ -150,10 +150,6 @@ public class Enemy : Character
         rb.velocity = Vector3.ClampMagnitude(rb.velocity, 5f);
         //rb.constraints = RigidbodyConstraints2D.FreezeAll;
 
-        //Disable AI behaviours
-        core.CoreActive = false;
-        ag.enabled = false;
-
         //Change condition state
         ConditionState = CharacterStates.CharacterConditions.Dead;
 

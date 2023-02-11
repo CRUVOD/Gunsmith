@@ -301,6 +301,68 @@ Transform:
   m_Father: {fileID: 7755902308980584186}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &7380739385916883558
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4372230470078545135}
+  - component: {fileID: 502069275839322962}
+  - component: {fileID: 8192743820986576644}
+  m_Layer: 19
+  m_Name: Death
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4372230470078545135
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7380739385916883558}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 8775867558189743255}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &502069275839322962
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7380739385916883558}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4b2f8f434c837be41947125bedf077bf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  InitializationMode: 0
+  Label: 
+  ag: {fileID: 770053745264193049}
+--- !u!114 &8192743820986576644
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7380739385916883558}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c68b89b1c2468024db24e51dafb5dfd0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Label: 
+  enemy: {fileID: 770053745264193030}
 --- !u!1 &7399890119369478166
 GameObject:
   m_ObjectHideFlags: 0
@@ -684,6 +746,7 @@ Transform:
   - {fileID: 5060770896085780641}
   - {fileID: 6570312664638487223}
   - {fileID: 6672000138916910737}
+  - {fileID: 4372230470078545135}
   m_Father: {fileID: 7755902308807892963}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -710,6 +773,9 @@ MonoBehaviour:
       - Decision: {fileID: 1623300241873214857}
         TrueState: Moving
         FalseState: 
+      - Decision: {fileID: 8192743820986576644}
+        TrueState: Death
+        FalseState: 
   - StateName: Moving
     Actions:
       array:
@@ -721,6 +787,9 @@ MonoBehaviour:
         FalseState: 
       - Decision: {fileID: 1064046761787504853}
         TrueState: Idle
+        FalseState: 
+      - Decision: {fileID: 8192743820986576644}
+        TrueState: Death
         FalseState: 
   - StateName: Attacking
     Actions:
@@ -734,6 +803,15 @@ MonoBehaviour:
       - Decision: {fileID: 2239546932269106946}
         TrueState: Moving
         FalseState: 
+      - Decision: {fileID: 8192743820986576644}
+        TrueState: Death
+        FalseState: 
+  - StateName: Death
+    Actions:
+      array:
+      - {fileID: 502069275839322962}
+    Transitions:
+      array: []
   TimeInThisState: 0
   Target: {fileID: 0}
   _lastKnownTargetPosition: {x: 0, y: 0, z: 0}
