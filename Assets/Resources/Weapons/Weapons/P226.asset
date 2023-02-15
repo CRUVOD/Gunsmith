@@ -10,16 +10,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 46acd5c13ad6d5f4aabb57e78d2e4daf, type: 3}
-  m_Name: HandGrenade
+  m_Name: P226
   m_EditorClassIdentifier: 
-  weaponID: '''Nade'
-  icon: {fileID: 21300000, guid: d3e3300be9a3c144b8b99be0439e029f, type: 3}
-  weaponObject: {fileID: 0}
-  weaponType: 6
+  ID: P226
+  icon: {fileID: 21300000, guid: a7680aa6c463aa74ab14c9b8d19b467e, type: 3}
+  weaponObject: {fileID: 1897519526702675867, guid: 55b5fa5adc418b443b15a3ab32d9db3f, type: 3}
+  weaponType: 3
   firingMechanism: 0
   ammoType: 0
-  shortDescription: Hand thrown grenade, simple and reliable
-  fullDescription: 
-  isMagazineBased: 0
-  magazineSize: 0
+  shortDescription: Simple and functional
+  fullDescription: Full-sized, service pistol, developed to use higher capacity,
+    with double stack magazines
+  isMagazineBased: 1
+  magazineSize: 10
   heatMax: 0

@@ -25,7 +25,7 @@ public class WeaponReference : ScriptableObject
 {
     [Header("Basic Properties")]
     [Tooltip("unique name for object")]
-    public string weaponID;
+    public string ID;
 
     [Header("Images")]
     //square icon to display

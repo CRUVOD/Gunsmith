@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -26,14 +27,30 @@ public class Weapon : MonoBehaviour, ExtendedEventListener<GameEvent>
     //who is using this weapon
     public CharacterTypes User = CharacterTypes.Player;
 
+    [Header("Attachments")]
+    public List<WeaponAttachment> weaponAttachments;
+
     bool rotationFrozen;
 
     protected virtual void Start()
     {
         mainCamera = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Camera>();
+        ApplyAttachmentModifiers();
     }
 
     #region PublicAPIs
+
+    /// <summary>
+    /// Applies the stat modifiers from the attachments to the weapon
+    /// </summary>
+    public virtual void ApplyAttachmentModifiers()
+    {
+        foreach (WeaponAttachment attachment in weaponAttachments)
+        {
+            attachment.ApplyStatModifiers(this);
+        }
+    }
+
 
     /// <summary>
     /// Use the weapon, return true if successfully used

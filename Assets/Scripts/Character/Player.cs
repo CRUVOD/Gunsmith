@@ -56,18 +56,22 @@ public class Player : Character
         base.Start();
         //Initialise dodge to be true
         dodgeAvailable = true;
-        //Default selected weapon is the weapon at index 0
-        currentWeapon = weaponsInLoadout[0];
-        //Set user of weapons to be player, and disable the sprite of the other weapons
-        for (int i = 0; i < weaponsInLoadout.Count; i++)
+        if (weaponsInLoadout.Count > 0)
         {
-            weaponsInLoadout[i].User = CharacterTypes.Player;
-            if (i >= 1)
+            //Default selected weapon is the weapon at index 0
+            currentWeapon = weaponsInLoadout[0];
+            //Set user of weapons to be player, and disable the sprite of the other weapons
+            for (int i = 0; i < weaponsInLoadout.Count; i++)
             {
-                weaponsInLoadout[i].weaponSprite.SetActive(false);
+                weaponsInLoadout[i].User = CharacterTypes.Player;
+                if (i >= 1)
+                {
+                    weaponsInLoadout[i].weaponSprite.SetActive(false);
+                }
             }
+            currentWeapon.UpdateUI();
         }
-        currentWeapon.UpdateUI();
+
     }
 
     protected override void Update()
@@ -76,12 +80,16 @@ public class Player : Character
         {
             if (ConditionState != CharacterStates.CharacterConditions.Dead)
             {
-                HandleFacing();
-                HandleMovement();
-                HandleWeapon();
-                HandleWeaponSwitch();
+                if (ConditionState != CharacterStates.CharacterConditions.Frozen)
+                {
+                    HandleFacing();
+                    HandleMovement();
+                    HandleWeapon();
+                    HandleWeaponSwitch();
+                    HandleDodge();
+                }
                 HandleOverHole();
-                HandleDodge();
+                HandleInteraction();
             }
 
             HandleAnimators();
@@ -90,7 +98,6 @@ public class Player : Character
         HandlePause();
     }
 
-   
     #region OverridngBase
 
     protected override void HandleOverHole()
@@ -105,28 +112,58 @@ public class Player : Character
 
     protected override void HandleFacing()
     {
-        if (currentWeapon.weaponDirection.x < 0)
+        //Set facing based on weapon dirction if player is holding a weapon, else use last input
+        if (currentWeapon)
         {
-            if (isSpriteFlipped)
+            if (currentWeapon.weaponDirection.x < 0)
             {
-                SpriteGameObject.transform.localScale = new Vector3(1f, 1f);
+                if (isSpriteFlipped)
+                {
+                    SpriteGameObject.transform.localScale = new Vector3(1f, 1f);
+                }
+                else
+                {
+                    SpriteGameObject.transform.localScale = new Vector3(-1f, 1f);
+                }
             }
             else
             {
-                SpriteGameObject.transform.localScale = new Vector3(-1f, 1f);
+                if (isSpriteFlipped)
+                {
+                    SpriteGameObject.transform.localScale = new Vector3(-1f, 1f);
+                }
+                else
+                {
+                    SpriteGameObject.transform.localScale = new Vector3(1f, 1f);
+                }
             }
         }
         else
         {
-            if (isSpriteFlipped)
+            if (playerInput.x < 0)
             {
-                SpriteGameObject.transform.localScale = new Vector3(-1f, 1f);
+                if (isSpriteFlipped)
+                {
+                    SpriteGameObject.transform.localScale = new Vector3(1f, 1f);
+                }
+                else
+                {
+                    SpriteGameObject.transform.localScale = new Vector3(-1f, 1f);
+                }
             }
-            else
+            else if (playerInput.x > 0)
             {
-                SpriteGameObject.transform.localScale = new Vector3(1f, 1f);
+                if (isSpriteFlipped)
+                {
+                    SpriteGameObject.transform.localScale = new Vector3(-1f, 1f);
+                }
+                else
+                {
+                    SpriteGameObject.transform.localScale = new Vector3(1f, 1f);
+                }
             }
         }
+
     }
 
     protected override void HandleMovement()
@@ -185,6 +222,11 @@ public class Player : Character
 
     protected override void HandleWeapon()
     {
+        if (currentWeapon == null)
+        {
+            return;
+        }
+
         // Animation stuff
         if (isFiring)
         {
@@ -400,6 +442,65 @@ public class Player : Character
     }
 
     /// <summary>
+    /// Checks if any overlapping colliders/gameobjects has the interactable tag, and tries to interact with it
+    /// </summary>
+    private void HandleInteraction()
+    {
+        //
+        if (Input.GetKeyDown(KeyCode.E))
+        {
+            //maximum number of collisions
+            int numColliders = 10;
+            Collider2D[] colliders = new Collider2D[numColliders];
+            ContactFilter2D contactFilter = new ContactFilter2D();
+            contactFilter.NoFilter();
+            Physics2D.OverlapCollider(this.Collider, contactFilter, colliders);
+
+            foreach (Collider2D collider in colliders)
+            {
+                if (collider != null && collider.gameObject.tag == "Interactable")
+                {
+                    Interactable interaction;
+                    if (collider.gameObject.TryGetComponent<Interactable>(out interaction))
+                    {
+                        //For now, can only interact with one thing each click of 'interact'
+                        interaction.Interact(this);
+                        return;
+                    }
+                }
+            }
+        }
+    }
+
+    public void FreezePlayerMovement(bool state)
+    {
+        if (state)
+        {
+            //Freeze the character in place
+            rb.velocity = Vector3.zero;
+            playerInput = Vector2.zero;
+            rb.constraints = RigidbodyConstraints2D.FreezeAll;
+            ConditionState = CharacterStates.CharacterConditions.Frozen;
+            if (movingParticles.isEmitting)
+            {
+                movingParticles.Stop();
+            }
+
+            //Stop playing the moving sound if it hasn't already
+            if (moveSoundAudioSource != null)
+            {
+                AudioManagerSoundControlEvent.Trigger(AudioManagerSoundControlEventTypes.Free, 0, moveSoundAudioSource);
+                moveSoundAudioSource = null;
+            }
+        }
+        else
+        {
+            rb.constraints = RigidbodyConstraints2D.None;
+            ConditionState = CharacterStates.CharacterConditions.Normal;
+        }
+    }
+
+    /// <summary>
     /// Initiates and executes a dodgeroll action
     /// </summary>
     /// <returns></returns>
@@ -416,6 +517,35 @@ public class Player : Character
 
         Invulnerable = false;
         MovementState = CharacterStates.MovementStates.Idle;
+    }
+
+    public void UpdateLoadout(List<Weapon> newLoadout)
+    {
+        //Destroy all old weapon gameobjects
+        for (int i = weaponsInLoadout.Count-1; i >= 0; i--)
+        {
+            Destroy(weaponsInLoadout[i].gameObject);
+        }
+        //Clears old loadout
+        weaponsInLoadout.Clear();
+
+        //Instantiate the weapons, set user of weapons to be player, and disable the sprite of the other weapons
+        for (int i = 0; i < newLoadout.Count; i++)
+        {
+            Weapon weapon = Instantiate<Weapon>(newLoadout[i], this.transform);
+            weaponsInLoadout.Add(weapon);
+            weaponsInLoadout[i].User = CharacterTypes.Player;
+            if (i >= 1)
+            {
+                weaponsInLoadout[i].weaponSprite.SetActive(false);
+            }
+        }
+        if (weaponsInLoadout.Count > 0)
+        {
+            currentWeapon = weaponsInLoadout[0];
+            currentWeapon.UpdateUI();
+        }
+        
     }
 
     #endregion
@@ -462,4 +592,6 @@ public class Player : Character
     }
 
     #endregion
+
+  
 }

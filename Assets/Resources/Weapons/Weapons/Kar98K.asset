@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 46acd5c13ad6d5f4aabb57e78d2e4daf, type: 3}
   m_Name: Kar98K
   m_EditorClassIdentifier: 
-  weaponID: K98K
+  ID: K98K
   icon: {fileID: 21300000, guid: 86e68f09b3ff9b947bfdd2a59ee2037b, type: 3}
   weaponObject: {fileID: 4821095698207619426, guid: 7b8a467606d00ca4cbe8106ec4799f9d, type: 3}
   weaponType: 2

@@ -10,15 +10,15 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 46acd5c13ad6d5f4aabb57e78d2e4daf, type: 3}
-  m_Name: NinjaSword
+  m_Name: HandGrenade
   m_EditorClassIdentifier: 
-  weaponID: NinjaSword
-  icon: {fileID: 21300016, guid: b528708a5a8f28343aefa9e1d46670a7, type: 3}
-  weaponObject: {fileID: 1266755920617773578, guid: 34745759eab756e4da5e82bb9c1a81ae, type: 3}
-  weaponType: 5
-  firingMechanism: 1
-  ammoType: 2
-  shortDescription: Standard-issue sword
+  ID: Nade
+  icon: {fileID: 21300000, guid: d3e3300be9a3c144b8b99be0439e029f, type: 3}
+  weaponObject: {fileID: 0}
+  weaponType: 6
+  firingMechanism: 0
+  ammoType: 0
+  shortDescription: Hand thrown grenade, simple and reliable
   fullDescription: 
   isMagazineBased: 0
   magazineSize: 0

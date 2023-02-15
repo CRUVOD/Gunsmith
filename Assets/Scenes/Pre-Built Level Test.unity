@@ -7179,6 +7179,7 @@ MonoBehaviour:
   recoil: 0
   weaponDirection: {x: 0, y: 0}
   User: 1
+  weaponAttachments: []
   DamageArea: {fileID: 1730678014}
   WeaponUsedFeedback: {fileID: 1277741058}
   HitDamageableFeedback: {fileID: 0}
@@ -16095,6 +16096,7 @@ MonoBehaviour:
   recoil: 0
   weaponDirection: {x: 0, y: 0}
   User: 1
+  weaponAttachments: []
   DamageArea: {fileID: 283969869}
   WeaponUsedFeedback: {fileID: 967596453}
   HitDamageableFeedback: {fileID: 0}
@@ -86363,6 +86365,67 @@ MonoBehaviour:
   BarTarget: 0
   DelayedBarIncreasingProgress: 0
   DelayedBarDecreasingProgress: 0
+--- !u!1001 &6116008035919644784
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 1726193442}
+    m_Modifications:
+    - target: {fileID: 1453890168921910341, guid: 08ea9d2098bedab41a711fea96ee26c4, type: 3}
+      propertyPath: m_RootOrder
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 1453890168921910341, guid: 08ea9d2098bedab41a711fea96ee26c4, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.84
+      objectReference: {fileID: 0}
+    - target: {fileID: 1453890168921910341, guid: 08ea9d2098bedab41a711fea96ee26c4, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.02
+      objectReference: {fileID: 0}
+    - target: {fileID: 1453890168921910341, guid: 08ea9d2098bedab41a711fea96ee26c4, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1453890168921910341, guid: 08ea9d2098bedab41a711fea96ee26c4, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1453890168921910341, guid: 08ea9d2098bedab41a711fea96ee26c4, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1453890168921910341, guid: 08ea9d2098bedab41a711fea96ee26c4, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1453890168921910341, guid: 08ea9d2098bedab41a711fea96ee26c4, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1453890168921910341, guid: 08ea9d2098bedab41a711fea96ee26c4, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1453890168921910341, guid: 08ea9d2098bedab41a711fea96ee26c4, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1453890168921910341, guid: 08ea9d2098bedab41a711fea96ee26c4, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3864219583134437666, guid: 08ea9d2098bedab41a711fea96ee26c4, type: 3}
+      propertyPath: fireRateModifier
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 7899785011867396571, guid: 08ea9d2098bedab41a711fea96ee26c4, type: 3}
+      propertyPath: m_Name
+      value: Overdrive Attachment
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 08ea9d2098bedab41a711fea96ee26c4, type: 3}
 --- !u!1 &6605045360090715725
 GameObject:
   m_ObjectHideFlags: 0

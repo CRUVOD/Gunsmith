@@ -18,6 +18,8 @@ public class Crosshair : MonoBehaviour
     private float coolDownTimer;
     private bool inCoolDown;
 
+    private bool usingCrosshair;
+
     private void Start()
     {
         SetCursor();
@@ -28,8 +30,11 @@ public class Crosshair : MonoBehaviour
 
     private void Update()
     {
-        HandleCrosshair();
-        HandleCoolDown();
+        if (usingCrosshair)
+        {
+            HandleCrosshair();
+            HandleCoolDown();
+        }
     }
 
     private void SetCursor()
@@ -37,10 +42,31 @@ public class Crosshair : MonoBehaviour
         if (ReplaceCursor)
         {
             Cursor.visible = false;
+            usingCrosshair = true;
         }
         else
         {
             Destroy(this.gameObject);
+        }
+    }
+
+    /// <summary>
+    /// Switches between cursor and crosshair mode
+    /// </summary>
+    /// <param name="state"></param>
+    public void ToggleCrosshair(bool state)
+    {
+        if (state)
+        {
+            Cursor.visible = false;
+            usingCrosshair = true;
+            crosshairSprite.enabled = true;
+        }
+        else
+        {
+            Cursor.visible = true;
+            usingCrosshair = false;
+            crosshairSprite.enabled = false;
         }
     }
 

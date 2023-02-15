@@ -10072,6 +10072,7 @@ MonoBehaviour:
   recoil: 150
   weaponDirection: {x: 0, y: 0}
   User: 0
+  weaponAttachments: []
   HitScanTrail: {fileID: 4240070357067194032, guid: 2729dedfab78be5469d1976f39e08dba, type: 3}
   impactParticleSystem: {fileID: 7625845536068949805, guid: 824641833940bff48893e93560ece8c1, type: 3}
   rayTravelDistance: 20

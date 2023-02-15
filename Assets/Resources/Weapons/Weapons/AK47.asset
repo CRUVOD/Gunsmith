@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 46acd5c13ad6d5f4aabb57e78d2e4daf, type: 3}
   m_Name: AK47
   m_EditorClassIdentifier: 
-  weaponID: AK47
+  ID: AK47
   icon: {fileID: 21300008, guid: b528708a5a8f28343aefa9e1d46670a7, type: 3}
   weaponObject: {fileID: 3713712288743788199, guid: d7e36a478177ec149b14379d51848a9a, type: 3}
   weaponType: 0

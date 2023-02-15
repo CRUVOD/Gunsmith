@@ -91,7 +91,7 @@ public class UIManager : MonoBehaviour
     /// <param name="state">If set to <c>true</c>, sets the pause.</param>
     public virtual void SetVictoryScreen(bool state)
     {
-        if (DeathScreen != null)
+        if (VictoryScreen != null)
         {
             VictoryScreen.SetActive(state);
             EventSystem.current.sendNavigationEvents = state;
@@ -111,7 +111,7 @@ public class UIManager : MonoBehaviour
 
         //set the text fields
         weaponTypeText.text = weapon.weaponType.ToString();
-        weaponNameText.text = weapon.weaponID;
+        weaponNameText.text = weapon.ID;
 
         switch (weapon.ammoType)
         {
