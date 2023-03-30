@@ -1,144 +1,89 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 
-/// <summary>
-/// Handles the logic of the loadoutcustomisation screen
-/// </summary>
 public class LoadoutCustomisationScreen : MonoBehaviour
 {
-    //number of weapons the player can equip
-    public int numWeaponSlots;
+    public WeaponSelectScreen WeaponSelectScreen;
+    public AttachmentSelectScreen AttachmentSelectScreen;
 
-    //The index of the current wepaon displayed in each slot
-    private int[] weaponSlotIndices;
+    public int numberOfWeapons;
+    private List<WeaponReference> weaponsInSelection;
+    private List<WeaponAttachmentReference>[] attachmentsInSeleciton;
 
-    string[] weaponReferenceIDs;
-    public Image[] weaponSlotIcons;
+    //Keeps track of which slot number is being customised
+    private int attachmentSelectSlotNum;
 
-    private void Start()
+    private void Awake()
     {
-        weaponSlotIndices = new int[numWeaponSlots];
-        weaponReferenceIDs = new string[DataManager.instance.GetWeaponDictionary().Count];
-        DataManager.instance.GetWeaponDictionary().Keys.CopyTo(weaponReferenceIDs, 0);
-
-        PlayerData playerData = SaveSystem.LoadPlayer();
-        if (playerData != null)
-        {
-            InitialiseWithPlayerData(playerData);
-        }
-        else
-        {
-            //Default to 0 on all slots which weapon to display if player data is not loaded
-            for (int i = 0; i < weaponSlotIndices.Length; i++)
-            {
-                weaponSlotIndices[i] = 0;
-                SetWeapon(i, DataManager.instance.TryGetWeaponReference(weaponReferenceIDs[0]));
-            }
-        }
+        weaponsInSelection = new List<WeaponReference>();
+        attachmentsInSeleciton = new List<WeaponAttachmentReference>[numberOfWeapons];
     }
 
     /// <summary>
-    /// Initialises the weapon loadout screen with saved player loadout
+    /// Player first opening loadout customisation, enable weapon select and disable attachmentselect screen
     /// </summary>
-    /// <param name="playerData"></param>
-    private void InitialiseWithPlayerData(PlayerData playerData)
+    public void EnterLoadoutCustomisation()
     {
-        for (int i = 0; i < playerData.weaponsInLoadout.Length; i++)
-        {
-            SetWeapon(i, DataManager.instance.TryGetWeaponReference(playerData.weaponsInLoadout[i]));
-            for (int j = 0; j < weaponReferenceIDs.Length; j++)
-            {
-                //Set index of the two weapon slots for previous/next navigation
-                if (weaponReferenceIDs[j] == playerData.weaponsInLoadout[i])
-                {
-                    weaponSlotIndices[i] = j;
-                }
-            }
-        }
+        WeaponSelectScreen.gameObject.SetActive(true);
+        AttachmentSelectScreen.gameObject.SetActive(false);
     }
 
     /// <summary>
-    /// Set display of weapon in loadout slot, this does not change the indices
+    /// Close both screens
     /// </summary>
-    /// <param name="slotNum"></param>
-    /// <param name="reference"></param>
-    public void SetWeapon(int slotNum, WeaponReference reference)
+    public void ExitLoadoutCustomisation()
     {
-        //Debug.Log("Setting slot " + slotNum + " with" + reference.ID);
-
-        weaponSlotIcons[slotNum].sprite = reference.icon;
+        WeaponSelectScreen.gameObject.SetActive(false);
+        AttachmentSelectScreen.gameObject.SetActive(false);
     }
 
-    #region ButtonInteractions
-
-    public void PreviousWeapon(int slotNum)
+    public void EnterAttachmentSelect(int slotNum)
     {
-        //First check if there exist a previous weapon
-        if (weaponSlotIndices[slotNum] > 0)
-        {
-            //Roll back one index on the weapon references
-            weaponSlotIndices[slotNum] -= 1;
-            SetWeapon(slotNum, DataManager.instance.TryGetWeaponReference(weaponReferenceIDs[weaponSlotIndices[slotNum]]));
-        }
+        attachmentSelectSlotNum = slotNum;
+        WeaponReference reference = WeaponSelectScreen.GetSelectedWeapon(slotNum);
+        WeaponSelectScreen.gameObject.SetActive(false);
+        AttachmentSelectScreen.gameObject.SetActive(true);
+        AttachmentSelectScreen.UpdateCustomisationWeapon(reference, attachmentsInSeleciton[attachmentSelectSlotNum]);
     }
 
-    public void NextWeapon(int slotNum)
+    /// <summary>
+    /// Exits the attachment select screen, and saves the selection of attachments
+    /// </summary>
+    public void ExitAttachmentSelect()
     {
-        //First check if there exist a next weapon
-        if (weaponSlotIndices[slotNum] < weaponReferenceIDs.Length - 1)
-        {
-            //Advance one index on the weapon references
-            weaponSlotIndices[slotNum] += 1;
-            SetWeapon(slotNum, DataManager.instance.TryGetWeaponReference(weaponReferenceIDs[weaponSlotIndices[slotNum]]));
-        }
+        attachmentsInSeleciton[attachmentSelectSlotNum] = AttachmentSelectScreen.ExportCurrentSelectedAttachments();
+        WeaponSelectScreen.gameObject.SetActive(true);
+        AttachmentSelectScreen.gameObject.SetActive(false);
     }
 
     public void ConfirmAndSaveLoadout()
     {
-        List<Weapon> currentSelectedWeapons = GetCurrentSelectedWeapons();
-        PlayerData newPlayerData = new PlayerData(currentSelectedWeapons);
-        SaveSystem.SavePlayer(newPlayerData);
-        TryUpdatePlayerLoadout();
+        List<WeaponReference> currentSelectedWeapons = WeaponSelectScreen.ExportSelectedWeapons();
+        weaponsInSelection = currentSelectedWeapons;
+        PlayerData newPlayerData = new PlayerData(weaponsInSelection, attachmentsInSeleciton);
+        //SaveSystem.SavePlayer(newPlayerData);
+        Debug.Log(newPlayerData.toString());
     }
 
-    #endregion
-
-    private List<Weapon> GetCurrentSelectedWeapons()
-    {
-        List<Weapon> currentSelectedWeapons = new List<Weapon>();
-        for (int i = 0; i < numWeaponSlots; i++)
-        {
-            Weapon weapon = DataManager.instance.TryGetWeaponReference(weaponReferenceIDs[weaponSlotIndices[i]]).weaponObject;
-            currentSelectedWeapons.Add(weapon);
-        }
-
-        return currentSelectedWeapons;
-    }
-
-    /// <summary>
-    /// Searches the scene for the player, and tries to update the player with the currently selected weapon loadout
-    /// </summary>
-    private void TryUpdatePlayerLoadout()
-    {
-        GameObject[] searchResults = GameObject.FindGameObjectsWithTag("Player");
-        if (searchResults.Length == 1)
-        {
-            Player player;
-            if (searchResults[0].TryGetComponent<Player>(out player))
-            {
-                player.UpdateLoadout(GetCurrentSelectedWeapons());
-            }
-        }
-        else if (searchResults.Length > 1)
-        {
-            Debug.LogWarning("More than one player?");
-        }
-        else
-        {
-            Debug.LogWarning("The player is missing ;-;");
-        }
-    }
+    //private void TryUpdatePlayerLoadout()
+    //{
+    //    GameObject[] searchResults = GameObject.FindGameObjectsWithTag("Player");
+    //    if (searchResults.Length == 1)
+    //    {
+    //        Player player;
+    //        if (searchResults[0].TryGetComponent<Player>(out player))
+    //        {
+    //            player.UpdateLoadout(GetCurrentSelectedWeapons());
+    //        }
+    //    }
+    //    else if (searchResults.Length > 1)
+    //    {
+    //        Debug.LogWarning("More than one player?");
+    //    }
+    //    else
+    //    {
+    //        Debug.LogWarning("The player is missing ;-;");
+    //    }
+    //}
 }

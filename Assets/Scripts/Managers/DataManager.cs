@@ -29,12 +29,16 @@ public class DataManager : MonoBehaviour
 
     [SerializeField]
     private string weaponDataFolder = default;
+    [SerializeField]
+    private string attachmentDataFolder = default;
 
-    //Stores all data loaded
+    //Dictionaries to store all data loaded
     private Dictionary<string, WeaponReference> weaponDictionary;
+    private Dictionary<string, WeaponAttachmentReference> attachmentDictionary;
 
     private void LoadFromResource()
     {
+        //Weapoons
         weaponDictionary = new Dictionary<string, WeaponReference>();
 
         WeaponReference[] weaponReferencesFromResource = Resources.LoadAll<WeaponReference>(weaponDataFolder);
@@ -47,6 +51,21 @@ public class DataManager : MonoBehaviour
             else
             {
                 Debug.LogError("Weapon does not have ID");
+            }
+        }
+
+        //Attachments
+        attachmentDictionary = new Dictionary<string, WeaponAttachmentReference>();
+        WeaponAttachmentReference[] attachmentReferencesFromResource = Resources.LoadAll<WeaponAttachmentReference>(attachmentDataFolder);
+        foreach (WeaponAttachmentReference attachmentReference in attachmentReferencesFromResource)
+        {
+            if (attachmentReference.ID != null)
+            {
+                attachmentDictionary.Add(attachmentReference.ID, attachmentReference);
+            }
+            else
+            {
+                Debug.LogError("Attachment does not have ID");
             }
         }
     }
@@ -66,6 +85,15 @@ public class DataManager : MonoBehaviour
     }
 
     /// <summary>
+    /// Returns the weapon attachment dictionary
+    /// </summary>
+    /// <returns></returns>
+    public Dictionary<string, WeaponAttachmentReference> GetAttachmentDictionary()
+    {
+        return attachmentDictionary;
+    }
+
+    /// <summary>
     /// Tries to return a weapon reference based on ID, will return null
     /// </summary>
     /// <param name="ID"></param>
@@ -74,6 +102,24 @@ public class DataManager : MonoBehaviour
     {
         WeaponReference reference;
         if (weaponDictionary.TryGetValue(ID, out reference))
+        {
+            return reference;
+        }
+        else
+        {
+            return null;
+        }
+    }
+
+    /// <summary>
+    /// Tries to return an attachment reference based on ID, will return null
+    /// </summary>
+    /// <param name="ID"></param>
+    /// <returns></returns>
+    public WeaponAttachmentReference TryGetAttachmentReference(string ID)
+    {
+        WeaponAttachmentReference reference;
+        if (attachmentDictionary.TryGetValue(ID, out reference))
         {
             return reference;
         }

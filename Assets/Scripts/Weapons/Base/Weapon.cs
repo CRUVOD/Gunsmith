@@ -28,7 +28,7 @@ public class Weapon : MonoBehaviour, ExtendedEventListener<GameEvent>
     public CharacterTypes User = CharacterTypes.Player;
 
     [Header("Attachments")]
-    public List<WeaponAttachment> weaponAttachments;
+    public List<WeaponAttachmentSlot> weaponAttachmentSlots;
 
     bool rotationFrozen;
 
@@ -45,9 +45,9 @@ public class Weapon : MonoBehaviour, ExtendedEventListener<GameEvent>
     /// </summary>
     public virtual void ApplyAttachmentModifiers()
     {
-        foreach (WeaponAttachment attachment in weaponAttachments)
+        foreach (WeaponAttachmentSlot attachmentSlot in weaponAttachmentSlots)
         {
-            attachment.ApplyStatModifiers(this);
+            attachmentSlot.GetWeaponAttachment().ApplyStatModifiers(this);
         }
     }
 

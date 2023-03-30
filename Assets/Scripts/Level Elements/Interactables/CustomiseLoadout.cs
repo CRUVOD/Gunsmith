@@ -18,7 +18,7 @@ public class CustomiseLoadout : MonoBehaviour, Interactable
     {
         if (!inCustomisation)
         {
-            LoadoutCustomiseScreen.gameObject.SetActive(true);
+            LoadoutCustomiseScreen.EnterLoadoutCustomisation();
             inCustomisation = true;
             //Freeze player movement
             player.FreezePlayerMovement(true);
@@ -27,7 +27,7 @@ public class CustomiseLoadout : MonoBehaviour, Interactable
         }
         else
         {
-            LoadoutCustomiseScreen.gameObject.SetActive(false);
+            LoadoutCustomiseScreen.ExitLoadoutCustomisation();
             inCustomisation = false;
             //Unfreeze player movement
             player.FreezePlayerMovement(false);
