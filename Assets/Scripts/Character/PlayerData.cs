@@ -40,9 +40,13 @@ public class PlayerData
         for (int i = 0; i < weaponAttachments.Length; i++)
         {
             List<string> weaponAttachmentsTemp = new List<string>();
-            for (int j = 0; j < weaponAttachments[i].Count; j++)
+
+            if (weaponAttachments[i] != null)
             {
-                weaponAttachmentsTemp.Add(weaponAttachments[i][j].ID);
+                for (int j = 0; j < weaponAttachments[i].Count; j++)
+                {
+                    weaponAttachmentsTemp.Add(weaponAttachments[i][j].ID);
+                }
             }
             weaponAttachmentIDs.Add(weaponAttachmentsTemp.ToArray());
         }
@@ -98,10 +102,14 @@ public class PlayerData
         for (int i = 0; i < weaponsInLoadout.Length; i++)
         {
             ret += "Weapon " + i + ": " + weaponsInLoadout[i] + "- ";
-            for (int j = 0; j < attachmentsInLoadout[i].Length; j++)
+            if (attachmentsInLoadout.Length != 0)
             {
-                ret += attachmentsInLoadout[i][j] + ", ";
+                for (int j = 0; j < attachmentsInLoadout[i].Length; j++)
+                {
+                    ret += attachmentsInLoadout[i][j] + ", ";
+                }
             }
+
             ret += "\n";
         }
 

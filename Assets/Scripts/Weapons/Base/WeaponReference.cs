@@ -55,4 +55,7 @@ public class WeaponReference : ScriptableObject
 
     [Header("Energy Info")]
     public float heatMax;
+
+    [Header("Attachment Info")]
+    public AttachmentPoint[] attachmentPoints;
 }

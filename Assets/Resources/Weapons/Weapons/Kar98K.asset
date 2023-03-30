@@ -25,3 +25,4 @@ MonoBehaviour:
   isMagazineBased: 1
   magazineSize: 5
   heatMax: 0
+  attachmentPoints: 030000000400000000000000

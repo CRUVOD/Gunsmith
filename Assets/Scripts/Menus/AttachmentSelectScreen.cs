@@ -44,14 +44,50 @@ public class AttachmentSelectScreen : MonoBehaviour
     {
         currentWeapon = reference;
         weaponIcon.sprite = currentWeapon.icon;
-
-        //First clear all attachment displays
-        foreach (AttachmentDisplayIcon displayIcon in attachmentPointIcons)
+        //Disable attachment point icons for points not on the weapon, and load the attachments given 
+        for (int i = 0; i < attachmentPointIcons.Length; i++)
         {
+            AttachmentDisplayIcon displayIcon = attachmentPointIcons[i];
+            //Fist enable all and clear whatever was displaying before
+            displayIcon.gameObject.SetActive(true);
             displayIcon.RevertToEmpty();
+
+            int pos = Array.IndexOf(reference.attachmentPoints, displayIcon.attachmentPoint);
+            if (pos > -1)
+            {
+                //The point exists on the weapon
+                if (attachmentReferences == null)
+                {
+                    //No attachments were given
+                    continue;
+                }
+
+                for (int j = 0; j < attachmentReferences.Count; j++)
+                {
+                    if (attachmentReferences[j].attachmentPoint == reference.attachmentPoints[pos])
+                    {
+                        //There is an attachment at this point given
+                        displayIcon.UpdateDisplay(attachmentReferences[j]);
+                    }
+                }
+            }
+            else
+            {
+                displayIcon.gameObject.SetActive(false);
+            }
         }
+        ClearAttachmentDisplay();
+    }
 
-
+    /// <summary>
+    /// Clears the rightside display of attachments available
+    /// </summary>
+    public void ClearAttachmentDisplay()
+    {
+        foreach (AttachmentDisplayIcon displayIcon in attachmentDisplayIcons)
+        {
+            displayIcon.RevertToEmptyComplete();
+        }
     }
 
     /// <summary>

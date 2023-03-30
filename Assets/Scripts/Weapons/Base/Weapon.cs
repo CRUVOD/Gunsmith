@@ -35,7 +35,7 @@ public class Weapon : MonoBehaviour, ExtendedEventListener<GameEvent>
     protected virtual void Start()
     {
         mainCamera = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Camera>();
-        ApplyAttachmentModifiers();
+        ApplyAllAttachmentModifiers();
     }
 
     #region PublicAPIs
@@ -43,14 +43,46 @@ public class Weapon : MonoBehaviour, ExtendedEventListener<GameEvent>
     /// <summary>
     /// Applies the stat modifiers from the attachments to the weapon
     /// </summary>
-    public virtual void ApplyAttachmentModifiers()
+    public virtual void ApplyAllAttachmentModifiers()
     {
         foreach (WeaponAttachmentSlot attachmentSlot in weaponAttachmentSlots)
         {
-            attachmentSlot.GetWeaponAttachment().ApplyStatModifiers(this);
+            if (attachmentSlot.GetWeaponAttachment()!= null)
+            {
+                attachmentSlot.GetWeaponAttachment().ApplyStatModifiers(this);
+            }
         }
     }
 
+    /// <summary>
+    /// Applies the stat modifiers of the given weapon attachment slot
+    /// </summary>
+    /// <param name="attachment"></param>
+    public virtual void ApplyAttachmentModifier(WeaponAttachmentSlot attachmentSlot)
+    {
+        attachmentSlot.GetWeaponAttachment().ApplyStatModifiers(this);
+    }
+
+    /// <summary>
+    /// Tries to add the attachment to the weapon at the right attachment slot, and apply the modifiers if succuessful
+    /// Returns true if successful, false if not
+    /// </summary>
+    /// <param name="attachment"></param>
+    public virtual bool TryEquipAttachment(WeaponAttachment attachment)
+    {
+        for (int i = 0; i < weaponAttachmentSlots.Count; i++)
+        {
+            if (weaponAttachmentSlots[i].TrySetAttachment(attachment))
+            {
+                attachment.transform.position = weaponAttachmentSlots[i].transform.position;
+                attachment.transform.parent = weaponAttachmentSlots[i].transform;
+                ApplyAttachmentModifier(weaponAttachmentSlots[i]);
+                return true;
+            }
+        }
+
+        return false;
+    }
 
     /// <summary>
     /// Use the weapon, return true if successfully used

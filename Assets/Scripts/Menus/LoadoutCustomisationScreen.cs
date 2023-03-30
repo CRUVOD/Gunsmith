@@ -62,28 +62,29 @@ public class LoadoutCustomisationScreen : MonoBehaviour
         List<WeaponReference> currentSelectedWeapons = WeaponSelectScreen.ExportSelectedWeapons();
         weaponsInSelection = currentSelectedWeapons;
         PlayerData newPlayerData = new PlayerData(weaponsInSelection, attachmentsInSeleciton);
-        //SaveSystem.SavePlayer(newPlayerData);
+        SaveSystem.SavePlayer(newPlayerData);
         Debug.Log(newPlayerData.toString());
+        TryUpdatePlayerLoadout(newPlayerData);
     }
 
-    //private void TryUpdatePlayerLoadout()
-    //{
-    //    GameObject[] searchResults = GameObject.FindGameObjectsWithTag("Player");
-    //    if (searchResults.Length == 1)
-    //    {
-    //        Player player;
-    //        if (searchResults[0].TryGetComponent<Player>(out player))
-    //        {
-    //            player.UpdateLoadout(GetCurrentSelectedWeapons());
-    //        }
-    //    }
-    //    else if (searchResults.Length > 1)
-    //    {
-    //        Debug.LogWarning("More than one player?");
-    //    }
-    //    else
-    //    {
-    //        Debug.LogWarning("The player is missing ;-;");
-    //    }
-    //}
+    private void TryUpdatePlayerLoadout(PlayerData playerData)
+    {
+        GameObject[] searchResults = GameObject.FindGameObjectsWithTag("Player");
+        if (searchResults.Length == 1)
+        {
+            Player player;
+            if (searchResults[0].TryGetComponent<Player>(out player))
+            {
+                player.UpdateLoadout(playerData);
+            }
+        }
+        else if (searchResults.Length > 1)
+        {
+            Debug.LogWarning("More than one player?");
+        }
+        else
+        {
+            Debug.LogWarning("The player is missing ;-;");
+        }
+    }
 }

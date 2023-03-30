@@ -12,6 +12,8 @@ public class Player : Character
     [HideInInspector]
     public Weapon currentWeapon;
     public List<Weapon> weaponsInLoadout;
+    //Where the weapons will be instantiated
+    public Transform weaponEquipPoint;
 
     [Header("Dodge")]
     //Can the player dodge
@@ -532,7 +534,7 @@ public class Player : Character
         //Instantiate the weapons, set user of weapons to be player, and disable the sprite of the other weapons
         for (int i = 0; i < newLoadout.Count; i++)
         {
-            Weapon weapon = Instantiate<Weapon>(newLoadout[i], this.transform);
+            Weapon weapon = Instantiate<Weapon>(newLoadout[i], weaponEquipPoint);
             weaponsInLoadout.Add(weapon);
             weaponsInLoadout[i].User = CharacterTypes.Player;
             if (i >= 1)
@@ -545,7 +547,48 @@ public class Player : Character
             currentWeapon = weaponsInLoadout[0];
             currentWeapon.UpdateUI();
         }
-        
+    }
+
+    public void UpdateLoadout(PlayerData playerData)
+    {
+        //Destroy all old weapon gameobjects
+        for (int i = weaponsInLoadout.Count - 1; i >= 0; i--)
+        {
+            Destroy(weaponsInLoadout[i].gameObject);
+        }
+        //Clears old loadout
+        weaponsInLoadout.Clear();
+
+        for (int i = 0; i < playerData.weaponsInLoadout.Length; i++)
+        {
+            //Instantiate the weapons
+            WeaponReference weaponReference = DataManager.instance.TryGetWeaponReference(playerData.weaponsInLoadout[i]);
+            Weapon weapon = Instantiate<Weapon>(weaponReference.weaponObject, weaponEquipPoint);
+            weaponsInLoadout.Add(weapon);
+            weaponsInLoadout[i].User = CharacterTypes.Player;
+
+            //Instantiate the attachments for that weapon and equips them
+            for (int j = 0; j < playerData.attachmentsInLoadout[i].Length; j++)
+            {
+                WeaponAttachmentReference weaponAttachmentReference = DataManager.instance.TryGetAttachmentReference(playerData.attachmentsInLoadout[i][j]);
+                WeaponAttachment attachment = Instantiate<WeaponAttachment>(weaponAttachmentReference.attachmentObject);
+                if (!weapon.TryEquipAttachment(attachment))
+                {
+                    Destroy(attachment);
+                }
+            }
+
+            if (i >= 1)
+            {
+                weaponsInLoadout[i].weaponSprite.SetActive(false);
+            }
+        }
+
+        if (weaponsInLoadout.Count > 0)
+        {
+            currentWeapon = weaponsInLoadout[0];
+            currentWeapon.UpdateUI();
+        }
     }
 
     #endregion
