@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: c10bafc503c00cf469a590014dab2f0f
+guid: f374f34aa2bc47f49b75d67411486990
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -104,13 +104,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Attachments_0
+      name: wallturret_0
       rect:
         serializedVersion: 2
-        x: 17
-        y: 73
-        width: 10
-        height: 4
+        x: 0
+        y: 16
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -118,20 +118,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 4cb7b6e8d1cd997409766adf3be6c20b
-      internalID: 666229554
+      spriteID: 7b325e051e73c324f981579ba681512a
+      internalID: 1049411443
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Attachments_1
+      name: wallturret_1
       rect:
         serializedVersion: 2
-        x: 7
-        y: 42
-        width: 7
-        height: 5
+        x: 16
+        y: 16
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -139,29 +139,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e424c9587e0dcab42b452c38d9101543
-      internalID: -921414850
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Attachments_2
-      rect:
-        serializedVersion: 2
-        x: 30
-        y: 30
-        width: 7
-        height: 30
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 03933b5597e23c847beddcf9bd1873c7
-      internalID: -1865229439
+      spriteID: a3e5c9623cbb0734f8bbd36bc3db2846
+      internalID: -1490077194
       vertices: []
       indices: 
       edges: []
@@ -177,9 +156,8 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Attachments_1: -921414850
-      Attachments_2: -1865229439
-      Attachments_0: 666229554
+      wallturret_0: 1049411443
+      wallturret_1: -1490077194
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

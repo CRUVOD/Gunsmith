@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class WeaponAttachmentSlot : MonoBehaviour
 {
-    WeaponAttachment attachment;
+    public WeaponAttachment attachment;
     public AttachmentPoint attachmentPoint;
 
     /// <summary>

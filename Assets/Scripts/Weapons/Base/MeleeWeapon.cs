@@ -63,7 +63,7 @@ public class MeleeWeapon : Weapon
         DamageArea.HitDamageableEvent.AddListener(OnCollideWithDamageable);
     }
 
-    public virtual void Update()
+    protected virtual void Update()
     {
         RotateWeapon();
     }
@@ -177,9 +177,9 @@ public class MeleeWeapon : Weapon
     /// Describes what happens when colliding with a damageable object
     /// </summary>
     /// <param name="health">Health.</param>
-    protected virtual void OnCollideWithDamageable(Character character)
+    protected virtual void OnCollideWithDamageable(IDamageable damageable)
     {
-        if (!character.CanTakeDamageThisFrame())
+        if (!damageable.CanTakeDamageThisFrame())
         {
             return;
         }
@@ -189,11 +189,8 @@ public class MeleeWeapon : Weapon
         //we apply the damage to the thing we've collided with
         int randomDamage = (int)UnityEngine.Random.Range(MinDamageCaused, Mathf.Max(MaxDamageCaused, MinDamageCaused));
 
-        Vector3 direction = character.transform.position - this.transform.position;
-        //Apply knockback/impact force on collided character
-        character.Impact(direction.normalized, impactForce);
-
-        character.Damage(randomDamage, gameObject, InvincibilityDuration);
+        //Apply knockback/impact force on collided character and damage
+        damageable.Damage(randomDamage, gameObject, InvincibilityDuration, impactForce);
     }
 
     /// <summary>

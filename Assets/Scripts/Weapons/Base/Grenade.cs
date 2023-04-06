@@ -58,14 +58,9 @@ public class Grenade : Projectile
     /// Stops grenade travel, apply impact damage, wait till detonation
     /// </summary>
     /// <param name="health">Health.</param>
-    protected override void OnCollideWithDamageable(Character character)
+    protected override void OnCollideWithDamageable(IDamageable damageable)
     {
         SetVelocity(new Vector2(0, 0));
-
-        if (!character.CanTakeDamageThisFrame())
-        {
-            return;
-        }
 
         HitDamageableFeedback?.PlayFeedbacks(this.transform.position);
 
@@ -73,9 +68,7 @@ public class Grenade : Projectile
         int randomDamage = (int)UnityEngine.Random.Range(MinDamageCaused, Mathf.Max(MaxDamageCaused, MinDamageCaused));
 
         //Apply knockback/impact force on collided character
-        character.Impact(rb.velocity.normalized, impactForce);
-
-        character.Damage(randomDamage, gameObject, 0f);
+        damageable.Damage(randomDamage, gameObject, 0f, rb.velocity.normalized, impactForce);
     }
 
     /// <summary>
@@ -154,10 +147,8 @@ public class Grenade : Projectile
         //we apply the damage to the thing we've collided with
 
         Vector3 direction = (character.transform.position - this.transform.position).normalized;
-        //Apply knockback/impact force on collided character
-        character.Impact(direction, explosionForce);
-
-        character.Damage(explosionDamage, gameObject, InvincibilityDuration);
+        //Apply knockback/impact force on collided character and damage
+        character.Damage(explosionDamage, gameObject, InvincibilityDuration, direction, explosionForce);
     }
 
     #endregion

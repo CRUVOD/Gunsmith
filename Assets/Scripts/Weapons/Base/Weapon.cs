@@ -35,21 +35,21 @@ public class Weapon : MonoBehaviour, ExtendedEventListener<GameEvent>
     protected virtual void Start()
     {
         mainCamera = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Camera>();
-        ApplyAllAttachmentModifiers();
+        InitaliseAttachments();
     }
 
     #region PublicAPIs
 
     /// <summary>
-    /// Applies the stat modifiers from the attachments to the weapon
+    /// Applies the stat modifiers from the attachments to the weapon, and initialises them
     /// </summary>
-    public virtual void ApplyAllAttachmentModifiers()
+    public virtual void InitaliseAttachments()
     {
         foreach (WeaponAttachmentSlot attachmentSlot in weaponAttachmentSlots)
         {
             if (attachmentSlot.GetWeaponAttachment()!= null)
             {
-                attachmentSlot.GetWeaponAttachment().ApplyStatModifiers(this);
+                attachmentSlot.GetWeaponAttachment().InitialiseAttachment(this);
             }
         }
     }
@@ -60,7 +60,7 @@ public class Weapon : MonoBehaviour, ExtendedEventListener<GameEvent>
     /// <param name="attachment"></param>
     public virtual void ApplyAttachmentModifier(WeaponAttachmentSlot attachmentSlot)
     {
-        attachmentSlot.GetWeaponAttachment().ApplyStatModifiers(this);
+        attachmentSlot.GetWeaponAttachment().InitialiseAttachment(this);
     }
 
     /// <summary>

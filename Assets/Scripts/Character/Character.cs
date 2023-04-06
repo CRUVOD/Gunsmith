@@ -5,7 +5,7 @@ using UnityEngine;
 
 public enum CharacterTypes { Player, AI }
 
-public class Character : MonoBehaviour
+public class Character : MonoBehaviour, IDamageable
 {    
     [Header("Basic Properties")]
     public Rigidbody2D rb;
@@ -288,12 +288,25 @@ public class Character : MonoBehaviour
     }
 
     /// <summary>
-    /// Called when the object takes damage
+    /// If no direction, we take the positions of this and the instigator as the direction
+    /// </summary>
+    /// <param name="damage"></param>
+    /// <param name="instigator"></param>
+    /// <param name="invincibilityDuration"></param>
+    /// <param name="force"></param>
+    public virtual void Damage(int damage, GameObject instigator, float invincibilityDuration, float force)
+    {
+        Vector3 direction = this.transform.position - instigator.transform.position;
+        Damage(damage, instigator, invincibilityDuration, direction, force);
+    }
+
+    /// <summary>
+    /// Called when the object takes damage, also with impact
     /// </summary>
     /// <param name="damage">The amount of health points that will get lost.</param>
     /// <param name="instigator">The object that caused the damage.</param>
     /// <param name="invincibilityDuration">The duration of the short invincibility following the hit.</param>
-    public virtual void Damage(int damage, GameObject instigator, float invincibilityDuration)
+    public virtual void Damage(int damage, GameObject instigator, float invincibilityDuration, Vector3 direciton, float force)
     {
         if (!CanTakeDamageThisFrame())
         {
@@ -316,6 +329,9 @@ public class Character : MonoBehaviour
             DamageDisabled();
             StartCoroutine(DamageEnabled(invincibilityDuration));
         }
+
+        //Do knockback
+        Impact(rb.velocity.normalized, force);
 
         // we trigger a damage taken event
         //MMDamageTakenEvent.Trigger(_character, instigator, CurrentHealth, damage, previousHealth);

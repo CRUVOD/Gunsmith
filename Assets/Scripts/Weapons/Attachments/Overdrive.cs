@@ -4,11 +4,12 @@ using UnityEngine;
 
 public class Overdrive : WeaponAttachment
 {
-    [Tooltip("Percentage decrease in fireRate for this weapon")]
+    [Tooltip("Percentage increase in fireRate for this weapon")]
     public float fireRateModifier;
 
-    public override void ApplyStatModifiers(Weapon weapon)
+    public override void InitialiseAttachment(Weapon weapon)
     {
+        base.InitialiseAttachment(weapon);
         //For now, only apply this attachment to projectile weapons
         var projectileWeapon = weapon as ProjectileWeapon;
 

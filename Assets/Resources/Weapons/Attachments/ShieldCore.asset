@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0ea945fb8023b4d4f8fe6a2987d8576f, type: 3}
-  m_Name: Overdrive
+  m_Name: ShieldCore
   m_EditorClassIdentifier: 
-  ID: OverDrive
-  attachmentPoint: 1
-  icon: {fileID: 666229554, guid: c10bafc503c00cf469a590014dab2f0f, type: 3}
-  attachmentObject: {fileID: 3864219583134437666, guid: 08ea9d2098bedab41a711fea96ee26c4, type: 3}
-  shortDescription: Increases weapon fire rate
+  ID: ShieldCore
+  attachmentPoint: 0
+  icon: {fileID: -921414850, guid: c10bafc503c00cf469a590014dab2f0f, type: 3}
+  attachmentObject: {fileID: 3910434269224488482, guid: 8130002790c08784f937b95f37dc3c60, type: 3}
+  shortDescription: Generates a barrier shield in front of the weapon for your protection

@@ -186,7 +186,7 @@ MonoBehaviour:
   InvincibilityDuration: 0.1
   TargetLayerMask:
     serializedVersion: 2
-    m_Bits: 1280
+    m_Bits: 17664
   HitDamageableFeedback: {fileID: 0}
   HitNonDamageableFeedback: {fileID: 0}
   HitAnythingFeedback: {fileID: 0}

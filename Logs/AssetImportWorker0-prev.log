@@ -11,13 +11,13 @@ C:\Program Files\Unity\Hub\Editor\2021.3.8f1\Editor\Unity.exe
 -name
 AssetImportWorker0
 -projectPath
-D:/Unity Projects/Gunsmith
+D:/Unity-Gunsmith/Gunsmith
 -logFile
 Logs/AssetImportWorker0.log
 -srvPort
-54454
-Successfully changed project path to: D:/Unity Projects/Gunsmith
-D:/Unity Projects/Gunsmith
+50144
+Successfully changed project path to: D:/Unity-Gunsmith/Gunsmith
+D:/Unity-Gunsmith/Gunsmith
 [UnityMemory] Configuration Parameters - Can be set up in boot.config
     "memorysetup-bucket-allocator-granularity=16"
     "memorysetup-bucket-allocator-bucket-count=8"
@@ -47,11 +47,11 @@ D:/Unity Projects/Gunsmith
     "memorysetup-temp-allocator-size-cloud-worker=32768"
     "memorysetup-temp-allocator-size-gi-baking-worker=262144"
     "memorysetup-temp-allocator-size-gfx=262144"
-Refreshing native plugins compatible for Editor in 96.07 ms, found 4 plugins.
+Refreshing native plugins compatible for Editor in 94.72 ms, found 4 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Initialize engine version: 2021.3.8f1 (b30333d56e81)
 [Subsystems] Discovering subsystems at path C:/Program Files/Unity/Hub/Editor/2021.3.8f1/Editor/Data/Resources/UnitySubsystems
-[Subsystems] Discovering subsystems at path D:/Unity Projects/Gunsmith/Assets
+[Subsystems] Discovering subsystems at path D:/Unity-Gunsmith/Gunsmith/Assets
 GfxDevice: creating device client; threaded=0; jobified=0
 Direct3D:
     Version:  Direct3D 11.0 [level 11.1]
@@ -63,74 +63,74 @@ Initialize mono
 Mono path[0] = 'C:/Program Files/Unity/Hub/Editor/2021.3.8f1/Editor/Data/Managed'
 Mono path[1] = 'C:/Program Files/Unity/Hub/Editor/2021.3.8f1/Editor/Data/MonoBleedingEdge/lib/mono/unityjit-win32'
 Mono config path = 'C:/Program Files/Unity/Hub/Editor/2021.3.8f1/Editor/Data/MonoBleedingEdge/etc'
-Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56836
+Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56112
 Begin MonoManager ReloadAssembly
 Registering precompiled unity dll's ...
 Register platform support module: C:/Program Files/Unity/Hub/Editor/2021.3.8f1/Editor/Data/PlaybackEngines/WindowsStandaloneSupport/UnityEditor.WindowsStandalone.Extensions.dll
-Registered in 0.009699 seconds.
+Registered in 0.008214 seconds.
 Native extension for WindowsStandalone target not found
-Refreshing native plugins compatible for Editor in 108.08 ms, found 4 plugins.
+Refreshing native plugins compatible for Editor in 96.18 ms, found 4 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Mono: successfully reloaded assembly
-- Completed reload, in  0.568 seconds
+- Completed reload, in  0.524 seconds
 Domain Reload Profiling:
-	ReloadAssembly (568ms)
-		BeginReloadAssembly (69ms)
+	ReloadAssembly (524ms)
+		BeginReloadAssembly (59ms)
 			ExecutionOrderSort (0ms)
 			DisableScriptedObjects (0ms)
 			BackupInstance (0ms)
 			ReleaseScriptingObjects (0ms)
 			CreateAndSetChildDomain (1ms)
-		EndReloadAssembly (403ms)
-			LoadAssemblies (66ms)
+		EndReloadAssembly (375ms)
+			LoadAssemblies (57ms)
 			RebuildTransferFunctionScriptingTraits (0ms)
-			SetupTypeCache (73ms)
+			SetupTypeCache (70ms)
 			ReleaseScriptCaches (0ms)
-			RebuildScriptCaches (21ms)
-			SetupLoadedEditorAssemblies (268ms)
+			RebuildScriptCaches (20ms)
+			SetupLoadedEditorAssemblies (244ms)
 				LogAssemblyErrors (0ms)
 				InitializePlatformSupportModulesInManaged (7ms)
 				SetLoadedEditorAssemblies (0ms)
-				RefreshPlugins (108ms)
+				RefreshPlugins (96ms)
 				BeforeProcessingInitializeOnLoad (1ms)
-				ProcessInitializeOnLoadAttributes (114ms)
-				ProcessInitializeOnLoadMethodAttributes (37ms)
+				ProcessInitializeOnLoadAttributes (107ms)
+				ProcessInitializeOnLoadMethodAttributes (33ms)
 				AfterProcessingInitializeOnLoad (0ms)
 				EditorAssembliesLoaded (0ms)
 			ExecutionOrderSort2 (0ms)
 			AwakeInstancesAfterBackupRestoration (0ms)
 Platform modules already initialized, skipping
 Registering precompiled user dll's ...
-Registered in 0.006644 seconds.
+Registered in 0.006269 seconds.
 Begin MonoManager ReloadAssembly
-Symbol file LoadedFromMemory doesn't match image D:\Unity Projects\Gunsmith\Library\PackageCache\com.unity.visualscripting@1.7.8\Editor\VisualScripting.Core\Dependencies\YamlDotNet\Unity.VisualScripting.YamlDotNet.dll
-Symbol file LoadedFromMemory doesn't match image D:\Unity Projects\Gunsmith\Library\PackageCache\com.unity.visualscripting@1.7.8\Editor\VisualScripting.Core\Dependencies\DotNetZip\Unity.VisualScripting.IonicZip.dll
+Symbol file LoadedFromMemory doesn't match image D:\Unity-Gunsmith\Gunsmith\Library\PackageCache\com.unity.visualscripting@1.7.8\Editor\VisualScripting.Core\Dependencies\YamlDotNet\Unity.VisualScripting.YamlDotNet.dll
+Symbol file LoadedFromMemory doesn't match image D:\Unity-Gunsmith\Gunsmith\Library\PackageCache\com.unity.visualscripting@1.7.8\Editor\VisualScripting.Core\Dependencies\DotNetZip\Unity.VisualScripting.IonicZip.dll
 Native extension for WindowsStandalone target not found
-Refreshing native plugins compatible for Editor in 102.19 ms, found 4 plugins.
+Refreshing native plugins compatible for Editor in 100.84 ms, found 4 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Mono: successfully reloaded assembly
-- Completed reload, in  1.113 seconds
+- Completed reload, in  1.131 seconds
 Domain Reload Profiling:
-	ReloadAssembly (1113ms)
-		BeginReloadAssembly (94ms)
+	ReloadAssembly (1132ms)
+		BeginReloadAssembly (96ms)
 			ExecutionOrderSort (0ms)
 			DisableScriptedObjects (5ms)
 			BackupInstance (0ms)
 			ReleaseScriptingObjects (0ms)
 			CreateAndSetChildDomain (16ms)
-		EndReloadAssembly (926ms)
-			LoadAssemblies (95ms)
+		EndReloadAssembly (939ms)
+			LoadAssemblies (89ms)
 			RebuildTransferFunctionScriptingTraits (0ms)
-			SetupTypeCache (211ms)
+			SetupTypeCache (198ms)
 			ReleaseScriptCaches (1ms)
-			RebuildScriptCaches (55ms)
-			SetupLoadedEditorAssemblies (537ms)
+			RebuildScriptCaches (61ms)
+			SetupLoadedEditorAssemblies (560ms)
 				LogAssemblyErrors (0ms)
 				InitializePlatformSupportModulesInManaged (4ms)
 				SetLoadedEditorAssemblies (0ms)
-				RefreshPlugins (102ms)
-				BeforeProcessingInitializeOnLoad (107ms)
-				ProcessInitializeOnLoadAttributes (239ms)
+				RefreshPlugins (101ms)
+				BeforeProcessingInitializeOnLoad (118ms)
+				ProcessInitializeOnLoadAttributes (251ms)
 				ProcessInitializeOnLoadMethodAttributes (75ms)
 				AfterProcessingInitializeOnLoad (10ms)
 				EditorAssembliesLoaded (0ms)
@@ -140,12 +140,12 @@ Platform modules already initialized, skipping
 ========================================================================
 Worker process is ready to serve import requests
 Launched and connected shader compiler UnityShaderCompiler.exe after 0.04 seconds
-Refreshing native plugins compatible for Editor in 2.05 ms, found 4 plugins.
+Refreshing native plugins compatible for Editor in 0.98 ms, found 4 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Unloading 5954 Unused Serialized files (Serialized files now loaded: 0)
-Unloading 69 unused Assets / (2.0 MB). Loaded Objects now: 6390.
-Memory consumption went from 236.6 MB to 234.6 MB.
-Total: 6.528700 ms (FindLiveObjects: 0.726900 ms CreateObjectMapping: 0.214500 ms MarkObjects: 4.780900 ms  DeleteObjects: 0.805200 ms)
+Unloading 69 unused Assets / (2.0 MB). Loaded Objects now: 6392.
+Memory consumption went from 236.8 MB to 234.8 MB.
+Total: 3.926500 ms (FindLiveObjects: 0.354600 ms CreateObjectMapping: 0.289700 ms MarkObjects: 2.825900 ms  DeleteObjects: 0.455400 ms)
 
 AssetImportParameters requested are different than current active one (requested -> active):
   custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
@@ -160,19 +160,197 @@ AssetImportParameters requested are different than current active one (requested
   custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
 ========================================================================
 Received Import Request.
-  Time since last request: 1053671.279306 seconds.
-  path: Assets/UniversalRenderPipelineGlobalSettings.asset
-  artifactKey: Guid(8f2bcca57844011449a318f345878412) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/UniversalRenderPipelineGlobalSettings.asset using Guid(8f2bcca57844011449a318f345878412) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '64613935cfef0777cc0c8aacbe601d12') in 0.081942 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 6.385652 seconds.
-  path: Assets/Scenes
-  artifactKey: Guid(109e9bdd0fcc649c5bc59085c35bdc83) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Scenes using Guid(109e9bdd0fcc649c5bc59085c35bdc83) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'dc551c28631bb03ca9b61942ea6fe31a') in 0.005365 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 2.306173 seconds.
+  Time since last request: 7153.652148 seconds.
   path: Assets/Scenes/PlayerHub.unity
   artifactKey: Guid(99c2d03121e3265438e3a4108c0190a1) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Scenes/PlayerHub.unity using Guid(99c2d03121e3265438e3a4108c0190a1) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '64d4391cedaac9b0f19fe08beb3ccb91') in 0.005685 seconds 
+Start importing Assets/Scenes/PlayerHub.unity using Guid(99c2d03121e3265438e3a4108c0190a1) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '39cf03b7d37ae71a8b1aaaba7bfd7919') in 0.013750 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 1732.151407 seconds.
+  path: Assets/Prefabs/Enemies/Enemy_Ninja.prefab
+  artifactKey: Guid(2e6ca0f801c8f584cae6cce75accb063) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Prefabs/Enemies/Enemy_Ninja.prefab using Guid(2e6ca0f801c8f584cae6cce75accb063) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '284a7f75cc19b798a107ff578aa0ba11') in 0.241405 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 2.647642 seconds.
+  path: Assets/Prefabs/Enemies
+  artifactKey: Guid(f0355a3cce0e51f45b228adf1c2310ce) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Prefabs/Enemies using Guid(f0355a3cce0e51f45b228adf1c2310ce) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '78834dcca9bbd8782c7b2dcbdb82df56') in 0.005474 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 4478.389773 seconds.
+  path: Assets/Tiles/KoalaDungeonCarpetTiles.asset
+  artifactKey: Guid(55ae207e0316941699787f3fbf130380) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Tiles/KoalaDungeonCarpetTiles.asset using Guid(55ae207e0316941699787f3fbf130380) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'c501b8f49af225d4fda70630636de8e0') in 0.025157 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000025 seconds.
+  path: Assets/Tiles/KoalaDungeonGroundOrangeCheckersLightTiles.asset
+  artifactKey: Guid(9542279ceed00d34294eb5fedbdb8387) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Tiles/KoalaDungeonGroundOrangeCheckersLightTiles.asset using Guid(9542279ceed00d34294eb5fedbdb8387) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '36c4398ea69cc05d925bb88c53cbb072') in 0.009478 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000021 seconds.
+  path: Assets/Tiles/KoalaDungeonGroundGreyCheckersLightTiles.asset
+  artifactKey: Guid(0b71f3bc64b0a834288166bbedbca148) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Tiles/KoalaDungeonGroundGreyCheckersLightTiles.asset using Guid(0b71f3bc64b0a834288166bbedbca148) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'ebe5770288ec9a63b1e0441426736009') in 0.007896 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000017 seconds.
+  path: Assets/Tiles/KoalaRetroYellowPlatforms.asset
+  artifactKey: Guid(b8c6e8e3194d344a49f05166de7b63cc) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Tiles/KoalaRetroYellowPlatforms.asset using Guid(b8c6e8e3194d344a49f05166de7b63cc) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'cf3e8bc61c1d5b4af6a837117e6de730') in 0.016880 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000017 seconds.
+  path: Assets/Tiles/KoalaDungeonGroundOrangeTiles.asset
+  artifactKey: Guid(35aafcb394adf9c46955a6e514171829) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Tiles/KoalaDungeonGroundOrangeTiles.asset using Guid(35aafcb394adf9c46955a6e514171829) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '1b0d11ac0413a0cea0475c3d1ab1ed75') in 0.005929 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000016 seconds.
+  path: Assets/Tiles/KoalaDungeonWallsTiles.asset
+  artifactKey: Guid(a3d3669b43192004aa891f78ebdcf58d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Tiles/KoalaDungeonWallsTiles.asset using Guid(a3d3669b43192004aa891f78ebdcf58d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '3aeee8fd3943ab7997205c5c5cf13c6b') in 0.011041 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000020 seconds.
+  path: Assets/Tiles/KoalaDungeonGroundBeigeStairsTiles.asset
+  artifactKey: Guid(5314d6f309ab09243aba1cb697213b8c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Tiles/KoalaDungeonGroundBeigeStairsTiles.asset using Guid(5314d6f309ab09243aba1cb697213b8c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '4412fb624ef2bbae6575cc8895d58920') in 0.008900 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000018 seconds.
+  path: Assets/Tiles/KoalaDungeonGroundBeigeTiles.asset
+  artifactKey: Guid(b53f17e6d0fd1c04ea120f7e069d7fd3) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Tiles/KoalaDungeonGroundBeigeTiles.asset using Guid(b53f17e6d0fd1c04ea120f7e069d7fd3) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'e8c54bb71ce964a9ec8ac78ae2a777bd') in 0.005953 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000020 seconds.
+  path: Assets/Tiles/KoalaDungeonHolesTiles.asset
+  artifactKey: Guid(a1abf5229f640d441866efee8036f44b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Tiles/KoalaDungeonHolesTiles.asset using Guid(a1abf5229f640d441866efee8036f44b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'f11321e15f5a5801d5aac4ca3429b9a5') in 0.009149 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 1.648299 seconds.
+  path: Assets/Tiles/KoalaTilePalette.prefab
+  artifactKey: Guid(7ac4d997912e6124aa1f7e225e9540e2) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Tiles/KoalaTilePalette.prefab using Guid(7ac4d997912e6124aa1f7e225e9540e2) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'dcea87eb6bbd824a045ccadab3dac7f3') in 0.024161 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 1.119749 seconds.
+  path: Assets/Sprites/Dungeon/KoalaDungeonWalls.png
+  artifactKey: Guid(f83c201346bd04c9195d099e281283e6) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Sprites/Dungeon/KoalaDungeonWalls.png using Guid(f83c201346bd04c9195d099e281283e6) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'a203c9eddaed0bffe023515f3d65ea07') in 0.079001 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 25.703110 seconds.
+  path: Assets/Sprites/Effects/KoalaElectricity.png
+  artifactKey: Guid(a8e493e973a57974f93ba3b569275c58) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Sprites/Effects/KoalaElectricity.png using Guid(a8e493e973a57974f93ba3b569275c58) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '285ecd9a32f8fa99677e7dae0377bf76') in 0.029197 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000017 seconds.
+  path: Assets/Sprites/Effects/KoalaSkull.png
+  artifactKey: Guid(54bbbc7884d10ff4894f9d212338223c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Sprites/Effects/KoalaSkull.png using Guid(54bbbc7884d10ff4894f9d212338223c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'd6e1c07cb9516b9d755de9453f6c9f8e') in 0.019269 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000022 seconds.
+  path: Assets/Sprites/Effects/KoalaPoisonSkullMaterial.mat
+  artifactKey: Guid(d6929ac4f9aa5a24a82205d71881cb91) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Sprites/Effects/KoalaPoisonSkullMaterial.mat using Guid(d6929ac4f9aa5a24a82205d71881cb91) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '2694aab991c45052edb05f5eb38a13c2') in 0.027254 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 3.813460 seconds.
+  path: Assets/Sprites/Dungeon/KoalaDungeonChest.png
+  artifactKey: Guid(d6fc8cff49aa7d346a192f59c650df8b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Sprites/Dungeon/KoalaDungeonChest.png using Guid(d6fc8cff49aa7d346a192f59c650df8b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'f43ab4ecb9ee9f794651fc44d98c6051') in 0.021720 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000021 seconds.
+  path: Assets/Sprites/Dungeon/KoalaDungeonGroundOrange.png
+  artifactKey: Guid(f289ba8994ad88e42b73769365155321) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Sprites/Dungeon/KoalaDungeonGroundOrange.png using Guid(f289ba8994ad88e42b73769365155321) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '95e820e6ba28a773cea0c5bd3bce40d0') in 0.096798 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000020 seconds.
+  path: Assets/Sprites/Dungeon/KoalaDungeonMovingPlatform.png
+  artifactKey: Guid(efca926ffbad3d84baa8abf752650656) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Sprites/Dungeon/KoalaDungeonMovingPlatform.png using Guid(efca926ffbad3d84baa8abf752650656) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '42ee6ebb586546a89790393ffb6af67b') in 0.018130 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.746856 seconds.
+  path: Assets/Sprites/Dungeon/KoalaDungeonSwitch.png
+  artifactKey: Guid(4008a82543ff9fd4ca0ef39a6746b2b2) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Sprites/Dungeon/KoalaDungeonSwitch.png using Guid(4008a82543ff9fd4ca0ef39a6746b2b2) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '9731f28096a05971d9942c65039c038a') in 0.020312 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.509423 seconds.
+  path: Assets/Sprites/Dungeon/KoalaPushable.png
+  artifactKey: Guid(b7209a5fd8815234b99604ed672a0229) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Sprites/Dungeon/KoalaPushable.png using Guid(b7209a5fd8815234b99604ed672a0229) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '5671efaba6cdcc1b44dc8207a0deacb6') in 0.018295 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.043494 seconds.
+  path: Assets/Sprites/Dungeon/KoalaTeleporter.png
+  artifactKey: Guid(df2944269d98faf4b9bb422b379f309e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Sprites/Dungeon/KoalaTeleporter.png using Guid(df2944269d98faf4b9bb422b379f309e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '295e13c0878094c11af677443b8c36c1') in 0.018374 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 13.647820 seconds.
+  path: Assets/Sprites/UI/KoalaGUI.png
+  artifactKey: Guid(a2420309b344fe34f9cdfaba2389fdbe) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Sprites/UI/KoalaGUI.png using Guid(a2420309b344fe34f9cdfaba2389fdbe) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '8c8084f0cef726d584e63670be60c01d') in 0.035838 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000022 seconds.
+  path: Assets/Sprites/UI/PixelInventoryBg.png
+  artifactKey: Guid(c912945724097294193251f2bee29f49) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Sprites/UI/PixelInventoryBg.png using Guid(c912945724097294193251f2bee29f49) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '2653e592ee9108b752317ac2f4e9c8cd') in 0.015592 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 2.246680 seconds.
+  path: Assets/Sprites/Weapons/HandGrenade.png
+  artifactKey: Guid(426b2cc36cf1b1641b735b5a0c895e0a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Sprites/Weapons/HandGrenade.png using Guid(426b2cc36cf1b1641b735b5a0c895e0a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '59d5a54e15b57911a01eff08f7514fe8') in 0.015698 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000018 seconds.
+  path: Assets/Sprites/Weapons/p226.png
+  artifactKey: Guid(6b0b7bb2b84f99a4bb686bbeba840b83) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Sprites/Weapons/p226.png using Guid(6b0b7bb2b84f99a4bb686bbeba840b83) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '9faef18c881fce5f75c5dd1a637c19f0') in 0.014581 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 1.426331 seconds.
+  path: Assets/Sprites/Ninja/KoalaNinjaDamage.png
+  artifactKey: Guid(ff7457ca566aa2546a62919588055042) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Sprites/Ninja/KoalaNinjaDamage.png using Guid(ff7457ca566aa2546a62919588055042) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '6d14934a2b168dbe863700f32a527b16') in 0.014635 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000019 seconds.
+  path: Assets/Sprites/Ninja/KoalaNinjaSwordIdle.png
+  artifactKey: Guid(c0a736e4df46ad84cada90906b87caa5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Sprites/Ninja/KoalaNinjaSwordIdle.png using Guid(c0a736e4df46ad84cada90906b87caa5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'db5ac9cc081ce3cbce9f21852b75614d') in 0.031135 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 1.094022 seconds.
+  path: Assets/Sprites/Background/PrototypeBackgroundTexture.png
+  artifactKey: Guid(1609d925b3a74fc40aaed0c45ca21a6c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Sprites/Background/PrototypeBackgroundTexture.png using Guid(1609d925b3a74fc40aaed0c45ca21a6c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '592e80b64c473acc1ccda32406841516') in 0.028156 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.455450 seconds.
+  path: Assets/Sprites/Character/PlayerFalling.png
+  artifactKey: Guid(a72ab425bdf405e47b98c37b44664f32) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Sprites/Character/PlayerFalling.png using Guid(a72ab425bdf405e47b98c37b44664f32) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '10e95d6445056b048e46c009faae2ab0') in 0.039385 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000020 seconds.
+  path: Assets/Sprites/Character/PlayerRoll.png
+  artifactKey: Guid(0c3e89de5dd40384785389c60cccda7d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Sprites/Character/PlayerRoll.png using Guid(0c3e89de5dd40384785389c60cccda7d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'd882d8dc32f353009baac15f0712a44c') in 0.046723 seconds 
+Editor requested this worker to shutdown with reason: Scaling down because of idle timeout
+AssetImportWorker is now disconnected from the server
+Process exiting
+Exiting without the bug reporter. Application will terminate with return code 0

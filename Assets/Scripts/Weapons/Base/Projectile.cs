@@ -48,8 +48,8 @@ public class Projectile : MonoBehaviour
     [Tooltip("the feedback to play when hitting anything")]
     public FeedbackPlayer HitAnythingFeedback;
 
-    //Cache a list of characters hit by this projectile
-    List<Character> charactersCollided;
+    //Cache a list of damageables hit by this projectile
+    List<IDamageable> damageablesCollided;
 
     [Flags]
     public enum TriggerAndCollisionMask
@@ -78,7 +78,7 @@ public class Projectile : MonoBehaviour
 
     /// Events
     /// an event to trigger when hitting a Damageable
-    public UnityEvent<Character> HitDamageableEvent;
+    public UnityEvent<IDamageable> HitDamageableEvent;
     /// an event to trigger when hitting a non Damageable
     public UnityEvent<GameObject> HitNonDamageableEvent;
     /// an event to trigger when hitting anything
@@ -86,7 +86,7 @@ public class Projectile : MonoBehaviour
 
     void Awake()
     {
-        charactersCollided = new List<Character>();
+        damageablesCollided = new List<IDamageable>();
         projectileCollider = GetComponent<Collider2D>();
         lifeCountDown = lifeTime;
         isFinishing = false;
@@ -191,22 +191,22 @@ public class Projectile : MonoBehaviour
             return;
         }
 
-        Character collidedCharacter = collider.gameObject.GetComponent<Character>();
+        IDamageable collidedDamageable = collider.gameObject.GetComponent<IDamageable>();
 
         // if what we're colliding with is damageable
-        if (collidedCharacter != null)
+        if (collidedDamageable != null)
         {
             // Add to list of characters collided
-            if (!charactersCollided.Contains(collidedCharacter))
+            if (!damageablesCollided.Contains(collidedDamageable))
             {
-                charactersCollided.Add(collidedCharacter);
+                damageablesCollided.Add(collidedDamageable);
             }
 
-            if (collidedCharacter.CurrentHealth > 0)
+            if (collidedDamageable.CanTakeDamageThisFrame())
             {
-                OnCollideWithDamageable(collidedCharacter);
+                OnCollideWithDamageable(collidedDamageable);
             }
-            HitDamageableEvent?.Invoke(collidedCharacter);
+            HitDamageableEvent?.Invoke(collidedDamageable);
         }
         else // if what we're colliding with can't be damaged
         {
@@ -243,22 +243,15 @@ public class Projectile : MonoBehaviour
     /// By default, disables the sprite gameobject and let the feedbacks on impact play, then destroys game object
     /// </summary>
     /// <param name="health">Health.</param>
-    protected virtual void OnCollideWithDamageable(Character character)
+    protected virtual void OnCollideWithDamageable(IDamageable damageable)
     {
-        if (!character.CanTakeDamageThisFrame())
-        {
-            return;
-        }
-
         HitDamageableFeedback?.PlayFeedbacks(this.transform.position);
 
         //we apply the damage to the thing we've collided with
         int randomDamage = (int) UnityEngine.Random.Range(MinDamageCaused, Mathf.Max(MaxDamageCaused, MinDamageCaused));
 
         //Apply knockback/impact force on collided character
-        character.Impact(rb.velocity.normalized, impactForce);
-
-        character.Damage(randomDamage, gameObject, InvincibilityDuration);
+        damageable.Damage(randomDamage, gameObject, InvincibilityDuration, rb.velocity.normalized, impactForce);
 
         if (HitDamageableFeedback != null)
         {
