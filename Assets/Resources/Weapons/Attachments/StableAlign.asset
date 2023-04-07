@@ -10,11 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0ea945fb8023b4d4f8fe6a2987d8576f, type: 3}
-  m_Name: Overdrive
+  m_Name: StableAlign
   m_EditorClassIdentifier: 
-  ID: OverDrive
-  attachmentPoint: 1
-  icon: {fileID: 666229554, guid: c10bafc503c00cf469a590014dab2f0f, type: 3}
-  attachmentObject: {fileID: 3864219583134437666, guid: 08ea9d2098bedab41a711fea96ee26c4, type: 3}
-  shortDescription: Increases weapon fire rate
-  compatibleWeaponCategories: 0000000001000000020000000300000004000000
+  ID: StableAlgin
+  attachmentPoint: 4
+  icon: {fileID: -1865252508, guid: c10bafc503c00cf469a590014dab2f0f, type: 3}
+  attachmentObject: {fileID: 946588278014761702, guid: 82eeba05093f2e3469766857a221e4c9, type: 3}
+  shortDescription: Reduces the spread of the weapon across the board
+  compatibleWeaponCategories: 000000000300000001000000

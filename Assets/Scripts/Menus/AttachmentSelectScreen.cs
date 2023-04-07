@@ -118,38 +118,50 @@ public class AttachmentSelectScreen : MonoBehaviour
             }
         }
 
-        Dictionary<string, WeaponAttachmentReference> attachmentLibrary = DataManager.instance.GetAttachmentDictionary();
-        int index = 0;
-        WeaponAttachmentReference[] references = new WeaponAttachmentReference[attachmentLibrary.Count];
-        attachmentLibrary.Values.CopyTo(references, 0);
+        List<WeaponAttachmentReference> compatibleAttachments = GetCompatibleAttachments(attachmentPoint, currentWeapon.weaponCategory);
 
-        foreach (AttachmentDisplayIcon displayIcon in attachmentDisplayIcons)
+        ClearAttachmentDisplay();
+        int index = 0;
+        foreach(WeaponAttachmentReference reference in compatibleAttachments)
         {
-            if (index < references.Length && references[index].attachmentPoint.Equals(attachmentPoint) && AttachmentIsCompatible(references[index]))
+            if (index < attachmentDisplayIcons.Count)
             {
-                //If the attachment in the library is for the point given, and is for the right weapon category
-                displayIcon.UpdateDisplay(references[index]);
-                displayIcon.button.onClick.AddListener(delegate { SetAttachmentToPoint(displayIcon.reference); });
-                //Debug.Log(displayIcon.button.onClick.GetPersistentEventCount());
+                attachmentDisplayIcons[index].UpdateDisplay(reference);
+                attachmentDisplayIcons[index].button.onClick.AddListener(delegate { SetAttachmentToPoint(reference); });
                 index += 1;
-            }
-            else
-            {
-                displayIcon.RevertToEmptyComplete();
             }
         }
     }
 
-    private bool AttachmentIsCompatible(WeaponAttachmentReference reference)
+    /// <summary>
+    /// Returns a list of compatible attachments at the right point, in the right category of weapons
+    /// </summary>
+    /// <param name="attachmentPoint"></param>
+    /// <param name="weaponCategory"></param>
+    /// <returns></returns>
+    private List<WeaponAttachmentReference> GetCompatibleAttachments(AttachmentPoint attachmentPoint, WeaponCategories weaponCategory)
     {
-        foreach (WeaponCategories weaponCategory in reference.compatibleWeaponCategories)
+        Dictionary<string, WeaponAttachmentReference> attachmentLibrary = DataManager.instance.GetAttachmentDictionary();
+        List<WeaponAttachmentReference> compatibleReferences = new List<WeaponAttachmentReference>();
+        foreach (WeaponAttachmentReference reference in attachmentLibrary.Values)
         {
-            if (weaponCategory == currentWeapon.weaponCategory)
+            bool point = (attachmentPoint == reference.attachmentPoint);
+            bool category = false;
+            for (int i = 0; i < reference.compatibleWeaponCategories.Length; i++)
             {
-                return true;
+                if (weaponCategory == reference.compatibleWeaponCategories[i])
+                {
+                    category = true;
+                    break;
+                }
+            }
+
+            if (point && category)
+            {
+                compatibleReferences.Add(reference);
             }
         }
-        return false;
+        return compatibleReferences;
     }
 
     public void SetAttachmentToPoint(WeaponAttachmentReference reference)

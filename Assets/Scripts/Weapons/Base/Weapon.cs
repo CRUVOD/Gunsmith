@@ -76,7 +76,6 @@ public class Weapon : MonoBehaviour, ExtendedEventListener<GameEvent>
             {
                 attachment.transform.position = weaponAttachmentSlots[i].transform.position;
                 attachment.transform.parent = weaponAttachmentSlots[i].transform;
-                ApplyAttachmentModifier(weaponAttachmentSlots[i]);
                 return true;
             }
         }

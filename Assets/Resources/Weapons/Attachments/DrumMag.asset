@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0ea945fb8023b4d4f8fe6a2987d8576f, type: 3}
+  m_Name: DrumMag
+  m_EditorClassIdentifier: 
+  ID: DrumMag
+  attachmentPoint: 2
+  icon: {fileID: 1315000115, guid: c10bafc503c00cf469a590014dab2f0f, type: 3}
+  attachmentObject: {fileID: 6438945695698099142, guid: 6de058db186d119479ff785795e259ae, type: 3}
+  shortDescription: The drum magazine increases bullets in the chamber, but at the
+    cost of reload speed
+  compatibleWeaponCategories: 000000000300000001000000

@@ -497,7 +497,7 @@ public class Player : Character
         }
         else
         {
-            rb.constraints = RigidbodyConstraints2D.None;
+            rb.constraints = RigidbodyConstraints2D.FreezeRotation;
             ConditionState = CharacterStates.CharacterConditions.Normal;
         }
     }

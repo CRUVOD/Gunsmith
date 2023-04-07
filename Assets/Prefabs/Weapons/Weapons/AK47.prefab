@@ -225,7 +225,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   attachment: {fileID: 0}
-  attachmentPoint: 0
+  attachmentPoint: 2
 --- !u!1 &1640148979522148890
 GameObject:
   m_ObjectHideFlags: 0
@@ -10204,17 +10204,20 @@ MonoBehaviour:
   - {fileID: 3493439164553177167}
   - {fileID: 5234211232831498695}
   projectile: {fileID: 5920787274300679215, guid: 3509fa32634cc7e478340e0ec8be8d0c, type: 3}
-  minDamage: 6
-  maxDamage: 10
+  minDamage: 8
+  maxDamage: 12
   projectileSpeed: 25
   projectileLifeTime: 2
-  spread: 16
-  fireRate: 600
+  baseSpread: 1
+  fireRate: 450
   isMagazineBased: 1
   magazineSize: 30
   reloadTime: 2
   currentAmmoInMagazine: 0
   inReload: 0
+  maxSpread: 40
+  spreadIncreaseRate: 4
+  spreadResetRate: 20
   weaponUseFeedback: {fileID: 8794434508599816625}
   weaponReloadFeedback: {fileID: 1607527394}
   weaponEmptyFeedback: {fileID: 91352694}
@@ -15325,7 +15328,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   attachment: {fileID: 0}
-  attachmentPoint: 0
+  attachmentPoint: 4
 --- !u!1 &8485216283079377238
 GameObject:
   m_ObjectHideFlags: 0

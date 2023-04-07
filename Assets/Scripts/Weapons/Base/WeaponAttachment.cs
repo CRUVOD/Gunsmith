@@ -10,10 +10,20 @@ public class WeaponAttachment : MonoBehaviour
     private Weapon weapon;
 
     /// <summary>
-    /// Applies any static statistic modification from the attachment to the weapon
+    /// Generic initialise
     /// </summary>
     /// <param name="weapon"></param>
     public virtual void InitialiseAttachment(Weapon weapon)
+    {
+        this.weapon = weapon;
+    }
+
+    public virtual void InitialiseAttachment(ProjectileWeapon weapon)
+    {
+        this.weapon = weapon;
+    }
+
+    public virtual void InitialiseAttachment(HitScanWeapon weapon)
     {
         this.weapon = weapon;
     }

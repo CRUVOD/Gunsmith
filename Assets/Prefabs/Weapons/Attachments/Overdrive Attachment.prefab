@@ -130,4 +130,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   reference: {fileID: 11400000, guid: 31e92c9391f954249b7c89a906238f91, type: 2}
-  fireRateModifier: 20
+  fireRateModifier: 10
+  recoilModifier: 0

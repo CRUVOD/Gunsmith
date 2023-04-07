@@ -10,11 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0ea945fb8023b4d4f8fe6a2987d8576f, type: 3}
-  m_Name: Overdrive
+  m_Name: VerticalGrip
   m_EditorClassIdentifier: 
-  ID: OverDrive
+  ID: VerticalGrip
   attachmentPoint: 1
-  icon: {fileID: 666229554, guid: c10bafc503c00cf469a590014dab2f0f, type: 3}
-  attachmentObject: {fileID: 3864219583134437666, guid: 08ea9d2098bedab41a711fea96ee26c4, type: 3}
-  shortDescription: Increases weapon fire rate
-  compatibleWeaponCategories: 0000000001000000020000000300000004000000
+  icon: {fileID: -921414850, guid: c10bafc503c00cf469a590014dab2f0f, type: 3}
+  attachmentObject: {fileID: 3864219583134437666, guid: 79ef6125bb4a19d43aa7917fa702833e, type: 3}
+  shortDescription: 'The vertical grip reduces the knockback recoil of the weapon '
+  compatibleWeaponCategories: 000000000100000004000000

@@ -107,12 +107,12 @@ TextureImporter:
       name: Attachments_0
       rect:
         serializedVersion: 2
-        x: 17
-        y: 73
+        x: 11
+        y: 103
         width: 10
         height: 4
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -128,12 +128,12 @@ TextureImporter:
       name: Attachments_1
       rect:
         serializedVersion: 2
-        x: 7
-        y: 42
-        width: 7
-        height: 5
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 43
+        y: 103
+        width: 4
+        height: 4
+      alignment: 9
+      pivot: {x: 0.5, y: 1}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -149,12 +149,12 @@ TextureImporter:
       name: Attachments_2
       rect:
         serializedVersion: 2
-        x: 30
-        y: 30
+        x: 12
+        y: 72
         width: 7
-        height: 30
+        height: 5
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -162,6 +162,111 @@ TextureImporter:
       bones: []
       spriteID: 03933b5597e23c847beddcf9bd1873c7
       internalID: -1865229439
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Attachments_3
+      rect:
+        serializedVersion: 2
+        x: 41
+        y: 60
+        width: 8
+        height: 30
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0cfab93f2cac8314db6565ce3d2b4b9c
+      internalID: 460730152
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Attachments_4
+      rect:
+        serializedVersion: 2
+        x: 11
+        y: 43
+        width: 8
+        height: 3
+      alignment: 9
+      pivot: {x: 0, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9f047e6a279e68844af67ab527589951
+      internalID: -1569289743
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Attachments_5
+      rect:
+        serializedVersion: 2
+        x: 41
+        y: 43
+        width: 8
+        height: 3
+      alignment: 9
+      pivot: {x: 0, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 970d88e4be6144d49856edb479900861
+      internalID: -1865252508
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Attachments_6
+      rect:
+        serializedVersion: 2
+        x: 12
+        y: 10
+        width: 6
+        height: 7
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8faab82d560f9fc48a5dc59ca4345e9e
+      internalID: -1261767689
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Attachments_7
+      rect:
+        serializedVersion: 2
+        x: 42
+        y: 11
+        width: 7
+        height: 9
+      alignment: 9
+      pivot: {x: 0.5, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 72b9ca8912eefb54b9b648fc6c773120
+      internalID: 1315000115
       vertices: []
       indices: 
       edges: []
@@ -179,7 +284,12 @@ TextureImporter:
     nameFileIdTable:
       Attachments_1: -921414850
       Attachments_2: -1865229439
+      Attachments_7: 1315000115
+      Attachments_3: 460730152
+      Attachments_5: -1865252508
       Attachments_0: 666229554
+      Attachments_4: -1569289743
+      Attachments_6: -1261767689
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

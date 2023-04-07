@@ -5,13 +5,14 @@ using UnityEngine;
 public class AR : ProjectileWeapon
 {
     [Header("AR")]
-    //AR's weapon spread is dependent on continuous fire, kinda like recoil
+    [Tooltip("AR's weapon spread is dependent on continuous fire, kinda like recoil")]
     //Maximum spread amount
     public float maxSpread;
-    //How fast recoil increases to max spread
-    public float recoilIncreaseRate;
-    //How fast the recoil resets to base spread
-    public float recoilResetRate;
+    //How fast spread increases to max spread
+    public float spreadIncreaseRate;
+    //How fast the spread resets to base spread
+    public float spreadResetRate;
+    private float spread;
 
     public FeedbackPlayer weaponUseFeedback;
     public FeedbackPlayer weaponReloadFeedback;
@@ -22,8 +23,16 @@ public class AR : ProjectileWeapon
         base.Start();
         // Set start ammo to max
         currentAmmoInMagazine = magazineSize;
-
+        //Set default spread
+        spread = baseSpread;
         inReload = false;
+        UpdateUI();
+    }
+
+    protected override void Update()
+    {
+        base.Update();
+        CalculateSpread(false);
     }
 
     /// <summary>
@@ -61,8 +70,8 @@ public class AR : ProjectileWeapon
         if (ready)
         {
             Projectile newProjectile;
-
-            float randomSpread = Random.Range(-baseSpread, baseSpread);
+            CalculateSpread(true);
+            float randomSpread = Random.Range(-spread, spread);
 
             //Instantiate the bullet and send it flying with random spread
             newProjectile = Instantiate(projectile, firePoint.position, transform.rotation);
@@ -91,6 +100,22 @@ public class AR : ProjectileWeapon
         }
 
         return false;
+    }
+
+    /// <summary>
+    /// Calculate the spread of the projectiles depending on if the weapon has been fired this frame
+    /// </summary>
+    /// <returns></returns>
+    private void CalculateSpread(bool weaponFired)
+    {
+        if (weaponFired)
+        {
+            spread = Mathf.Clamp(spread + spreadIncreaseRate, baseSpread, maxSpread);
+        }
+        else
+        {
+            spread = Mathf.Clamp(spread - spreadResetRate * Time.deltaTime, baseSpread, maxSpread);
+        }
     }
 
     public override void MagazineReload()

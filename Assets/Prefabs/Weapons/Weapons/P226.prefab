@@ -5634,8 +5634,8 @@ MonoBehaviour:
   maxDamage: 20
   projectileSpeed: 25
   projectileLifeTime: 2
-  spread: 5
-  fireRate: 500
+  baseSpread: 5
+  fireRate: 400
   isMagazineBased: 1
   magazineSize: 10
   reloadTime: 1.2

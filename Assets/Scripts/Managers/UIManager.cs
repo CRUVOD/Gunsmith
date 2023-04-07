@@ -39,9 +39,6 @@ public class UIManager : MonoBehaviour
     public GameObject ballisticWeaponUIGroup;
     public TextMeshProUGUI weaponAmmo;
 
-    //this is used to display magazine size i.e. '/30' at the end of the ammo display
-    string ammoTextSuffix;
-
     void Awake()
     {
 
@@ -112,37 +109,24 @@ public class UIManager : MonoBehaviour
         //set the text fields
         weaponTypeText.text = weapon.weaponCategory.ToString();
         weaponNameText.text = weapon.ID;
+    }
 
-        switch (weapon.ammoType)
-        {
-            case AmmoTypes.Ballistic:
-                ballisticWeaponUIGroup.SetActive(true);
+    public void ChangeWeaponUI(Weapon weapon)
+    {
+        //set the icon
+        weaponIcon.sprite = weapon.reference.icon;
 
-                if (weapon.isMagazineBased)
-                {
-                    ammoTextSuffix = "/" + weapon.magazineSize;
-                }
-                else
-                {
-                    //infinity character
-                    weaponAmmo.text = "\u221E";
-                }
-                break;
-            case AmmoTypes.None:
-                //infinity character
-                weaponAmmo.text = "\u221E";
-                break;
-            default:
-                break;
-        }
+        //set the text fields
+        weaponTypeText.text = weapon.reference.weaponCategory.ToString();
+        weaponNameText.text = weapon.reference.ID;
     }
 
     /// <summary>
     /// Updates the ammo counter for Ballistic ammo weapons
     /// </summary>
     /// <param name="newAmmo"></param>
-    public void UpdateBallisticAmmoUI(int newAmmo)
+    public void UpdateBallisticAmmoUI(int ammoInMagazine, int ammoCapacity)
     {
-        weaponAmmo.text = newAmmo + ammoTextSuffix;
+        weaponAmmo.text = ammoInMagazine.ToString() + "/" + ammoCapacity.ToString();
     }
 }

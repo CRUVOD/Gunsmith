@@ -14,10 +14,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ID: Nade
   icon: {fileID: 21300000, guid: d3e3300be9a3c144b8b99be0439e029f, type: 3}
-  weaponObject: {fileID: 0}
-  weaponType: 6
+  weaponObject: {fileID: 253324127145488769, guid: 08b18a213d1517d46b7f9309c9322d46, type: 3}
+  weaponCategory: 6
   firingMechanism: 0
-  ammoType: 0
+  ammoType: 2
   shortDescription: Hand thrown grenade, simple and reliable
   fullDescription: 
   isMagazineBased: 0

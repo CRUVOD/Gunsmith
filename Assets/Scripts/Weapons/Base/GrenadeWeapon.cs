@@ -57,13 +57,13 @@ public class GrenadeWeapon : Weapon
             return;
         }
         currentAmmoInMagazine = newAmmo;
-        UIManager.instance.UpdateBallisticAmmoUI(newAmmo);
+        UIManager.instance.UpdateBallisticAmmoUI(newAmmo, magazineSize);
     }
 
     public override void UpdateUI()
     {
         base.UpdateUI();
-        UIManager.instance.UpdateBallisticAmmoUI(currentAmmoInMagazine);
+        UIManager.instance.UpdateBallisticAmmoUI(currentAmmoInMagazine, magazineSize);
     }
 
     public override void Reload()

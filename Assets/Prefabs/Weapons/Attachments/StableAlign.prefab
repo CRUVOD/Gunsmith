@@ -73,12 +73,12 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 5
-  m_Sprite: {fileID: -1865229439, guid: c10bafc503c00cf469a590014dab2f0f, type: 3}
+  m_Sprite: {fileID: -1865252508, guid: c10bafc503c00cf469a590014dab2f0f, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 0.4375, y: 0.3125}
+  m_Size: {x: 0.625, y: 0.25}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -93,9 +93,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1453890168921910341}
-  - component: {fileID: 3910434269224488482}
+  - component: {fileID: 946588278014761702}
   m_Layer: 0
-  m_Name: ShieldCore
+  m_Name: StableAlign
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -117,7 +117,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &3910434269224488482
+--- !u!114 &946588278014761702
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -126,12 +126,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 7899785011867396571}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8d66d4783579659418c532cd2c2e7d59, type: 3}
+  m_Script: {fileID: 11500000, guid: 8cf748d0c6fc0f4458dd5503fdc7a329, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  reference: {fileID: 11400000, guid: e6c722d9b72705447b543ac77de072d2, type: 2}
-  shieldHealth: 20
-  delayBeforeRecharge: 4
-  rechargeRate: 10
-  shieldDistanceFromWeapon: 1
-  shieldPrefab: {fileID: 3028852395289633987, guid: b712697b6e1db0b49bd09661ae2edd60, type: 3}
+  reference: {fileID: 11400000, guid: f740f3d4fc6274c40a40819b6551de99, type: 2}
+  spreadModifier: 0.6
+  projectileSpeedModifier: 1
+  projectileDamageModifier: 0
