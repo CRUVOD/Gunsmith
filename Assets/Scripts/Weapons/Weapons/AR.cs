@@ -5,6 +5,13 @@ using UnityEngine;
 public class AR : ProjectileWeapon
 {
     [Header("AR")]
+    //AR's weapon spread is dependent on continuous fire, kinda like recoil
+    //Maximum spread amount
+    public float maxSpread;
+    //How fast recoil increases to max spread
+    public float recoilIncreaseRate;
+    //How fast the recoil resets to base spread
+    public float recoilResetRate;
 
     public FeedbackPlayer weaponUseFeedback;
     public FeedbackPlayer weaponReloadFeedback;
@@ -53,9 +60,14 @@ public class AR : ProjectileWeapon
 
         if (ready)
         {
-            //Instantiate the bullet and send it flying
-            Projectile newProjectile = Instantiate(projectile, firePoint.position, MouseDirectionQuaternion());
-            newProjectile.SetVelocity(weaponDirection.normalized * projectileSpeed);
+            Projectile newProjectile;
+
+            float randomSpread = Random.Range(-baseSpread, baseSpread);
+
+            //Instantiate the bullet and send it flying with random spread
+            newProjectile = Instantiate(projectile, firePoint.position, transform.rotation);
+            newProjectile.transform.Rotate(0, 0, randomSpread);
+            newProjectile.SetVelocity(projectileSpeed);
             newProjectile.SetDamage(minDamage, maxDamage);
             newProjectile.SetLifeTime(projectileLifeTime);
 

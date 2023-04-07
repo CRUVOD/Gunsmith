@@ -37,7 +37,7 @@ public class WeaponReference : ScriptableObject
 
     [Header("Weapon Info")]
     //the type of weapon this is
-    public WeaponCategories weaponType;
+    public WeaponCategories weaponCategory;
     //the firing mechanism of this weapon
     public FiringMechanism firingMechanism;
     //the default ammo type this weapon uses

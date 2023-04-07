@@ -224,6 +224,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 43f86295f81292b44a90f35921c99d84, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  attachment: {fileID: 0}
   attachmentPoint: 0
 --- !u!1 &1640148979522148890
 GameObject:
@@ -10109,6 +10110,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 43f86295f81292b44a90f35921c99d84, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  attachment: {fileID: 0}
   attachmentPoint: 0
 --- !u!1 &5289436317590859022
 GameObject:
@@ -10206,6 +10208,7 @@ MonoBehaviour:
   maxDamage: 10
   projectileSpeed: 25
   projectileLifeTime: 2
+  spread: 16
   fireRate: 600
   isMagazineBased: 1
   magazineSize: 30
@@ -10346,6 +10349,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 43f86295f81292b44a90f35921c99d84, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  attachment: {fileID: 0}
   attachmentPoint: 1
 --- !u!1 &6490141029476210415
 GameObject:
@@ -15320,6 +15324,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 43f86295f81292b44a90f35921c99d84, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  attachment: {fileID: 0}
   attachmentPoint: 0
 --- !u!1 &8485216283079377238
 GameObject:

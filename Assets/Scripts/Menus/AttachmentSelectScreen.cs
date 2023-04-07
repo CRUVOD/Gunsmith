@@ -125,9 +125,9 @@ public class AttachmentSelectScreen : MonoBehaviour
 
         foreach (AttachmentDisplayIcon displayIcon in attachmentDisplayIcons)
         {
-            if (index < references.Length && references[index].attachmentPoint.Equals(attachmentPoint))
+            if (index < references.Length && references[index].attachmentPoint.Equals(attachmentPoint) && AttachmentIsCompatible(references[index]))
             {
-                //If the attachment in the library is for the point given
+                //If the attachment in the library is for the point given, and is for the right weapon category
                 displayIcon.UpdateDisplay(references[index]);
                 displayIcon.button.onClick.AddListener(delegate { SetAttachmentToPoint(displayIcon.reference); });
                 //Debug.Log(displayIcon.button.onClick.GetPersistentEventCount());
@@ -138,6 +138,18 @@ public class AttachmentSelectScreen : MonoBehaviour
                 displayIcon.RevertToEmptyComplete();
             }
         }
+    }
+
+    private bool AttachmentIsCompatible(WeaponAttachmentReference reference)
+    {
+        foreach (WeaponCategories weaponCategory in reference.compatibleWeaponCategories)
+        {
+            if (weaponCategory == currentWeapon.weaponCategory)
+            {
+                return true;
+            }
+        }
+        return false;
     }
 
     public void SetAttachmentToPoint(WeaponAttachmentReference reference)

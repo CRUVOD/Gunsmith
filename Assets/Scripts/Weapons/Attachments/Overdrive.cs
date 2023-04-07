@@ -20,7 +20,11 @@ public class Overdrive : WeaponAttachment
         }
         else
         {
-            // cast failed
+            var hitScanWeapon = weapon as HitScanWeapon;
+            if (hitScanWeapon != null)
+            {
+                hitScanWeapon.fireRate = hitScanWeapon.fireRate * (1 + fireRateModifier / 100f);
+            }
         }
     }
 }

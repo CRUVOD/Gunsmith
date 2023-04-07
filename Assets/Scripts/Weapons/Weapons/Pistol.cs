@@ -58,17 +58,12 @@ public class Pistol : ProjectileWeapon
         {
             Projectile newProjectile;
 
-            //Instantiate the bullet and send it flying
-            if (User == CharacterTypes.Player)
-            {
-                newProjectile = Instantiate(projectile, firePoint.position, MouseDirectionQuaternion());
-            }
-            else
-            {
-                newProjectile = Instantiate(projectile, firePoint.position, PlayerDirectionQuaternion());
-            }
+            float randomSpread = Random.Range(-baseSpread, baseSpread);
 
-            newProjectile.SetVelocity(weaponDirection.normalized * projectileSpeed);
+            //Instantiate the bullet and send it flying with random spread
+            newProjectile = Instantiate(projectile, firePoint.position, transform.rotation);
+            newProjectile.transform.Rotate(0, 0, randomSpread);
+            newProjectile.SetVelocity(projectileSpeed);
             newProjectile.SetDamage(minDamage, maxDamage);
             newProjectile.SetLifeTime(projectileLifeTime);
 

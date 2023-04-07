@@ -33,4 +33,5 @@ public class WeaponAttachmentReference : ScriptableObject
     [Header("Attachment Info")]
     //short description of item
     public string shortDescription;
+    public WeaponCategories[] compatibleWeaponCategories;
 }

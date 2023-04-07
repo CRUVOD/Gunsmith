@@ -117,6 +117,11 @@ public class Projectile : MonoBehaviour
         rb.velocity = velocity;
     }
 
+    public void SetVelocity(float projectileSpeed)
+    {
+        rb.velocity = transform.right * projectileSpeed;
+    }
+
     public void SetDamage(int min, int max)
     {
         MinDamageCaused = min;

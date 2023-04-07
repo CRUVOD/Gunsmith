@@ -44,6 +44,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 43f86295f81292b44a90f35921c99d84, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  attachment: {fileID: 0}
   attachmentPoint: 0
 --- !u!1 &1384982964914618128
 GameObject:
@@ -4961,6 +4962,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 43f86295f81292b44a90f35921c99d84, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  attachment: {fileID: 0}
   attachmentPoint: 1
 --- !u!1 &2427206248716920191
 GameObject:
@@ -5632,6 +5634,7 @@ MonoBehaviour:
   maxDamage: 20
   projectileSpeed: 25
   projectileLifeTime: 2
+  spread: 5
   fireRate: 500
   isMagazineBased: 1
   magazineSize: 10

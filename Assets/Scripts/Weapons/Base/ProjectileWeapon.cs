@@ -7,7 +7,8 @@ public class ProjectileWeapon : Weapon
     [Header("Projectile based weapon")]
 
     public Projectile projectile;
-
+    
+    [Header("Projectile settings")]
     //bullet damage
     public int minDamage;
     public int maxDamage;
@@ -15,6 +16,9 @@ public class ProjectileWeapon : Weapon
     public float projectileSpeed;
     //how long the bullet lasts for
     public float projectileLifeTime;
+    [Header("Weapon properties")]
+    //Base random bullet spread
+    public float baseSpread;
     //bullets per minute
     public float fireRate;
     //time between shots, calculated from fireRate
@@ -22,6 +26,7 @@ public class ProjectileWeapon : Weapon
     //counting down reload time
     float timeToReload;
 
+    [Header("Magazine")]
     //Attributes if the weapon has a limited magazine size
     public bool isMagazineBased;
     public int magazineSize;

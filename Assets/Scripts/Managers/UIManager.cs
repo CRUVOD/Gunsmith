@@ -110,7 +110,7 @@ public class UIManager : MonoBehaviour
         weaponIcon.sprite = weapon.icon;
 
         //set the text fields
-        weaponTypeText.text = weapon.weaponType.ToString();
+        weaponTypeText.text = weapon.weaponCategory.ToString();
         weaponNameText.text = weapon.ID;
 
         switch (weapon.ammoType)
