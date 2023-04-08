@@ -283,6 +283,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4730781718584208276}
   - component: {fileID: 7174442964025075732}
+  - component: {fileID: -4638274135774028917}
   - component: {fileID: 2057935750750815003}
   m_Layer: 5
   m_Name: AttachmentDisplayIcon
@@ -330,6 +331,22 @@ MonoBehaviour:
   button: {fileID: 8545730684443657596}
   reference: {fileID: 0}
   emptySprite: {fileID: 21300010, guid: 2bdcc5376b8ef4540bfc87f41506ffcd, type: 3}
+  tooltipTrigger: {fileID: -4638274135774028917}
+  attachmentPoint: 0
+--- !u!114 &-4638274135774028917
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6019813435610450695}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 086bb9d53a7d0924cb2729b8042741ad, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  header: 
+  content: 
 --- !u!222 &2057935750750815003
 CanvasRenderer:
   m_ObjectHideFlags: 0

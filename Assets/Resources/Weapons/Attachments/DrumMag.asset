@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0ea945fb8023b4d4f8fe6a2987d8576f, type: 3}
   m_Name: DrumMag
   m_EditorClassIdentifier: 
-  ID: DrumMag
+  ID: Drum Magazine
   attachmentPoint: 2
   icon: {fileID: 1315000115, guid: c10bafc503c00cf469a590014dab2f0f, type: 3}
   attachmentObject: {fileID: 6438945695698099142, guid: 6de058db186d119479ff785795e259ae, type: 3}

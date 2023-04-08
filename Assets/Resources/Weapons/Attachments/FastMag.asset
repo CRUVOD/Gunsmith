@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0ea945fb8023b4d4f8fe6a2987d8576f, type: 3}
   m_Name: FastMag
   m_EditorClassIdentifier: 
-  ID: FastMag
+  ID: Fast Magazine
   attachmentPoint: 2
   icon: {fileID: -1261767689, guid: c10bafc503c00cf469a590014dab2f0f, type: 3}
   attachmentObject: {fileID: 6438945695698099142, guid: e52acf5204c726b4c8ff9c9423db382a, type: 3}

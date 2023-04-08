@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0ea945fb8023b4d4f8fe6a2987d8576f, type: 3}
   m_Name: VerticalGrip
   m_EditorClassIdentifier: 
-  ID: VerticalGrip
+  ID: Vertical Grip
   attachmentPoint: 1
   icon: {fileID: -921414850, guid: c10bafc503c00cf469a590014dab2f0f, type: 3}
   attachmentObject: {fileID: 3864219583134437666, guid: 79ef6125bb4a19d43aa7917fa702833e, type: 3}

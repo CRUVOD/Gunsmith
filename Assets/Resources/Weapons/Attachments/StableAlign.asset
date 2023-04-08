@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0ea945fb8023b4d4f8fe6a2987d8576f, type: 3}
   m_Name: StableAlign
   m_EditorClassIdentifier: 
-  ID: StableAlgin
+  ID: Stable-Algin
   attachmentPoint: 4
   icon: {fileID: -1865252508, guid: c10bafc503c00cf469a590014dab2f0f, type: 3}
   attachmentObject: {fileID: 946588278014761702, guid: 82eeba05093f2e3469766857a221e4c9, type: 3}

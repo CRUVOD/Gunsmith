@@ -13,7 +13,13 @@ public class AttachmentDisplayIcon : MonoBehaviour
     public Button button;
     public WeaponAttachmentReference reference;
     public Sprite emptySprite;
+    private TooltipTrigger tooltipTrigger;
     public AttachmentPoint attachmentPoint;
+
+    private void Awake()
+    {
+        tooltipTrigger = GetComponent<TooltipTrigger>();
+    }
 
     public void SetIconSprite(Sprite sprite)
     {
@@ -34,6 +40,11 @@ public class AttachmentDisplayIcon : MonoBehaviour
         this.reference = reference;
         this.attachmentPoint = reference.attachmentPoint;
         SetIconSprite(reference.icon);
+        if (tooltipTrigger != null)
+        {
+            tooltipTrigger.header = reference.ID;
+            tooltipTrigger.content = reference.shortDescription;
+        }
     }
 
     /// <summary>
@@ -42,6 +53,11 @@ public class AttachmentDisplayIcon : MonoBehaviour
     public void RevertToEmptyComplete()
     {
         SetEmptySprite();
+        if (tooltipTrigger != null)
+        {
+            tooltipTrigger.header = "";
+            tooltipTrigger.content = "";
+        }
         reference = null;
         button.onClick.RemoveAllListeners();
     }
@@ -52,6 +68,11 @@ public class AttachmentDisplayIcon : MonoBehaviour
     public void RevertToEmpty()
     {
         SetEmptySprite();
+        if (tooltipTrigger != null)
+        {
+            tooltipTrigger.header = "";
+            tooltipTrigger.content = "";
+        }
         reference = null;
     }
 }

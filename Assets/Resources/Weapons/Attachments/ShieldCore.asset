@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0ea945fb8023b4d4f8fe6a2987d8576f, type: 3}
   m_Name: ShieldCore
   m_EditorClassIdentifier: 
-  ID: ShieldCore
+  ID: Shield Core
   attachmentPoint: 0
   icon: {fileID: -1865229439, guid: c10bafc503c00cf469a590014dab2f0f, type: 3}
   attachmentObject: {fileID: 3910434269224488482, guid: 8130002790c08784f937b95f37dc3c60, type: 3}
