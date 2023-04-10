@@ -8,6 +8,7 @@ public class Player : Character
     [Header("Player Stuff")]
     public HealthBar playerHealthBar;
     public ParticleSystem movingParticles;
+    bool ignoreInput = false;
     [Header("Weapons")]
     [HideInInspector]
     public Weapon currentWeapon;
@@ -58,6 +59,7 @@ public class Player : Character
         base.Start();
         //Initialise dodge to be true
         dodgeAvailable = true;
+        movingParticles.Stop();
         if (weaponsInLoadout.Count > 0)
         {
             //Default selected weapon is the weapon at index 0
@@ -82,7 +84,7 @@ public class Player : Character
         {
             if (ConditionState != CharacterStates.CharacterConditions.Dead)
             {
-                if (ConditionState != CharacterStates.CharacterConditions.Frozen)
+                if (ConditionState != CharacterStates.CharacterConditions.Frozen && !ignoreInput)
                 {
                     HandleFacing();
                     HandleMovement();
@@ -91,7 +93,10 @@ public class Player : Character
                     HandleDodge();
                 }
                 HandleOverHole();
-                HandleInteraction();
+                if (!ignoreInput)
+                {
+                    HandleInteraction();
+                }
             }
 
             HandleAnimators();
@@ -472,6 +477,15 @@ public class Player : Character
                 }
             }
         }
+    }
+
+    /// <summary>
+    /// Sets the ignore player input boolean
+    /// </summary>
+    /// <param name="state"></param>
+    public void IgnoreInput(bool state)
+    {
+        ignoreInput = state;
     }
 
     public void FreezePlayerMovement(bool state)

@@ -95,6 +95,23 @@ public class UIManager : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Toggles the health and weapon UIs
+    /// </summary>
+    /// <param name="state"></param>
+    public void ToggleInGameUI(bool state)
+    {
+        if (state)
+        {
+            WeaponUI.SetActive(true);
+            HealthUI.SetActive(true);
+        }
+        else
+        {
+            WeaponUI.SetActive(false);
+            HealthUI.SetActive(false);
+        }
+    }
 
     /// <summary>
     /// Changes the UI to correspond to different weapon types

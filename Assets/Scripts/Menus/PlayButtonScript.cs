@@ -7,7 +7,7 @@ public class PlayButtonScript : MonoBehaviour, MainMenuButtonAction
 {
     public void ButtonAction()
     {
-        SceneManager.LoadScene("Pre-Built Level Test");
+        SceneManager.LoadScene("IntroLevel");
     }
 
 }
