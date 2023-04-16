@@ -12,7 +12,7 @@ using UnityEngine.Playables;
 public class TimelineManager : MonoBehaviour
 {
     [HideInInspector]
-    public static TooltipSystem instance;
+    public static TimelineManager instance;
 
     private Player player;
     //Plays the first timeline onLoad/Awake
@@ -23,6 +23,15 @@ public class TimelineManager : MonoBehaviour
 
     private void Awake()
     {
+        if (instance != null && instance != this)
+        {
+            Destroy(gameObject);
+        }
+        else
+        {
+            instance = this;
+        }
+
         GetPlayer();
         ConstructTimelineDictionary();
         //play the first timeline on awake

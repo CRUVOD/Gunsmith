@@ -62,7 +62,8 @@ public class DialogueSystem : MonoBehaviour
 
     public void StartDialogue(Dialogue dialogue, Sprite potrait)
     {
-        dialogueBox.gameObject.SetActive(true);
+        dialogueBox.Show();
+        
         currentDialogue = dialogue;
         player.IgnoreInput(true);
 
@@ -99,7 +100,7 @@ public class DialogueSystem : MonoBehaviour
 
     public void EndDialogue()
     {
-        dialogueBox.gameObject.SetActive(false);
+        dialogueBox.Hide();
         UIManager.instance.ToggleInGameUI(true);
         player.IgnoreInput(false);
     }

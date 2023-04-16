@@ -98,7 +98,7 @@ public class Player : Character
                     HandleInteraction();
                 }
             }
-
+            HandleParticlesAndSound();
             HandleAnimators();
         }
 
@@ -192,38 +192,13 @@ public class Player : Character
 
         rb.velocity = velocity;
 
-        //Do things if player is moving or not
-        if (playerInput.magnitude >= 0.2f)
+        if (rb.velocity.magnitude >= 0.4f)
         {
-            //If velocity is greater than 0.2f, we count the character as moving
             MovementState = CharacterStates.MovementStates.Moving;
-
-            if (!movingParticles.isEmitting)
-            {
-                movingParticles.Play();
-            }
-
-            // Start playing the moving sound if it hasn't already
-            if (moveSoundAudioSource == null)
-            {
-                moveSoundAudioSource = AudioManagerPlaySoundEvent.Trigger(moveSound, AudioManager.AudioManagerTracks.Sfx, this.transform.position, true, 0.6f);
-            }
         }
         else
         {
             MovementState = CharacterStates.MovementStates.Idle;
-
-            if (movingParticles.isEmitting)
-            {
-                movingParticles.Stop();
-            }
-
-            //Stop playing the moving sound if it hasn't already
-            if (moveSoundAudioSource != null)
-            {
-                AudioManagerSoundControlEvent.Trigger(AudioManagerSoundControlEventTypes.Free, 0, moveSoundAudioSource);
-                moveSoundAudioSource = null;
-            }
         }
     }
 
@@ -349,6 +324,40 @@ public class Player : Character
     #region PlayerSpecific
 
     /// <summary>
+    /// Sets the moving particles on or off based on player condition and velocity
+    /// </summary>
+    private void HandleParticlesAndSound()
+    {
+        if (MovementState == CharacterStates.MovementStates.Moving && ConditionState != CharacterStates.CharacterConditions.Dead && rb.velocity.magnitude >= 0.4f)
+        {
+            if (!movingParticles.isEmitting)
+            {
+                movingParticles.Play();
+            }
+
+            // Start playing the moving sound if it hasn't already
+            if (moveSoundAudioSource == null)
+            {
+                moveSoundAudioSource = AudioManagerPlaySoundEvent.Trigger(moveSound, AudioManager.AudioManagerTracks.Sfx, this.transform.position, true, 0.6f);
+            }
+        }
+        else
+        {
+            if (movingParticles.isEmitting)
+            {
+                movingParticles.Stop();
+            }
+
+            //Stop playing the moving sound if it hasn't already
+            if (moveSoundAudioSource != null)
+            {
+                AudioManagerSoundControlEvent.Trigger(AudioManagerSoundControlEventTypes.Free, 0, moveSoundAudioSource);
+                moveSoundAudioSource = null;
+            }
+        }
+    }
+
+    /// <summary>
     /// Switches the current weapon equipped by player based on 1,2,3,4 etc on the keyboard
     /// </summary>
     private void HandleWeaponSwitch()
@@ -445,6 +454,13 @@ public class Player : Character
             return;
         }
         // we trigger a Pause event for the GameManager and other classes that could be listening to it too
+        //also we stop the audio from playing
+        if (moveSoundAudioSource != null)
+        {
+            AudioManagerSoundControlEvent.Trigger(AudioManagerSoundControlEventTypes.Free, 0, moveSoundAudioSource);
+            moveSoundAudioSource = null;
+        }
+
         GameEvent.Trigger(GameEvents.TogglePause, null);
     }
 
@@ -480,14 +496,46 @@ public class Player : Character
     }
 
     /// <summary>
-    /// Sets the ignore player input boolean
+    /// Sets the ignore player input boolean and stops the player
     /// </summary>
     /// <param name="state"></param>
     public void IgnoreInput(bool state)
     {
         ignoreInput = state;
+
+        rb.velocity = Vector3.zero;
+        playerInput = Vector2.zero;
+        velocity = Vector3.zero;
     }
 
+    /// <summary>
+    /// Move the player in a certain direction at a certain speed for a certain duration
+    /// This method will not break the walking animation of the player, so will be
+    /// primarily used by timeline cutscenes
+    /// </summary>
+    /// <param name="direction"></param>
+    /// <param name="speed"></param>
+    /// <param name="duration"></param>
+    public void ControlPlayerMovement(Vector2 direction, float speed, float duration)
+    {
+        //Pause player control
+        IgnoreInput(true);
+        StartCoroutine(ControlMovement(direction, speed, duration));
+    }
+
+    private IEnumerator ControlMovement(Vector2 direction, float speed, float duration)
+    {
+        velocity = direction * speed;
+        rb.velocity = velocity;
+        yield return new WaitForSeconds(duration);
+        //resume player control
+        IgnoreInput(false);
+    }
+
+    /// <summary>
+    /// Freezes the player in place and freezing the rigidbody too
+    /// </summary>
+    /// <param name="state"></param>
     public void FreezePlayerMovement(bool state)
     {
         if (state)
@@ -495,19 +543,10 @@ public class Player : Character
             //Freeze the character in place
             rb.velocity = Vector3.zero;
             playerInput = Vector2.zero;
+            velocity = Vector3.zero;
             rb.constraints = RigidbodyConstraints2D.FreezeAll;
             ConditionState = CharacterStates.CharacterConditions.Frozen;
-            if (movingParticles.isEmitting)
-            {
-                movingParticles.Stop();
-            }
-
-            //Stop playing the moving sound if it hasn't already
-            if (moveSoundAudioSource != null)
-            {
-                AudioManagerSoundControlEvent.Trigger(AudioManagerSoundControlEventTypes.Free, 0, moveSoundAudioSource);
-                moveSoundAudioSource = null;
-            }
+            
         }
         else
         {
@@ -528,7 +567,8 @@ public class Player : Character
         Vector2 dodgeDirection = new Vector2();
         dodgeDirection.x = Mathf.SmoothDamp(velocity.x, targetDirection.x, ref velocityXSmoothing, accelerationTimeGrounded);
         dodgeDirection.y = Mathf.SmoothDamp(velocity.y, targetDirection.y, ref velocityYSmoothing, accelerationTimeGrounded);
-        rb.velocity = dodgeDirection.normalized * moveSpeed * 1.5f;
+        velocity = dodgeDirection.normalized * moveSpeed * 1.5f;
+        rb.velocity = velocity;
         yield return new WaitForSeconds(dodgeTime);
 
         Invulnerable = false;
