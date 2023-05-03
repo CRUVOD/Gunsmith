@@ -35,6 +35,8 @@ public class Enemy : Character
     //Set to true if this enemy's rigibody is being controlled by another script on the update cycle
     //usually an AIAction script
     public bool externalMovementControl = false;
+    //Forces the enemy to face a specific way, usually for dialogue or cutscene reasons
+    private bool forceFacing = false;
 
     //Animation related
     protected const string onDamageAnimParametreName = "OnDamage";
@@ -105,6 +107,11 @@ public class Enemy : Character
 
     protected override void HandleFacing()
     {
+        if (forceFacing)
+        {
+            return;
+        }
+
         if (rb.velocity.x < 0)
         {
             if (isSpriteFlipped)
@@ -260,4 +267,44 @@ public class Enemy : Character
     }
 
     #endregion
+
+    /// <summary>
+    /// Forces the enemy to face a specific direciton, direction true is right, false is left
+    /// </summary>
+    /// <param name="state"></param>
+    /// <param name="direction"></param>
+    public void ForceFacing(bool state, bool direction = true)
+    {
+        if (!state)
+        {
+            forceFacing = false;
+            return;
+        }
+
+        forceFacing = true;
+        if (direction)
+        {
+            //face right
+            if (isSpriteFlipped)
+            {
+                SpriteGameObject.transform.localScale = new Vector3(-1f, 1f);
+            }
+            else
+            {
+                SpriteGameObject.transform.localScale = new Vector3(1f, 1f);
+            }
+        }
+        else
+        {
+            //face left
+            if (isSpriteFlipped)
+            {
+                SpriteGameObject.transform.localScale = new Vector3(1f, 1f);
+            }
+            else
+            {
+                SpriteGameObject.transform.localScale = new Vector3(-1f, 1f);
+            }
+        }
+    }
 }

@@ -22,7 +22,7 @@ public class AICore : MonoBehaviour
     public Vector3 _lastKnownTargetPosition = Vector3.zero;
 
     [Header("State")]
-    /// whether or not this brain is active
+    /// whether or not this core is active
     public bool CoreActive = true;
     public bool ResetCoreOnStart = true;
     public bool ResetCoreOnEnable = false;

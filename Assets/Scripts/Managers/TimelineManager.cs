@@ -32,7 +32,7 @@ public class TimelineManager : MonoBehaviour
             instance = this;
         }
 
-        GetPlayer();
+        FindPlayer();
         ConstructTimelineDictionary();
         //play the first timeline on awake
         if (timelineList.Length > 0 && playFirstOnAwake)
@@ -41,7 +41,7 @@ public class TimelineManager : MonoBehaviour
         }
     }
 
-    private void GetPlayer()
+    private void FindPlayer()
     {
         GameObject[] searchResults = GameObject.FindGameObjectsWithTag("Player");
         if (searchResults.Length == 1)

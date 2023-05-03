@@ -7,7 +7,7 @@ public class DialogueSystem : MonoBehaviour
     public static DialogueSystem instance;
 
     private Queue<string> sentences;
-    private Dialogue currentDialogue;
+    private DialogueTrigger currentDialogue;
     private Sprite currentPotrait;
 
     public DialogueBox dialogueBox;
@@ -60,24 +60,24 @@ public class DialogueSystem : MonoBehaviour
         }
     }
 
-    public void StartDialogue(Dialogue dialogue, Sprite potrait)
+    public void StartDialogue(DialogueTrigger dialogueTrigger)
     {
         dialogueBox.Show();
-        
-        currentDialogue = dialogue;
+        currentDialogue = dialogueTrigger;
         player.IgnoreInput(true);
+        currentDialogue.Setup();
 
-        if (potrait == null)
+        if (dialogueTrigger.potrait == null)
         {
             currentPotrait = defaultPotrait;
         }
         else
         {
-            currentPotrait = potrait;
+            currentPotrait = dialogueTrigger.potrait;
         }
 
         sentences.Clear();
-        foreach (string sentence in dialogue.sentences)
+        foreach (string sentence in dialogueTrigger.dialogue.sentences)
         {
             sentences.Enqueue(sentence);
         }
@@ -95,7 +95,7 @@ public class DialogueSystem : MonoBehaviour
         }
 
         string sentence = sentences.Dequeue();
-        dialogueBox.SetText(currentDialogue.name, sentence, currentPotrait);
+        dialogueBox.SetText(currentDialogue.dialogue.name, sentence, currentPotrait);
     }
 
     public void EndDialogue()
@@ -103,5 +103,6 @@ public class DialogueSystem : MonoBehaviour
         dialogueBox.Hide();
         UIManager.instance.ToggleInGameUI(true);
         player.IgnoreInput(false);
+        currentDialogue.Release();
     }
 }

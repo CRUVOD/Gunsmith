@@ -18484,7 +18484,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 1.7775974, y: 1}
+    m_SensorSize: {x: 1.7777778, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
@@ -84971,7 +84971,7 @@ MonoBehaviour:
   m_VoxelSize: 0.21666665
   m_BuildHeightMesh: 0
   m_HideEditorLogs: 0
-  m_NavMeshData: {fileID: 23800000, guid: cb7a7b1bc535a4b44aad804144163697, type: 2}
+  m_NavMeshData: {fileID: 23800000, guid: c3a7be49eb79feb48a14f539ee68fda9, type: 2}
 --- !u!4 &3455372062495540411
 Transform:
   m_ObjectHideFlags: 0
