@@ -6,7 +6,7 @@ public class DialogueSystem : MonoBehaviour
 {
     public static DialogueSystem instance;
 
-    private Queue<string> sentences;
+    private Queue<Sentence> sentences;
     private DialogueTrigger currentDialogue;
     private Sprite currentPotrait;
 
@@ -31,7 +31,7 @@ public class DialogueSystem : MonoBehaviour
     void Start()
     {
         GetPlayer();
-        sentences = new Queue<string>();
+        sentences = new Queue<Sentence>();
     }
 
     private void GetPlayer()
@@ -67,17 +67,17 @@ public class DialogueSystem : MonoBehaviour
         player.IgnoreInput(true);
         currentDialogue.Setup();
 
-        if (dialogueTrigger.potrait == null)
+        if (currentDialogue.dialogue.potraits[0] == null)
         {
             currentPotrait = defaultPotrait;
         }
         else
         {
-            currentPotrait = dialogueTrigger.potrait;
+            currentPotrait = currentDialogue.dialogue.potraits[0];
         }
 
         sentences.Clear();
-        foreach (string sentence in dialogueTrigger.dialogue.sentences)
+        foreach (Sentence sentence in dialogueTrigger.dialogue.sentences)
         {
             sentences.Enqueue(sentence);
         }
@@ -90,12 +90,25 @@ public class DialogueSystem : MonoBehaviour
     {
         if (sentences.Count == 0)
         {
-            EndDialogue();
+            ReleaseCurrentDialogue();
             return;
         }
 
-        string sentence = sentences.Dequeue();
-        dialogueBox.SetText(currentDialogue.dialogue.name, sentence, currentPotrait);
+        Sentence sentence = sentences.Dequeue();
+
+        if (sentence.voice > currentDialogue.dialogue.names.Length || sentence.voice > currentDialogue.dialogue.potraits.Length)
+        {
+            //If voice number is greater than the saved amount of names or potraits, skip this sentence
+            Debug.Log("Dialogue voice index out of range");
+            return;
+        }
+
+        dialogueBox.SetText(currentDialogue.dialogue.names[sentence.voice], sentence.content, currentDialogue.dialogue.potraits[sentence.voice]);
+    }
+
+    public void ReleaseCurrentDialogue()
+    {
+        currentDialogue.Release();
     }
 
     public void EndDialogue()
@@ -103,6 +116,5 @@ public class DialogueSystem : MonoBehaviour
         dialogueBox.Hide();
         UIManager.instance.ToggleInGameUI(true);
         player.IgnoreInput(false);
-        currentDialogue.Release();
     }
 }

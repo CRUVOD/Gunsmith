@@ -5,7 +5,7 @@ using UnityEngine;
 /// <summary>
 /// Actions that takes place before triggering dialogue, and undos/releases after dialogue finish
 /// </summary>
-public class DialogueSetupAction : MonoBehaviour
+public class DialogueAction : MonoBehaviour
 {
     /// <summary>
     /// Actions before the dialogue

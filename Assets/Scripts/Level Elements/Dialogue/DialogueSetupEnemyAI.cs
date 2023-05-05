@@ -5,7 +5,7 @@ using UnityEngine;
 /// <summary>
 /// Disables AI cores on setup, then releases them/activates them after if needed
 /// </summary>
-public class DialogueSetupEnemyAI : DialogueSetupAction
+public class DialogueSetupEnemyAI : DialogueAction
 {
     public bool activateAIOnDialogueEnd;
     //List of enemies affected by this script

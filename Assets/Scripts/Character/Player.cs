@@ -469,7 +469,6 @@ public class Player : Character
     /// </summary>
     private void HandleInteraction()
     {
-        //
         if (Input.GetKeyDown(KeyCode.E))
         {
             //maximum number of collisions
@@ -492,6 +491,12 @@ public class Player : Character
                     }
                 }
             }
+        }
+
+        //Debug button, use this for anything debugging for now
+        if (Input.GetKeyDown(KeyCode.Period))
+        {
+            PlayerDebug();
         }
     }
 
@@ -690,5 +695,12 @@ public class Player : Character
 
     #endregion
 
-  
+    /// <summary>
+    /// Debug action, modify to do anything
+    /// </summary>
+    private void PlayerDebug()
+    {
+
+    }
+
 }

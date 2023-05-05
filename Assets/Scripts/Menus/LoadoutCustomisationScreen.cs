@@ -63,7 +63,7 @@ public class LoadoutCustomisationScreen : MonoBehaviour
         weaponsInSelection = currentSelectedWeapons;
         PlayerData newPlayerData = new PlayerData(weaponsInSelection, attachmentsInSeleciton);
         SaveSystem.SavePlayer(newPlayerData);
-        Debug.Log(newPlayerData.toString());
+        Debug.Log(newPlayerData.ToString());
         TryUpdatePlayerLoadout(newPlayerData);
     }
 

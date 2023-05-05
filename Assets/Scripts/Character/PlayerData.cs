@@ -6,12 +6,14 @@ using UnityEngine;
 [System.Serializable]
 public class PlayerData
 {
+    public string playerName;
     public int initialHealth;
     public string[] weaponsInLoadout;
     public string[][] attachmentsInLoadout;
 
     public PlayerData(Player player)
     {
+        playerName = GetPlayerName();
         initialHealth = player.InitialHealth;
         weaponsInLoadout = GetWeapons(player.weaponsInLoadout);
         attachmentsInLoadout = GetWeaponAttachments(player.weaponsInLoadout);
@@ -20,14 +22,16 @@ public class PlayerData
 
     public PlayerData(List<Weapon> weapons)
     {
-        initialHealth = 100;
+        playerName = GetPlayerName();
+        initialHealth = GetPlayerInitialHealth();
         weaponsInLoadout = GetWeapons(weapons);
         attachmentsInLoadout = GetWeaponAttachments(weapons); 
     }
 
     public PlayerData(List<WeaponReference> weapons, List<WeaponAttachmentReference>[] weaponAttachments)
     {
-        initialHealth = 100;
+        playerName = GetPlayerName();
+        initialHealth = GetPlayerInitialHealth();
         List<string> weaponIDs = new List<string>();
         for (int i = 0; i < weapons.Count; i++)
         {
@@ -54,8 +58,54 @@ public class PlayerData
         attachmentsInLoadout =  weaponAttachmentIDs.ToArray();
     }
 
+    public PlayerData(string playerName)
+    {
+        this.playerName = playerName;
+        initialHealth = GetPlayerInitialHealth();
+        weaponsInLoadout = GetWeapons();
+        attachmentsInLoadout = GetWeaponAttachments();
+    }
+
     /// <summary>
-    /// Get the IDs of the weapons of the player loadout
+    /// Gets the player name from previously saved data if possible
+    /// </summary>
+    /// <returns></returns>
+    private string GetPlayerName()
+    {
+        if (SaveSystem.SaveFileExists())
+        {
+            //Previous save file exists, use same name
+            PlayerData prevSave = SaveSystem.LoadPlayer();
+            return prevSave.playerName;
+        }
+        else
+        {
+            //Returns placeholder name if previous save file does not exist
+            return "DefaultPlayer";
+        }
+    }
+
+    /// <summary>
+    /// Gets player initial health from previously saved data if possible
+    /// </summary>
+    /// <returns></returns>
+    public int GetPlayerInitialHealth()
+    {
+        if (SaveSystem.SaveFileExists())
+        {
+            //Previous save file exists, use same initial health
+            PlayerData prevSave = SaveSystem.LoadPlayer();
+            return prevSave.initialHealth;
+        }
+        else
+        {
+            //Returns placeholder 100 health if previous save file does not exist
+            return 100;
+        }
+    }
+
+    /// <summary>
+    /// Get the IDs of the weapons of the player loadout from a list of weapons
     /// Stored by [loadoutweaponposition]
     /// </summary>
     /// <param name="weapons"></param>
@@ -70,6 +120,25 @@ public class PlayerData
         }
 
         return weaponIDs.ToArray();
+    }
+
+    /// <summary>
+    /// Gets weapons in loadout from previously saved data if possible
+    /// </summary>
+    /// <returns></returns>
+    private string[] GetWeapons()
+    {
+        if (SaveSystem.SaveFileExists())
+        {
+            //Previous save file exists, use same loadout
+            PlayerData prevSave = SaveSystem.LoadPlayer();
+            return prevSave.weaponsInLoadout;
+        }
+        else
+        {
+            //Returns placeholder 100 health if previous save file does not exist
+            return null;
+        }
     }
 
     /// <summary>
@@ -95,9 +164,30 @@ public class PlayerData
         return weaponAttachmentIDs.ToArray();
     }
 
-    public String toString()
+    /// <summary>
+    /// Gets weapon attachments in loadout from previously saved data if possible
+    /// </summary>
+    /// <returns></returns>
+    private string[][] GetWeaponAttachments()
     {
-        string ret = "Player Initial Health: " + initialHealth;
+        if (SaveSystem.SaveFileExists())
+        {
+            //Previous save file exists, use same loadout
+            PlayerData prevSave = SaveSystem.LoadPlayer();
+            return prevSave.attachmentsInLoadout;
+        }
+        else
+        {
+            //Returns placeholder 100 health if previous save file does not exist
+            return null;
+        }
+    }
+
+    public override String ToString()
+    {
+        string ret = "Player: " + playerName;
+        ret += "\n";
+        ret += "Player Initial Health: " + initialHealth;
         ret += "\n";
         for (int i = 0; i < weaponsInLoadout.Length; i++)
         {

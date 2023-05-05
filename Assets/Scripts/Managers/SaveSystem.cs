@@ -42,4 +42,14 @@ public static class SaveSystem
             return null;
         }
     }
+
+    /// <summary>
+    /// Returns true if there exists a save file
+    /// </summary>
+    /// <returns></returns>
+    public static bool SaveFileExists()
+    {
+        string path = Application.persistentDataPath + "/player.saved";
+        return File.Exists(path);
+    }
 }

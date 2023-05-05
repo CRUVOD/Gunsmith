@@ -4,11 +4,10 @@ using UnityEngine;
 
 public class DialogueTrigger : MonoBehaviour
 {
-    public Sprite potrait;
-
     public Dialogue dialogue;
-
-    private DialogueSetupAction[] dialogueSetupActions;
+    [Tooltip("Indicates if this dialogue leads to another, prevents UI weirdness")]
+    public bool hasSubsequentDialogue;
+    private DialogueAction[] dialogueSetupActions;
 
     private void Awake()
     {
@@ -22,7 +21,7 @@ public class DialogueTrigger : MonoBehaviour
 
     private void GetDialogueSetupActions()
     {
-        dialogueSetupActions = GetComponents<DialogueSetupAction>();
+        dialogueSetupActions = GetComponents<DialogueAction>();
     }
 
     /// <summary>
@@ -41,6 +40,12 @@ public class DialogueTrigger : MonoBehaviour
     /// </summary>
     public void Release()
     {
+        if (!hasSubsequentDialogue)
+        {
+            //No further dialogue following this one, we can safely tell dialogue system to resume noraml gameplay
+            DialogueSystem.instance.EndDialogue();
+        }
+
         for (int i = 0; i < dialogueSetupActions.Length; i++)
         {
             dialogueSetupActions[i].Release();

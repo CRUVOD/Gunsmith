@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DialogueSetupEnemyFacing : DialogueSetupAction
+public class DialogueSetupEnemyFacing : DialogueAction
 {
     //List of enemies affected by this script
     public Enemy[] enemies;
