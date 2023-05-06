@@ -30,12 +30,21 @@ public class Weapon : MonoBehaviour, ExtendedEventListener<GameEvent>
     [Header("Attachments")]
     public List<WeaponAttachmentSlot> weaponAttachmentSlots;
 
+    [Header("Weapon Rules")]
+    private IWeaponFireRule[] weaponFireRules;
+
     bool rotationFrozen;
 
     protected virtual void Start()
     {
         mainCamera = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Camera>();
         InitaliseAttachments();
+        InitialiseRules();
+    }
+
+    private void InitialiseRules()
+    {
+        weaponFireRules = GetComponents<IWeaponFireRule>();
     }
 
     #region PublicAPIs
@@ -90,6 +99,17 @@ public class Weapon : MonoBehaviour, ExtendedEventListener<GameEvent>
     public virtual bool Use()
     {
         return false;
+    }
+
+    /// <summary>
+    /// Use the weapon, return true if successfully used, this method can check user state and decide if weapon should be
+    /// succuessfully used
+    /// </summary>
+    /// <param name="user"></param>
+    /// <returns></returns>
+    public virtual bool Use(Character user)
+    {
+        return Use();
     }
 
     /// <summary>
@@ -191,6 +211,26 @@ public class Weapon : MonoBehaviour, ExtendedEventListener<GameEvent>
             }
         }
     }
+
+    #region WeaponRules
+
+    /// <summary>
+    /// Checks through weapon fire rules, and returns true if all are good with firing the weapon
+    /// </summary>
+    /// <param name="user"></param>
+    /// <returns></returns>
+    protected bool CheckWeaponFireRules(Character user)
+    {
+        for (int i = 0; i < weaponFireRules.Length; i++)
+        {
+            if (!weaponFireRules[i].WeaponCanFire(user, this))
+            {
+                return false;
+            }
+        }
+        return true;
+    }
+    #endregion
 
     #region MouseDirection
 

@@ -188,9 +188,9 @@ public class MeleeWeapon : Weapon
 
         //we apply the damage to the thing we've collided with
         int randomDamage = (int)UnityEngine.Random.Range(MinDamageCaused, Mathf.Max(MaxDamageCaused, MinDamageCaused));
-
+        
         //Apply knockback/impact force on collided character and damage
-        damageable.Damage(randomDamage, gameObject, InvincibilityDuration, impactForce);
+        damageable.Damage(randomDamage, gameObject, InvincibilityDuration, weaponDirection, impactForce);
     }
 
     /// <summary>

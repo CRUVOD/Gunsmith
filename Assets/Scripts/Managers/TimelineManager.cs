@@ -31,7 +31,10 @@ public class TimelineManager : MonoBehaviour
         {
             instance = this;
         }
+    }
 
+    private void Start()
+    {
         FindPlayer();
         ConstructTimelineDictionary();
         //play the first timeline on awake

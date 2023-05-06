@@ -17,8 +17,6 @@ public class Player : Character
     public Transform weaponEquipPoint;
 
     [Header("Dodge")]
-    //Can the player dodge
-    public bool dodgeAbility;
     //If dodge is currently available
     protected bool dodgeAvailable;
     //How long each dodge/invuln duration last
@@ -87,10 +85,10 @@ public class Player : Character
                 if (ConditionState != CharacterStates.CharacterConditions.Frozen && !ignoreInput)
                 {
                     HandleFacing();
+                    HandleDodge();
                     HandleMovement();
                     HandleWeapon();
                     HandleWeaponSwitch();
-                    HandleDodge();
                 }
                 HandleOverHole();
                 if (!ignoreInput)
@@ -175,24 +173,23 @@ public class Player : Character
 
     protected override void HandleMovement()
     {
-        if (MovementState == CharacterStates.MovementStates.Dodging)
-        {
-            //If we are dodging, ignore basic movement controls
-            return;
-        }
-
         playerInput = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
 
         Vector2 targetVelocity = playerInput.normalized * moveSpeed;
 
         velocity.x = Mathf.SmoothDamp(velocity.x, targetVelocity.x, ref velocityXSmoothing, accelerationTimeGrounded);
         velocity.y = Mathf.SmoothDamp(velocity.y, targetVelocity.y, ref velocityYSmoothing, accelerationTimeGrounded);
-
+        
         velocity = ApplyImpact(velocity);
 
         rb.velocity = velocity;
 
-        if (rb.velocity.magnitude >= 0.4f)
+        if (MovementState == CharacterStates.MovementStates.Dodging)
+        {
+            //Don't change movement state if dodging, the coroutine should change it back automatically
+            return;
+        }
+        else if (rb.velocity.magnitude >= 0.4f)
         {
             MovementState = CharacterStates.MovementStates.Moving;
         }
@@ -240,7 +237,7 @@ public class Player : Character
 
     protected override void HandleDodge()
     {
-        if (Input.GetKeyDown(KeyCode.Space) && dodgeAbility && dodgeAvailable)
+        if (Input.GetKeyDown(KeyCode.Space) && dodgeAvailable)
         {
             //Performing dodge
             StartCoroutine(Dodge());
@@ -535,6 +532,8 @@ public class Player : Character
         yield return new WaitForSeconds(duration);
         //resume player control
         IgnoreInput(false);
+        velocity = Vector2.zero;
+        rb.velocity = velocity;
     }
 
     /// <summary>
@@ -568,14 +567,15 @@ public class Player : Character
     {
         Invulnerable = true;
         MovementState = CharacterStates.MovementStates.Dodging;
-        Vector2 targetDirection = playerInput.normalized * moveSpeed;
-        Vector2 dodgeDirection = new Vector2();
-        dodgeDirection.x = Mathf.SmoothDamp(velocity.x, targetDirection.x, ref velocityXSmoothing, accelerationTimeGrounded);
-        dodgeDirection.y = Mathf.SmoothDamp(velocity.y, targetDirection.y, ref velocityYSmoothing, accelerationTimeGrounded);
-        velocity = dodgeDirection.normalized * moveSpeed * 1.5f;
-        rb.velocity = velocity;
-        yield return new WaitForSeconds(dodgeTime);
 
+        //reset impact, and increase base movement speed
+        impact = Vector3.zero;
+        float prevMoveSpeed = moveSpeed;
+        moveSpeed *= 1.8f;
+
+        yield return new WaitForSeconds(dodgeTime - 0.01f);
+
+        moveSpeed = prevMoveSpeed;
         Invulnerable = false;
         MovementState = CharacterStates.MovementStates.Idle;
     }
@@ -659,7 +659,7 @@ public class Player : Character
         //Left click to fire one projectile at a time
         if (Input.GetMouseButtonDown(0))
         {
-            bool success = currentWeapon.Use();
+            bool success = currentWeapon.Use(this);
 
             // Apply recoil if weapon is successfully fired, and add to timer to say weapon has been fired recently
             if (success)
@@ -680,7 +680,7 @@ public class Player : Character
         //Left click to fire one projectile at a time
         if (Input.GetMouseButton(0))
         {
-            bool success = currentWeapon.Use();
+            bool success = currentWeapon.Use(this);
 
             // Apply recoil if weapon is successfully fired, and add to timer to say weapon has been fired recently
             if (success)
@@ -700,7 +700,7 @@ public class Player : Character
     /// </summary>
     private void PlayerDebug()
     {
-
+        
     }
 
 }

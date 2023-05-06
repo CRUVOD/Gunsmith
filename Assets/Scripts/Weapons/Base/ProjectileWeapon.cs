@@ -151,6 +151,15 @@ public class ProjectileWeapon : Weapon
         return FireProjectile();
     }
 
+    public override bool Use(Character user)
+    {
+        if (CheckWeaponFireRules(user))
+        {
+            return Use();
+        }
+        return false;
+    }
+
     // Returns true if projectile is succesfully fired
     public virtual bool FireProjectile()
     {

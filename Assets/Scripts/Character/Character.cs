@@ -222,7 +222,10 @@ public class Character : MonoBehaviour, IDamageable
             velocity += (impact * Time.deltaTime);
         }
 
-        impact = Vector3.Lerp(impact, Vector3.zero, ImpactFalloff * Time.deltaTime);
+        if (impact.magnitude > 0)
+        {
+            impact = Vector3.Lerp(impact, Vector3.zero, ImpactFalloff * Time.deltaTime);
+        }
 
         return velocity;
     }

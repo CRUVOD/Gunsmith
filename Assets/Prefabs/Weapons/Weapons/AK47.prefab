@@ -10153,6 +10153,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5708247641608047689}
   - component: {fileID: 3713712288743788199}
+  - component: {fileID: 1593185003204939103}
   m_Layer: 10
   m_Name: AK47
   m_TagString: Untagged
@@ -10221,6 +10222,19 @@ MonoBehaviour:
   weaponUseFeedback: {fileID: 8794434508599816625}
   weaponReloadFeedback: {fileID: 1607527394}
   weaponEmptyFeedback: {fileID: 91352694}
+--- !u!114 &1593185003204939103
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5708247641608047688}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 05e7b6a8605614e479cbcd37b4da59ac, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  weaponCanFireWhileDodging: 0
 --- !u!1 &5708247642067784660
 GameObject:
   m_ObjectHideFlags: 0

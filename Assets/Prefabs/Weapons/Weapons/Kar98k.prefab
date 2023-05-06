@@ -10063,6 +10063,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 43f86295f81292b44a90f35921c99d84, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  attachment: {fileID: 0}
   attachmentPoint: 4
 --- !u!1 &5289436317590859022
 GameObject:
@@ -10139,6 +10140,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 43f86295f81292b44a90f35921c99d84, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  attachment: {fileID: 0}
   attachmentPoint: 0
 --- !u!1 &5708247641608047688
 GameObject:
@@ -10150,6 +10152,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5708247641608047689}
   - component: {fileID: 4821095698207619426}
+  - component: {fileID: 148659843765563684}
   m_Layer: 10
   m_Name: Kar98k
   m_TagString: Untagged
@@ -10232,6 +10235,19 @@ MonoBehaviour:
   weaponBoltPullFeedback: {fileID: 4227450098784302554}
   weaponReloadFeedback: {fileID: 1607527394}
   weaponEmptyFeedback: {fileID: 91352694}
+--- !u!114 &148659843765563684
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5708247641608047688}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 05e7b6a8605614e479cbcd37b4da59ac, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  weaponCanFireWhileDodging: 0
 --- !u!1 &5708247642067784660
 GameObject:
   m_ObjectHideFlags: 0
@@ -15382,6 +15398,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 43f86295f81292b44a90f35921c99d84, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  attachment: {fileID: 0}
   attachmentPoint: 3
 --- !u!1 &8485216283079377238
 GameObject:

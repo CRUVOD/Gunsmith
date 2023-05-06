@@ -5800,8 +5800,8 @@ MonoBehaviour:
   CharacterType: 0
   moveSpeed: 4
   accelerationTimeGrounded: 0.15
-  velocityXSmoothing: 0.05
-  velocityYSmoothing: 0.05
+  velocityXSmoothing: 0
+  velocityYSmoothing: 0
   RunAnimatorSanityChecks: 1
   MovementState: 0
   ConditionState: 0
@@ -5821,7 +5821,6 @@ MonoBehaviour:
   currentWeapon: {fileID: 0}
   weaponsInLoadout: []
   weaponEquipPoint: {fileID: 370008538}
-  dodgeAbility: 1
   dodgeTime: 0.5
   dodgeCoolDown: 0.6
   moveSound: {fileID: 8300000, guid: 6be235ab610d212438b4530cf1df2401, type: 3}
@@ -9102,7 +9101,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Navigation:
-    m_Mode: 3
+    m_Mode: 0
     m_WrapAround: 0
     m_SelectOnUp: {fileID: 0}
     m_SelectOnDown: {fileID: 0}
