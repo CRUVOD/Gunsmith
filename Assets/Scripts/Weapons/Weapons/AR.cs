@@ -14,10 +14,6 @@ public class AR : ProjectileWeapon
     public float spreadResetRate;
     private float spread;
 
-    public FeedbackPlayer weaponUseFeedback;
-    public FeedbackPlayer weaponReloadFeedback;
-    public FeedbackPlayer weaponEmptyFeedback;
-
     protected override void Start()
     {
         base.Start();
@@ -35,36 +31,9 @@ public class AR : ProjectileWeapon
         CalculateSpread(false);
     }
 
-    /// <summary>
-    /// Check if the weapon is ready to fire another projectile
-    /// </summary>
-    /// <returns></returns>
-    public override bool ReadyToFire()
-    {
-        if (GetTimeBetweenShots() > 0)
-        {
-            return false;
-        }
-
-        if (currentAmmoInMagazine <= 0)
-        {
-            return false;
-        }
-
-        if (inReload)
-        {
-            return false;
-        }
-
-        return true;
-    }
-
-    /// <summary>
-    /// Creates a projectile and send it lololol
-    /// </summary>
-    /// <returns></returns>
     public override bool FireProjectile()
     {
+        //We override the base because we need to calculate spread
         bool ready = ReadyToFire();
 
         if (ready)
@@ -81,7 +50,10 @@ public class AR : ProjectileWeapon
             newProjectile.SetLifeTime(projectileLifeTime);
 
             //Use ammo in clip
-            ChangeAmmoCount(currentAmmoInMagazine - 1);
+            if (isMagazineBased)
+            {
+                ChangeAmmoCount(currentAmmoInMagazine - 1);
+            }
 
             //Reset time between shots according to fire rate if theres stil ammo in the clip
             if (currentAmmoInMagazine > 0)
@@ -94,7 +66,7 @@ public class AR : ProjectileWeapon
 
             return true;
         }
-        else if (currentAmmoInMagazine <= 0)
+        else if (isMagazineBased && currentAmmoInMagazine <= 0)
         {
             weaponEmptyFeedback.PlayFeedbacks();
         }

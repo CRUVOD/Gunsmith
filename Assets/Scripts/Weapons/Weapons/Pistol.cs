@@ -9,10 +9,6 @@ public class Pistol : ProjectileWeapon
     //Don't set to true if the fire rate is high
     public bool useCoolDownCircleUIBetweenShots;
 
-    public FeedbackPlayer weaponUseFeedback;
-    public FeedbackPlayer weaponReloadFeedback;
-    public FeedbackPlayer weaponEmptyFeedback;
-
     protected override void Start()
     {
         base.Start();
@@ -23,73 +19,20 @@ public class Pistol : ProjectileWeapon
     }
 
     /// <summary>
-    /// Check if the weapon is ready to fire another projectile
-    /// </summary>
-    /// <returns></returns>
-    public override bool ReadyToFire()
-    {
-        if (GetTimeBetweenShots() > 0)
-        {
-            return false;
-        }
-
-        if (currentAmmoInMagazine <= 0)
-        {
-            return false;
-        }
-
-        if (inReload)
-        {
-            return false;
-        }
-
-        return true;
-    }
-
-    /// <summary>
     /// Creates a projectile and send it lololol
     /// </summary>
     /// <returns></returns>
     public override bool FireProjectile()
     {
-        bool ready = ReadyToFire();
-
-        if (ready)
+        if (base.FireProjectile())
         {
-            Projectile newProjectile;
-
-            float randomSpread = Random.Range(-baseSpread, baseSpread);
-
-            //Instantiate the bullet and send it flying with random spread
-            newProjectile = Instantiate(projectile, firePoint.position, transform.rotation);
-            newProjectile.transform.Rotate(0, 0, randomSpread);
-            newProjectile.SetVelocity(projectileSpeed);
-            newProjectile.SetDamage(minDamage, maxDamage);
-            newProjectile.SetLifeTime(projectileLifeTime);
-
-            //Use ammo in clip
-            ChangeAmmoCount(currentAmmoInMagazine - 1);
-
-            //Reset time between shots according to fire rate if theres stil ammo in the clip
-            if (currentAmmoInMagazine > 0)
+            //Additional functionality of using the crosshair cooldown UI if succesfully fired weapon
+            if (useCoolDownCircleUIBetweenShots)
             {
-                ResetTimeBetweenShots();
-                if (useCoolDownCircleUIBetweenShots)
-                {
-                    UIManager.instance.crosshair.StartCoolDownUI(60f / fireRate);
-                }
+                UIManager.instance.crosshair.StartCoolDownUI(60f / fireRate);
             }
-
-            //Calls to play feedback
-            weaponUseFeedback.PlayFeedbacks();
-
             return true;
         }
-        else if (currentAmmoInMagazine <= 0)
-        {
-            weaponEmptyFeedback.PlayFeedbacks();
-        }
-
         return false;
     }
 

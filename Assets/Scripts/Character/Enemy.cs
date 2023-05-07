@@ -16,6 +16,9 @@ public class Enemy : Character
     public HealthBar enemyHealthBar;
     public Weapon currentWeapon;
 
+    //player in this script should only be used for minimal things, majority of the functions should be handled by other scripts
+    private Player player;
+
     [Header("Death")]
     //How will the body stay in the scene till destroy
     public float timeTillBodyDisappear;
@@ -53,6 +56,7 @@ public class Enemy : Character
         ConditionState = CharacterStates.CharacterConditions.Normal;
         ag.updateRotation = false;
         ag.updateUpAxis = false;
+        player = LevelManager.instance.player;
     }
 
     protected override void InitialiseAnimatorParametresExtra()
@@ -112,6 +116,37 @@ public class Enemy : Character
             return;
         }
 
+        //If we have a player in the level, we face the player
+        if (player != null)
+        {
+            float xDirection = (player.transform.position - this.transform.position).x;
+
+            if (xDirection < 0)
+            {
+                if (isSpriteFlipped)
+                {
+                    SpriteGameObject.transform.localScale = new Vector3(1f, 1f);
+                }
+                else
+                {
+                    SpriteGameObject.transform.localScale = new Vector3(-1f, 1f);
+                }
+            }
+            else
+            {
+                if (isSpriteFlipped)
+                {
+                    SpriteGameObject.transform.localScale = new Vector3(-1f, 1f);
+                }
+                else
+                {
+                    SpriteGameObject.transform.localScale = new Vector3(1f, 1f);
+                }
+            }
+            return;
+        }
+
+        //Default sprite facing behaviour
         if (rb.velocity.x < 0)
         {
             if (isSpriteFlipped)
@@ -147,7 +182,7 @@ public class Enemy : Character
     public override void Death()
     {
         //On death event delegate
-        OnDeath(this);
+        OnDeath?.Invoke(this);
 
         //Disable weapons
         currentWeapon.StopWeapon();

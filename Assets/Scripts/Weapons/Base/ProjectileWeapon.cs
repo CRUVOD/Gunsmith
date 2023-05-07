@@ -36,6 +36,10 @@ public class ProjectileWeapon : Weapon
     [HideInInspector]
     public bool inReload;
 
+    [Header("Feedbacks")]
+    public FeedbackPlayer weaponUseFeedback;
+    public FeedbackPlayer weaponReloadFeedback;
+    public FeedbackPlayer weaponEmptyFeedback;
 
     protected virtual void Update()
     {
@@ -107,7 +111,17 @@ public class ProjectileWeapon : Weapon
     // Return true if weapon is ready to fire projectile again
     public virtual bool ReadyToFire()
     {
-        if (timeBetweenShots > 0)
+        if (GetTimeBetweenShots() > 0)
+        {
+            return false;
+        }
+
+        if (isMagazineBased && currentAmmoInMagazine <= 0)
+        {
+            return false;
+        }
+
+        if (inReload)
         {
             return false;
         }
@@ -163,6 +177,84 @@ public class ProjectileWeapon : Weapon
     // Returns true if projectile is succesfully fired
     public virtual bool FireProjectile()
     {
+        bool ready = ReadyToFire();
+
+        if (ready)
+        {
+            Projectile newProjectile;
+
+            float randomSpread = Random.Range(-baseSpread, baseSpread);
+
+            //Instantiate the bullet and send it flying with random spread
+            newProjectile = Instantiate(projectile, firePoint.position, transform.rotation);
+            newProjectile.transform.Rotate(0, 0, randomSpread);
+            newProjectile.SetVelocity(projectileSpeed);
+            newProjectile.SetDamage(minDamage, maxDamage);
+            newProjectile.SetLifeTime(projectileLifeTime);
+
+            //Use ammo in clip
+            ChangeAmmoCount(currentAmmoInMagazine - 1);
+
+            //Reset time between shots according to fire rate if theres stil ammo in the clip
+            if (isMagazineBased && currentAmmoInMagazine > 0)
+            {
+                ResetTimeBetweenShots();
+            }
+
+            //Calls to play feedback
+            weaponUseFeedback.PlayFeedbacks();
+
+            return true;
+        }
+        else if (isMagazineBased && currentAmmoInMagazine <= 0)
+        {
+            weaponEmptyFeedback.PlayFeedbacks();
+        }
+
+        return false;
+    }
+
+    /// <summary>
+    /// Same as normal fire projectile function, but with angle offset on the projectile direction, used mainly by projectile patterns
+    /// </summary>
+    /// <param name="angleOffset"></param>
+    /// <returns></returns>
+    public virtual bool FireProjectile(float angleOffset)
+    {
+        bool ready = ReadyToFire();
+
+        if (ready)
+        {
+            Projectile newProjectile;
+
+            float randomSpread = Random.Range(-baseSpread, baseSpread);
+
+            //Instantiate the bullet and send it flying with random spread
+            newProjectile = Instantiate(projectile, firePoint.position, transform.rotation);
+            newProjectile.transform.Rotate(0, 0, randomSpread + angleOffset);
+            newProjectile.SetVelocity(projectileSpeed);
+            newProjectile.SetDamage(minDamage, maxDamage);
+            newProjectile.SetLifeTime(projectileLifeTime);
+
+            //Use ammo in clip
+            ChangeAmmoCount(currentAmmoInMagazine - 1);
+
+            //Reset time between shots according to fire rate if theres stil ammo in the clip
+            if (isMagazineBased && currentAmmoInMagazine > 0)
+            {
+                ResetTimeBetweenShots();
+            }
+
+            //Calls to play feedback
+            weaponUseFeedback.PlayFeedbacks();
+
+            return true;
+        }
+        else if (isMagazineBased && currentAmmoInMagazine <= 0)
+        {
+            weaponEmptyFeedback.PlayFeedbacks();
+        }
+
         return false;
     }
 

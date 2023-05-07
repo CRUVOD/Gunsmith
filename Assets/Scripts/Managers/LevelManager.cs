@@ -88,7 +88,10 @@ public class LevelManager : MonoBehaviour, ExtendedEventListener<GameEvent>
     /// <param name="active"></param>
     public void ActivateDoors(bool active)
     {
-        Doors.SetActive(active);
+        if (Doors != null)
+        {
+            Doors.SetActive(active);
+        }
     }
 
     #region Events

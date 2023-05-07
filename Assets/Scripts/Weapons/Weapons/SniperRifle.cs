@@ -32,7 +32,7 @@ public class SniperRifle : HitScanWeapon
             return false;
         }
 
-        if (currentAmmoInMagazine <= 0)
+        if (isMagazineBased && currentAmmoInMagazine <= 0)
         {
             return false;
         }

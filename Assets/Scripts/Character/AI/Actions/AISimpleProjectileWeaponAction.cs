@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class AIProjectileWeaponAction : AIAction
+public class AISimpleProjectileWeaponAction : AIAction
 {
     public enum FiringBehaviour { Burst, Other}
 
@@ -42,8 +42,9 @@ public class AIProjectileWeaponAction : AIAction
 
     private void TryUseWeapon()
     {
-        if (projectileWeapon.ReadyToFire() && !isFiring)
+        if (!isFiring)
         {
+            //We don't need to check if weapon is ready to fire or not with the function ReadyToFire(), since this is an AI
             switch (firingBehaviour)
             {
                 case (FiringBehaviour.Burst):
