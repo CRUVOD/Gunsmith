@@ -361,69 +361,15 @@ public class Player : Character
     {
         if (Input.GetKeyDown(KeyCode.Alpha1))
         {
-            if (weaponsInLoadout[0] == null)
-            {
-                return;
-            }
-
-            if (currentWeapon == weaponsInLoadout[0])
-            {
-                return;
-            }
-            else
-            {
-                currentWeapon.OnDequip();
-                currentWeapon.weaponSprite.SetActive(false);
-                weaponsInLoadout[0].weaponSprite.SetActive(true);
-                currentWeapon = weaponsInLoadout[0];
-                currentWeapon.OnEquip();
-                //Update UI to reflect change
-                currentWeapon.UpdateUI();
-            }
+            SwitchWeapon(0);
         }
         else if (Input.GetKeyDown(KeyCode.Alpha2))
         {
-            if (weaponsInLoadout[1] == null)
-            {
-                return;
-            }
-
-            if (currentWeapon == weaponsInLoadout[1])
-            {
-                return;
-            }
-            else
-            {
-                currentWeapon.OnDequip();
-                currentWeapon.weaponSprite.SetActive(false);
-                weaponsInLoadout[1].weaponSprite.SetActive(true);
-                currentWeapon = weaponsInLoadout[1];
-                currentWeapon.OnEquip();
-                //Update UI to reflect change
-                currentWeapon.UpdateUI();
-            }
+            SwitchWeapon(1);
         }
         else if (Input.GetKeyDown(KeyCode.Alpha3))
         {
-            if (weaponsInLoadout.Count < 3)
-            {
-                return;
-            }
-
-            if (currentWeapon == weaponsInLoadout[2])
-            {
-                return;
-            }
-            else
-            {
-                currentWeapon.OnDequip();
-                currentWeapon.weaponSprite.SetActive(false);
-                weaponsInLoadout[2].weaponSprite.SetActive(true);
-                currentWeapon = weaponsInLoadout[2];
-                currentWeapon.OnEquip();
-                //Update UI to reflect change
-                currentWeapon.UpdateUI();
-            }
+            SwitchWeapon(2);
         }
     }
 
@@ -578,6 +524,47 @@ public class Player : Character
         moveSpeed = prevMoveSpeed;
         Invulnerable = false;
         MovementState = CharacterStates.MovementStates.Idle;
+    }
+
+    /// <summary>
+    /// Switches currently equipped weapon to the one in the weapon slot
+    /// </summary>
+    /// <param name="weaponSlot"></param>
+    private void SwitchWeapon(int weaponSlot)
+    {
+        if (weaponSlot >= weaponsInLoadout.Count || weaponsInLoadout[weaponSlot] == null)
+        {
+            return;
+        }
+        else if (currentWeapon == weaponsInLoadout[weaponSlot])
+        {
+            return;
+        }
+        else
+        {
+            if (currentWeapon != null)
+            {
+                currentWeapon.OnDequip();
+                currentWeapon.weaponSprite.SetActive(false);
+            }
+            weaponsInLoadout[weaponSlot].weaponSprite.SetActive(true);
+            currentWeapon = weaponsInLoadout[weaponSlot];
+            currentWeapon.OnEquip();
+            //Update UI to reflect change
+            currentWeapon.UpdateUI();
+        }
+    }
+
+    /// <summary>
+    /// Adds a weapon to the loadout and switches to it
+    /// </summary>
+    /// <param name="weaponPrefab"></param>
+    public void AddWeaponToLoadout(Weapon weaponPrefab)
+    {
+        Weapon weapon = Instantiate<Weapon>(weaponPrefab, weaponEquipPoint);
+        weapon.User = CharacterTypes.Player;
+        weaponsInLoadout.Add(weapon);
+        SwitchWeapon(weaponsInLoadout.Count-1);
     }
 
     public void UpdateLoadout(List<Weapon> newLoadout)
