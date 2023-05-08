@@ -7133,6 +7133,7 @@ Transform:
   - {fileID: 832678259}
   - {fileID: 1759551508}
   - {fileID: 1066290547}
+  - {fileID: 1271745020}
   m_Father: {fileID: 1419343425}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -9732,6 +9733,77 @@ Camera:
   m_OcclusionCulling: 0
   m_StereoConvergence: 10
   m_StereoSeparation: 0.022
+--- !u!1 &1271745019
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1271745020}
+  - component: {fileID: 1271745022}
+  - component: {fileID: 1271745021}
+  m_Layer: 0
+  m_Name: First Enemy Death
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1271745020
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1271745019}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 877060263}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1271745021
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1271745019}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9b342ebaea271d24f8b3bd943fc6202c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemy: {fileID: 770053744772968974}
+  dialogueTrigger: {fileID: 1271745022}
+  delayBeforeDialogueTrigger: 1
+--- !u!114 &1271745022
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1271745019}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7bcdff0a011a66f43b89c5e20e850938, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dialogue:
+    names:
+    - '{{PlayerName}}'
+    potraits:
+    - {fileID: -1833776957, guid: 42841fb1fef8c39499f46847eb14ba04, type: 3}
+    sentences:
+    - voice: 0
+      content: ...
+    - voice: 0
+      content: Where did this gun come from?
+  hasSubsequentDialogue: 0
 --- !u!1 &1285492830
 GameObject:
   m_ObjectHideFlags: 0
