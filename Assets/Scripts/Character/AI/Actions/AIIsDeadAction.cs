@@ -12,7 +12,10 @@ public class AIIsDeadAction : AIAction
     {
         //Disable AI behaviours
         core.CoreActive = false;
-        ag.enabled = false;
+        if (ag != null)
+        {
+            ag.enabled = false;
+        }
     }
 
     public override void PerformAction()

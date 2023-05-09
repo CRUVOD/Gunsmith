@@ -5,11 +5,6 @@ using UnityEngine.Events;
 
 public class HitScanWeapon : Weapon
 {
-    [SerializeField]
-    protected TrailRenderer HitScanTrail;
-    [SerializeField]
-    //the impact particle system to play on hit
-    protected ParticleSystem impactParticleSystem;
     //how far the raycast check travels for
     public float rayTravelDistance;
 
@@ -29,7 +24,7 @@ public class HitScanWeapon : Weapon
     [HideInInspector]
     public bool inReload;
 
-    [Header("Basic Properties, these can be set by the weapon instead too")]
+    [Header("Basic Properties")]
     [Tooltip("The min amount of health to remove from the player's health")]
     public int MinDamageCaused = 10;
     //The max amount of health to remove from the player's health

@@ -7,7 +7,7 @@ using UnityEngine;
 /// </summary>
 public abstract class AIDecision : MonoBehaviour
 {
-    /// Decide will be performed every frame while the Brain is in a state this Decision is in. Should return true or false, which will then determine the transition's outcome.
+    /// Decide will be performed every frame while the core is in a state this Decision is in. Should return true or false, which will then determine the transition's outcome.
     public abstract bool Decide();
 
     public string Label;

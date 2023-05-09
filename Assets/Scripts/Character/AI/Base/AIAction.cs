@@ -49,7 +49,7 @@ public abstract class AIAction : MonoBehaviour
     }
 
     /// <summary>
-    /// Describes what happens when the brain enters the state this action is in. Meant to be overridden.
+    /// Describes what happens when the core enters the state this action is in. Meant to be overridden.
     /// </summary>
     public virtual void OnEnterState()
     {
@@ -57,7 +57,7 @@ public abstract class AIAction : MonoBehaviour
     }
 
     /// <summary>
-    /// Describes what happens when the brain exits the state this action is in. Meant to be overridden.
+    /// Describes what happens when the core exits the state this action is in. Meant to be overridden.
     /// </summary>
     public virtual void OnExitState()
     {

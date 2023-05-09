@@ -6,6 +6,11 @@ using UnityEngine;
 public class SniperRifle : HitScanWeapon
 {
     [Header("Sniper Rifle")]
+    [SerializeField]
+    protected TrailRenderer HitScanTrail;
+    [SerializeField]
+    //the impact particle system to play on hit
+    protected ParticleSystem impactParticleSystem;
 
     public FeedbackPlayer weaponUseFeedback;
     public FeedbackPlayer weaponBoltPullFeedback;

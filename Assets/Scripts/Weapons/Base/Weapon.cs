@@ -307,17 +307,17 @@ public class Weapon : MonoBehaviour, ExtendedEventListener<GameEvent>
 
     public Vector2 PlayerDirectionVector2()
     {
-        Vector3 direction;
-        Vector2 playerPos = LevelManager.instance.player.transform.position;
-        if ((playerPos - (Vector2)firePoint.position).magnitude < 3)
+        Vector2 direction;
+        Vector3 playerPos = LevelManager.instance.player.transform.position;
+        if ((playerPos - firePoint.position).magnitude < 3)
         {
-            direction = (playerPos - (Vector2)transform.position).normalized;
+            direction = (playerPos - transform.position);
         }
         else
         {
-            direction = (playerPos - (Vector2)firePoint.position).normalized;
+            direction = (playerPos - firePoint.position);
         }
-        return new Vector2(direction.x, direction.y).normalized;
+        return direction.normalized;
     }
 
     public float PlayerDirectionFloat()

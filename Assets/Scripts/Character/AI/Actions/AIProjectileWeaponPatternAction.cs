@@ -69,4 +69,12 @@ public class AIProjectileWeaponPatternAction : AIAction
         isFiring = false;
         timeBetweenFiringTimer = timeBetweenFiring;
     }
+
+    public override void OnExitState()
+    {
+        base.OnExitState();
+        projectileWeapon.StopWeapon();
+        StopAllCoroutines();
+        isFiring = false;
+    }
 }

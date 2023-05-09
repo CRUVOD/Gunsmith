@@ -884,17 +884,49 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 5541150388792684300}
     m_Modifications:
+    - target: {fileID: 1341584464747747895, guid: 1b82910e650c79648a98afbbc14b3aca, type: 3}
+      propertyPath: m_Layer
+      value: 19
+      objectReference: {fileID: 0}
     - target: {fileID: 1897519526702675867, guid: 1b82910e650c79648a98afbbc14b3aca, type: 3}
       propertyPath: projectileSpeed
       value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 2427206248716920191, guid: 1b82910e650c79648a98afbbc14b3aca, type: 3}
+      propertyPath: m_Layer
+      value: 19
+      objectReference: {fileID: 0}
+    - target: {fileID: 2427206249897550061, guid: 1b82910e650c79648a98afbbc14b3aca, type: 3}
+      propertyPath: m_Layer
+      value: 19
+      objectReference: {fileID: 0}
+    - target: {fileID: 4524439418180828812, guid: 1b82910e650c79648a98afbbc14b3aca, type: 3}
+      propertyPath: m_Layer
+      value: 19
+      objectReference: {fileID: 0}
+    - target: {fileID: 6083976591665205192, guid: 1b82910e650c79648a98afbbc14b3aca, type: 3}
+      propertyPath: m_Layer
+      value: 19
       objectReference: {fileID: 0}
     - target: {fileID: 6603175003631845167, guid: 1b82910e650c79648a98afbbc14b3aca, type: 3}
       propertyPath: Feedbacks.Array.data[0]
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 7550550268970804112, guid: 1b82910e650c79648a98afbbc14b3aca, type: 3}
+      propertyPath: m_Layer
+      value: 19
+      objectReference: {fileID: 0}
+    - target: {fileID: 7969383173641002314, guid: 1b82910e650c79648a98afbbc14b3aca, type: 3}
+      propertyPath: m_Layer
+      value: 19
+      objectReference: {fileID: 0}
     - target: {fileID: 7969383174259327702, guid: 1b82910e650c79648a98afbbc14b3aca, type: 3}
       propertyPath: m_Name
       value: NinjaStar
+      objectReference: {fileID: 0}
+    - target: {fileID: 7969383174259327702, guid: 1b82910e650c79648a98afbbc14b3aca, type: 3}
+      propertyPath: m_Layer
+      value: 19
       objectReference: {fileID: 0}
     - target: {fileID: 7969383174259327703, guid: 1b82910e650c79648a98afbbc14b3aca, type: 3}
       propertyPath: m_RootOrder

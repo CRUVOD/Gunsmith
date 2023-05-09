@@ -246,7 +246,7 @@ public class ProjectileWeapon : Weapon
             }
 
             //Calls to play feedback
-            weaponUseFeedback.PlayFeedbacks();
+            weaponUseFeedback?.PlayFeedbacks();
 
             return true;
         }

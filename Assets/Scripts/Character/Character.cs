@@ -334,7 +334,7 @@ public class Character : MonoBehaviour, IDamageable
         }
 
         //Do knockback
-        Impact(rb.velocity.normalized, force);
+        Impact(direciton, force);
 
         // we trigger a damage taken event
         //MMDamageTakenEvent.Trigger(_character, instigator, CurrentHealth, damage, previousHealth);

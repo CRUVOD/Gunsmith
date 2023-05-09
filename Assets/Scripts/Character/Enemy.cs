@@ -20,7 +20,7 @@ public class Enemy : Character
     private Player player;
 
     [Header("Death")]
-    //How will the body stay in the scene till destroy
+    //How will the body stay in the scene till destroy, if it is set to less than 0, we don't destroy the body
     public float timeTillBodyDisappear;
 
     [Header("Stun")]
@@ -54,8 +54,11 @@ public class Enemy : Character
         base.Start();
         SetHealth(InitialHealth);
         ConditionState = CharacterStates.CharacterConditions.Normal;
-        ag.updateRotation = false;
-        ag.updateUpAxis = false;
+        if (ag != null)
+        {
+            ag.updateRotation = false;
+            ag.updateUpAxis = false;
+        }
         player = LevelManager.instance.player;
     }
 
@@ -201,7 +204,10 @@ public class Enemy : Character
         SetHealth(0);
         DamageDisabled();
 
-        Destroy(this.gameObject, timeTillBodyDisappear);
+        if (timeTillBodyDisappear >= 0)
+        {
+            Destroy(this.gameObject, timeTillBodyDisappear);
+        }
     }
 
     /// <summary>
