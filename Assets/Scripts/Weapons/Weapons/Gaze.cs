@@ -9,15 +9,15 @@ using UnityEngine;
 public class Gaze : HitScanWeapon
 {
     [Header("Gaze")]
-    //The icon that will show for the player to know that a gaze check is coming
-    public GameObject gazeIcon;
+    //The indicator that will show for the player to know that a gaze check is coming
+    public GameObject gazeIndicator;
     //Time in seconds after which Use() is called, the gaze check is activated
     public float gazeDelay;
 
     protected override void Start()
     {
         base.Start();
-        gazeIcon.SetActive(false);
+        gazeIndicator.SetActive(false);
         ToggleWeaponRotation(false);
     }
 
@@ -38,9 +38,9 @@ public class Gaze : HitScanWeapon
 
     private IEnumerator GazeAttack()
     {
-        gazeIcon.SetActive(true);
+        gazeIndicator.SetActive(true);
         yield return new WaitForSeconds(gazeDelay);
-        gazeIcon.SetActive(false);
+        gazeIndicator.SetActive(false);
 
         RaycastHit2D hit;
 
@@ -60,6 +60,7 @@ public class Gaze : HitScanWeapon
     public override void StopWeapon()
     {
         StopAllCoroutines();
+        gazeIndicator.SetActive(false);
     }
 
     /// <summary>
@@ -75,7 +76,6 @@ public class Gaze : HitScanWeapon
 
         Vector2 playerDirection = PlayerDirectionVector2();
         //Apply knockback/impact force on collided character
-        DebugText.instance.SetText(playerDirection.ToString());
         damageable.Damage(randomDamage, gameObject, InvincibilityDuration, playerDirection, impactForce);
     }
 }

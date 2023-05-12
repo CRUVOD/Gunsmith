@@ -15,6 +15,8 @@ public class Enemy : Character
     public NavMeshAgent ag;
     public HealthBar enemyHealthBar;
     public Weapon currentWeapon;
+    //bool that determines if we also hide the enemy sprite if inactive
+    public bool HideEnemySpriteWhenInactive;
 
     //player in this script should only be used for minimal things, majority of the functions should be handled by other scripts
     private Player player;
@@ -114,7 +116,7 @@ public class Enemy : Character
 
     protected override void HandleFacing()
     {
-        if (forceFacing)
+        if (forceFacing )
         {
             return;
         }
@@ -308,6 +310,31 @@ public class Enemy : Character
     }
 
     #endregion
+
+    /// <summary>
+    /// Pauses/hides/shows the enemy logic when the player is not here yet
+    /// </summary>
+    public void ActivateEnemy(bool state)
+    {
+        if (!state)
+        {
+            //Enemy is inactive
+            Invulnerable = true;
+            core.CoreActive = false;
+            if (HideEnemySpriteWhenInactive)
+            {
+                SpriteGameObject.SetActive(false);
+            }
+
+        }
+        else
+        {
+            //Enemy is active
+            Invulnerable = false;
+            core.CoreActive = true;
+            SpriteGameObject.SetActive(true);
+        }
+    }
 
     /// <summary>
     /// Forces the enemy to face a specific direciton, direction true is right, false is left

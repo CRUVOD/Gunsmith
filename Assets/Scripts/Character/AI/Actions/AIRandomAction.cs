@@ -72,6 +72,19 @@ public class AIRandomAction : AIAction
         base.OnExitState();
         currentAction.OnExitState();
     }
+
+    /// <summary>
+    /// Returns the label of the currently selected aciton
+    /// </summary>
+    /// <returns></returns>
+    public string GetSelectedActionLabel()
+    {
+        if (currentAction != null)
+        {
+            return currentAction.Label;
+        }
+        return "NoAction";
+    }
 }
 
 /// <summary>

@@ -67,7 +67,7 @@ public class Room : MonoBehaviour
     {
         for (int i = 0; i < enemiesInRoom.Count; i++)
         {
-            enemiesInRoom[i].gameObject.SetActive(false);
+            enemiesInRoom[i].ActivateEnemy(false);
         }
 
         for (int i = 0; i < spawnersInRoom.Count; i++)
@@ -164,7 +164,7 @@ public class Room : MonoBehaviour
             LevelManager.instance.ActivateDoors(true);
             for (int i = 0; i < enemiesInRoom.Count; i++)
             {
-                enemiesInRoom[i].gameObject.SetActive(true);
+                enemiesInRoom[i].ActivateEnemy(true);
             }
 
             for (int i = 0; i < spawnersInRoom.Count; i++)
