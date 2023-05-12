@@ -331,7 +331,7 @@ public class Enemy : Character
         {
             //Enemy is active
             Invulnerable = false;
-            core.CoreActive = true;
+            core.ResetAICore();
             SpriteGameObject.SetActive(true);
         }
     }
