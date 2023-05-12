@@ -314,7 +314,7 @@ public class Enemy : Character
     /// <summary>
     /// Pauses/hides/shows the enemy logic when the player is not here yet
     /// </summary>
-    public void ActivateEnemy(bool state)
+    public virtual void ActivateEnemy(bool state)
     {
         if (!state)
         {

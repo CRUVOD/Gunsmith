@@ -29,6 +29,7 @@ public class UIManager : MonoBehaviour
     [Header("UIGroups")]
     public GameObject WeaponUI;
     public GameObject HealthUI;
+    public GameObject BossUI;
 
     [Header("General Weapon UI")]
     public TextMeshProUGUI weaponTypeText;
@@ -65,6 +66,7 @@ public class UIManager : MonoBehaviour
         if (PauseScreen != null)
         {
             PauseScreen.SetActive(state);
+            ToggleInGameUI(!state);
             EventSystem.current.sendNavigationEvents = state;
         }
     }
@@ -78,6 +80,7 @@ public class UIManager : MonoBehaviour
         if (DeathScreen != null)
         {
             DeathScreen.SetActive(state);
+            ToggleInGameUI(!state);
             EventSystem.current.sendNavigationEvents = state;
         }
     }
@@ -91,6 +94,7 @@ public class UIManager : MonoBehaviour
         if (VictoryScreen != null)
         {
             VictoryScreen.SetActive(state);
+            ToggleInGameUI(!state);
             EventSystem.current.sendNavigationEvents = state;
         }
     }
@@ -101,16 +105,9 @@ public class UIManager : MonoBehaviour
     /// <param name="state"></param>
     public void ToggleInGameUI(bool state)
     {
-        if (state)
-        {
-            WeaponUI.SetActive(true);
-            HealthUI.SetActive(true);
-        }
-        else
-        {
-            WeaponUI.SetActive(false);
-            HealthUI.SetActive(false);
-        }
+        WeaponUI.SetActive(state);
+        HealthUI.SetActive(state);
+        BossUI.SetActive(state);
     }
 
     /// <summary>
