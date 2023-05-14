@@ -7,6 +7,7 @@ public class Player : Character
 {
     [Header("Player Stuff")]
     public HealthBar playerHealthBar;
+    public StaminaBar playerStaminaBar;
     public ParticleSystem movingParticles;
     bool ignoreInput = false;
     [Header("Weapons")]
@@ -17,12 +18,20 @@ public class Player : Character
     public Transform weaponEquipPoint;
 
     [Header("Dodge")]
+    public float maxStamina;
+    [HideInInspector]
+    public float currentStamina;
+    public float staminaRecoveryDelay;
+    public float staminaRecoveryRate;
+    private float staminaRecoveryTimer;
     //If dodge is currently available
     protected bool dodgeAvailable;
     //How long each dodge/invuln duration last
     public float dodgeTime;
     //Time between dodge
     public float dodgeCoolDown;
+    //Stamina cost each dodge
+    public float dodgeStaminaCost;
     float dodgeCoolDownTimer;
 
     [Header("Audio")]
@@ -58,6 +67,8 @@ public class Player : Character
         //Initialise dodge to be true
         dodgeAvailable = true;
         movingParticles.Stop();
+        staminaRecoveryTimer = staminaRecoveryDelay;
+        currentStamina = maxStamina;
         if (weaponsInLoadout.Count > 0)
         {
             //Default selected weapon is the weapon at index 0
@@ -73,7 +84,6 @@ public class Player : Character
             }
             currentWeapon.UpdateUI();
         }
-
     }
 
     protected override void Update()
@@ -95,6 +105,7 @@ public class Player : Character
                 {
                     HandleInteraction();
                 }
+                HandleStaminaRecharge();
             }
             HandleParticlesAndSound();
             HandleAnimators();
@@ -180,6 +191,12 @@ public class Player : Character
         velocity.x = Mathf.SmoothDamp(velocity.x, targetVelocity.x, ref velocityXSmoothing, accelerationTimeGrounded);
         velocity.y = Mathf.SmoothDamp(velocity.y, targetVelocity.y, ref velocityYSmoothing, accelerationTimeGrounded);
         
+        if (float.IsNaN(velocity.x) || float.IsNaN(velocity.y) || float.IsNaN(velocity.z))
+        {
+            velocity = Vector3.zero;
+            Debug.Log("Velocity has NaN");
+        }
+
         velocity = ApplyImpact(velocity);
 
         rb.velocity = velocity;
@@ -237,12 +254,13 @@ public class Player : Character
 
     protected override void HandleDodge()
     {
-        if (Input.GetKeyDown(KeyCode.Space) && dodgeAvailable)
+        if (Input.GetKeyDown(KeyCode.Space) && dodgeAvailable && currentStamina > 0)
         {
             //Performing dodge
             StartCoroutine(Dodge());
             dodgeAvailable = false;
             dodgeCoolDownTimer = dodgeCoolDown;
+            UseStamina(dodgeStaminaCost);
         }
 
         //Count down dodge cooldown
@@ -257,7 +275,7 @@ public class Player : Character
     }
 
     // Adds to base function to update healthbar
-    public override void SetHealth(int newValue)
+    public override void SetHealth(float newValue)
     {
         base.SetHealth(newValue);
         playerHealthBar.UpdateBar(newValue, 0f, InitialHealth, true);
@@ -335,7 +353,7 @@ public class Player : Character
             // Start playing the moving sound if it hasn't already
             if (moveSoundAudioSource == null)
             {
-                moveSoundAudioSource = AudioManagerPlaySoundEvent.Trigger(moveSound, AudioManager.AudioManagerTracks.Sfx, this.transform.position, true, 0.6f);
+                moveSoundAudioSource = AudioManagerPlaySoundEvent.Trigger(moveSound, AudioManager.AudioManagerTracks.Sfx, this.transform.position, true, 1.4f);
             }
         }
         else
@@ -524,6 +542,36 @@ public class Player : Character
         moveSpeed = prevMoveSpeed;
         Invulnerable = false;
         MovementState = CharacterStates.MovementStates.Idle;
+    }
+
+    /// <summary>
+    /// Handles stamina recharge
+    /// </summary>
+    private void HandleStaminaRecharge()
+    {
+        playerStaminaBar.SetStaminaBar(currentStamina / maxStamina);
+        if (staminaRecoveryTimer > 0)
+        {
+            //Count down stamina recovery timer
+            staminaRecoveryTimer -= Time.deltaTime;
+        }
+        else
+        {
+            currentStamina = Math.Clamp(currentStamina + staminaRecoveryRate * Time.deltaTime, 0, maxStamina);
+        }
+    }
+
+    /// <summary>
+    /// Use a certain amount of stamina if it is above 0, and resets the timer to recharge
+    /// </summary>
+    /// <param name="amount"></param>
+    private void UseStamina(float amount)
+    {
+        if (currentStamina > 0)
+        {
+            currentStamina = Math.Clamp(currentStamina - amount, 0, maxStamina);
+        }
+        staminaRecoveryTimer = staminaRecoveryDelay;
     }
 
     /// <summary>

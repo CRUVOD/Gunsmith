@@ -5,7 +5,9 @@ using UnityEngine;
 public class LevelEnd : MonoBehaviour
 {
     [Header("Level And Room")]
+    [HideInInspector]
     public BoxCollider2D RoomSize;
+    [HideInInspector]
     public LevelConnection[] connections;
     public RoomPlayerDetector playerDetector;
 

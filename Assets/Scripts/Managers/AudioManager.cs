@@ -12,6 +12,11 @@ public class AudioManager : MonoBehaviour, ExtendedEventListener<AudioManagerSou
     /// the possible ways to manage a track
     public enum AudioManagerTracks { Sfx, Music, UI, Master, Other }
 
+    [Header("AudioMixerGroups")]
+    public AudioMixerGroup sfxMixerGroup;
+    public AudioMixerGroup musicMixerGroup;
+    public AudioMixerGroup masterMixerGroup;
+
     [Header("Pool")]
     /// the size of the AudioSource pool, a reserve of ready-to-use sources that will get recycled. Should be approximately equal to the maximum amount of sounds that you expect to be playing at once 
     [Tooltip("the size of the AudioSource pool, a reserve of ready-to-use sources that will get recycled. Should be approximately equal to the maximum amount of sounds that you expect to be playing at once")]
@@ -28,18 +33,25 @@ public class AudioManager : MonoBehaviour, ExtendedEventListener<AudioManagerSou
 
     void Awake()
     {
-        if (instance != null && instance != this)
-        {
-            Destroy(gameObject);
-        }
-        else
+        if (instance == null)
         {
             instance = this;
         }
-
-        DontDestroyOnLoad(gameObject);
+        else
+        {
+            Destroy(instance.gameObject);
+            instance = this;
+            return;
+        }
 
         InitialiseAudioManager();
+        DontDestroyOnLoad(this);
+    }
+
+    private void Start()
+    {
+        instance = this;
+        Debug.Log(instance);
     }
 
     /// <summary>
@@ -212,6 +224,7 @@ public class AudioManager : MonoBehaviour, ExtendedEventListener<AudioManagerSou
         audioSource.minDistance = minDistance;
         audioSource.maxDistance = maxDistance;
         audioSource.time = playbackTime;
+        audioSource.volume = volume;
 
         // track and volume ---------------------------------------------------------------------------------
 
@@ -235,11 +248,21 @@ public class AudioManager : MonoBehaviour, ExtendedEventListener<AudioManagerSou
         //    }
         //}
         if (audioGroup) { audioSource.outputAudioMixerGroup = audioGroup; }
-        audioSource.volume = volume;
+        switch (AudioManagerTrack)
+        {
+            case AudioManagerTracks.Master:
+                audioSource.outputAudioMixerGroup = masterMixerGroup;
+                break;
+            case AudioManagerTracks.Music:
+                audioSource.outputAudioMixerGroup = musicMixerGroup;
+                break;
+            case AudioManagerTracks.Sfx:
+                audioSource.outputAudioMixerGroup = sfxMixerGroup;
+                break;
+        }
 
         // we start playing the sound
         audioSource.Play();
-
         // we destroy the host after the clip has played if it was a one time AS.
         if (!loop && !recycleAudioSource)
         {
@@ -462,7 +485,7 @@ public class AudioManager : MonoBehaviour, ExtendedEventListener<AudioManagerSou
     public virtual AudioSource OnSfxEvent(AudioClip clipToPlay, AudioMixerGroup audioGroup = null, float volume = 1f, float pitch = 1f)
     {
         AudioManagerOptions options = AudioManagerOptions.Default;
-        options.Location = this.transform.position;
+        options.Location = transform.position;
         options.AudioGroup = audioGroup;
         options.Volume = volume;
         options.Pitch = pitch;
@@ -486,4 +509,9 @@ public class AudioManager : MonoBehaviour, ExtendedEventListener<AudioManagerSou
     }
 
     #endregion
+
+    private void OnDestroy()
+    {
+        Debug.Log(StackTraceUtility.ExtractStackTrace());
+    }
 }

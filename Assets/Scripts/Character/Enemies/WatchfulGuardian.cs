@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 /// <summary>
-/// Simple script for the watchful guardian enemy to hook up with its animations correctly
+/// Simple script for the watchful guardian boss enemy to hook up with its animations correctly
 /// </summary>
 public class WatchfulGuardian : Enemy
 {
@@ -18,6 +18,7 @@ public class WatchfulGuardian : Enemy
 
     protected override void Start()
     {
+        enemyHealthBar = UIManager.instance.BossUI.GetHealthBar();
         base.Start();
         //Find the attack state, and have a reference to the attack action
         for (int i = 0; i < core.States.Count; i++)
@@ -56,5 +57,31 @@ public class WatchfulGuardian : Enemy
 
         AnimatorExtensions.UpdateAnimatorBool(Animator, MeleeAttackAnimParametre, inMelee, animatorParametres, RunAnimatorSanityChecks);
         AnimatorExtensions.UpdateAnimatorBool(Animator, GazeAttackAnimParametre, inGaze, animatorParametres, RunAnimatorSanityChecks);
+    }
+
+    /// <summary>
+    /// Slight override, we also call to the Boss UI component to show
+    /// </summary>
+    /// <param name="state"></param>
+    public override void ActivateEnemy(bool state)
+    {
+        if (!state)
+        {
+            //Enemy is inactive
+            Invulnerable = true;
+            core.CoreActive = false;
+            if (HideEnemySpriteWhenInactive)
+            {
+                SpriteGameObject.SetActive(false);
+            }
+        }
+        else
+        {
+            //Enemy is active
+            Invulnerable = false;
+            core.ResetAICore();
+            SpriteGameObject.SetActive(true);
+            UIManager.instance.BossUI.Show(this, "Watchful Guardian");
+        }
     }
 }

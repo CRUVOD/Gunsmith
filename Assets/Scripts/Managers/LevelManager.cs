@@ -22,9 +22,6 @@ public class LevelManager : MonoBehaviour, ExtendedEventListener<GameEvent>
     [Tooltip("the delay, in seconds, before displaying the death screen once the player is dead")]
     public float DelayBeforeDeathScreen = 1f;
 
-    [Header("Game Level Management")]
-    /// Doors to lock the player into each room
-    public GameObject Doors;
 
     void Awake()
     {
@@ -80,18 +77,6 @@ public class LevelManager : MonoBehaviour, ExtendedEventListener<GameEvent>
         UIManager.instance.SetDeathScreen(false);
         GameManager.instance.Reset();
         SceneManager.LoadScene("Pre-Built Level Test");
-    }
-
-    /// <summary>
-    /// To enable or disable the doors in the level
-    /// </summary>
-    /// <param name="active"></param>
-    public void ActivateDoors(bool active)
-    {
-        if (Doors != null)
-        {
-            Doors.SetActive(active);
-        }
     }
 
     #region Events

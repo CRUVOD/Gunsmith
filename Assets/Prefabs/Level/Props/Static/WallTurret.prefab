@@ -136,4 +136,5 @@ MonoBehaviour:
   maxDamage: 15
   projectileSpeed: 10
   projectileLifeTime: 3
-  fireRate: 20
+  timeBetweenShots: 1
+  timeOffSet: 0

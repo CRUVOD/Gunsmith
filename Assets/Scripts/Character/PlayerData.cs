@@ -14,7 +14,7 @@ public class PlayerData
     public PlayerData(Player player)
     {
         playerName = GetPlayerName();
-        initialHealth = player.InitialHealth;
+        initialHealth = (int) player.InitialHealth;
         weaponsInLoadout = GetWeapons(player.weaponsInLoadout);
         attachmentsInLoadout = GetWeaponAttachments(player.weaponsInLoadout);
     }

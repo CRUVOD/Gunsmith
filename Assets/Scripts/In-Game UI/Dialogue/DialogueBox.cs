@@ -6,6 +6,7 @@ using UnityEngine.Animations;
 using System.Text.RegularExpressions;
 using TMPro;
 using System;
+using UnityEngine.Audio;
 
 public class DialogueBox : MonoBehaviour
 {
@@ -14,6 +15,9 @@ public class DialogueBox : MonoBehaviour
     public TextMeshProUGUI contentText;
     [HideInInspector]
     public Animator animator;
+    [Header("Audio")]
+    public AudioClip dialogueBoxSFX;
+    public AudioMixerGroup targetAudioMixerGroup;
 
     private void Awake()
     {
@@ -80,10 +84,20 @@ public class DialogueBox : MonoBehaviour
     IEnumerator TypeContent(string content)
     {
         contentText.text = "";
+        //Play the sfx at the very start of each dialogue
+        SfxEvent.Trigger(dialogueBoxSFX, targetAudioMixerGroup, 0.65f);
         foreach (char letter in content.ToCharArray())
         {
             contentText.text += letter;
-            yield return null;
+
+            if (letter.ToString().Equals(" "))
+            {
+                //Then we play the sfx when there is a space character
+                SfxEvent.Trigger(dialogueBoxSFX, targetAudioMixerGroup, 0.65f);
+            }
+
+
+            yield return new WaitForSeconds(0.03f);
         }
     }
 }

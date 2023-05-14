@@ -88,8 +88,8 @@ MonoBehaviour:
   - {fileID: 8300000, guid: c362bfad4e2260d49bb067e318f77369, type: 3}
   PlayMethod: 0
   PoolSize: 10
-  MinVolume: 0.2
-  MaxVolume: 0.2
+  MinVolume: 0.5
+  MaxVolume: 0.5
   MinPitch: 1
   MaxPitch: 1
   SfxAudioMixerGroup: {fileID: 0}
@@ -178,6 +178,7 @@ MonoBehaviour:
   recoil: 0
   weaponDirection: {x: 0, y: 0}
   User: 1
+  weaponAttachmentSlots: []
   DamageArea: {fileID: 3909320620043832976}
   WeaponUsedFeedback: {fileID: 6613021165685650947}
   HitDamageableFeedback: {fileID: 0}

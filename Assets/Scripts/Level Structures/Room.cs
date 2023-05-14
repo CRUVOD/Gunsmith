@@ -9,11 +9,18 @@ using UnityEngine;
 public class Room : MonoBehaviour
 {
     [Header("Level And Room")]
+    [HideInInspector]
+    //Used for random level generation
     public BoxCollider2D RoomSize;
+    public Door[] doors;
+    [HideInInspector]
+    //Used for random level generation
     public LevelConnection[] connections;
     public RoomPlayerDetector playerDetector;
 
     [Header("Enemy Tracking")]
+    //Decide if the room should handle activating the enemies when player enters
+    public bool ManageEnemyActivation = true;
     //These two lists keep track of the spawners and enemies currently present in the room
     public List<Enemy> enemiesInRoom;
     public List<EnemySpawner> spawnersInRoom;
@@ -31,7 +38,7 @@ public class Room : MonoBehaviour
     [Tooltip("If total enemies in room equals or is lower than this number, start spawning enemies")]
     public int enemyCountThreshold;
 
-    bool playerIsInRoom;
+    bool roomActivated;
     bool spawnersStarted;
 
     private void Start()
@@ -53,7 +60,7 @@ public class Room : MonoBehaviour
         }
 
         timeTillSpawnTimer = timeTillSpawn;
-        playerIsInRoom = false;
+        roomActivated = false;
         spawnersStarted = false;
 
         WaitForPlayer();
@@ -65,14 +72,17 @@ public class Room : MonoBehaviour
     /// </summary>
     private void WaitForPlayer()
     {
-        for (int i = 0; i < enemiesInRoom.Count; i++)
+        if (ManageEnemyActivation)
         {
-            enemiesInRoom[i].ActivateEnemy(false);
-        }
+            for (int i = 0; i < enemiesInRoom.Count; i++)
+            {
+                enemiesInRoom[i].ActivateEnemy(false);
+            }
 
-        for (int i = 0; i < spawnersInRoom.Count; i++)
-        {
-            spawnersInRoom[i].gameObject.SetActive(false);
+            for (int i = 0; i < spawnersInRoom.Count; i++)
+            {
+                spawnersInRoom[i].gameObject.SetActive(false);
+            }
         }
     }
 
@@ -87,7 +97,7 @@ public class Room : MonoBehaviour
 
     private void HandleSpawners()
     {
-        if (!playerIsInRoom)
+        if (!roomActivated)
         {
             return;
         }
@@ -137,7 +147,10 @@ public class Room : MonoBehaviour
     {
         if (IsRoomClear())
         {
-            LevelManager.instance.ActivateDoors(false);
+            for (int i = 0; i < doors.Length; i++)
+            {
+                doors[i].Open();
+            }
         }
     }
 
@@ -156,12 +169,23 @@ public class Room : MonoBehaviour
 
     #region EventHandlers
 
+    /// <summary>
+    /// Activates the room if it hasn't been already when player enters
+    /// </summary>
     private void PlayerEnterHandler()
     {
-        playerIsInRoom = true;
-        if (!IsRoomClear())
+        if (roomActivated)
         {
-            LevelManager.instance.ActivateDoors(true);
+            return;
+        }
+
+        for (int i = 0; i < doors.Length; i++)
+        {
+            doors[i].Close();
+        }
+
+        if (!IsRoomClear() && ManageEnemyActivation)
+        {
             for (int i = 0; i < enemiesInRoom.Count; i++)
             {
                 enemiesInRoom[i].ActivateEnemy(true);
@@ -172,11 +196,12 @@ public class Room : MonoBehaviour
                 spawnersInRoom[i].gameObject.SetActive(true);
             }
         }
+        roomActivated = true;
     }
 
     private void PlayerExitHandler()
     {
-        playerIsInRoom = false;
+        //playerIsInRoom = false;
         //for (int i = 0; i < enemiesInRoom.Count; i++)
         //{
         //    enemiesInRoom[i].gameObject.SetActive(false);

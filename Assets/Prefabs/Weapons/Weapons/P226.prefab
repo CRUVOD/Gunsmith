@@ -5010,7 +5010,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Direction: 0
-  FeedbacksIntensity: 0.4
+  FeedbacksIntensity: 1
   Feedbacks:
   - {fileID: 2427206248716920189}
   PlayerTimescaleMode: 1
@@ -5049,8 +5049,8 @@ MonoBehaviour:
   RandomSfx: []
   PlayMethod: 0
   PoolSize: 10
-  MinVolume: 1
-  MaxVolume: 1
+  MinVolume: 0.6
+  MaxVolume: 0.6
   MinPitch: 1
   MaxPitch: 1
   SfxAudioMixerGroup: {fileID: -2787297698005042242, guid: 60e5df65664d0814f9078b7e410b8f52, type: 2}
@@ -5100,7 +5100,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Direction: 0
-  FeedbacksIntensity: 0.1
+  FeedbacksIntensity: 1
   Feedbacks:
   - {fileID: 2427206249897550059}
   PlayerTimescaleMode: 1
@@ -5139,8 +5139,8 @@ MonoBehaviour:
   RandomSfx: []
   PlayMethod: 0
   PoolSize: 10
-  MinVolume: 1
-  MaxVolume: 1
+  MinVolume: 0.4
+  MaxVolume: 0.4
   MinPitch: 1
   MaxPitch: 1
   SfxAudioMixerGroup: {fileID: -2787297698005042242, guid: 60e5df65664d0814f9078b7e410b8f52, type: 2}
@@ -5377,8 +5377,8 @@ MonoBehaviour:
   RandomSfx: []
   PlayMethod: 0
   PoolSize: 10
-  MinVolume: 0.5
-  MaxVolume: 0.5
+  MinVolume: 0.9
+  MaxVolume: 0.9
   MinPitch: 1
   MaxPitch: 1
   SfxAudioMixerGroup: {fileID: -2787297698005042242, guid: 60e5df65664d0814f9078b7e410b8f52, type: 2}
@@ -5630,21 +5630,21 @@ MonoBehaviour:
   - {fileID: 2244094297286268782}
   - {fileID: 7050173619791719405}
   projectile: {fileID: 5920787274300679215, guid: 75cbe9761da297f449d91a9d2700a540, type: 3}
-  minDamage: 15
-  maxDamage: 20
+  minDamage: 10
+  maxDamage: 15
   projectileSpeed: 25
   projectileLifeTime: 2
   baseSpread: 5
-  fireRate: 400
+  fireRate: 500
   isMagazineBased: 1
   magazineSize: 10
   reloadTime: 1.2
   currentAmmoInMagazine: 0
   inReload: 0
-  useCoolDownCircleUIBetweenShots: 0
   weaponUseFeedback: {fileID: 6603175003631845167}
   weaponReloadFeedback: {fileID: 2427206248716920188}
   weaponEmptyFeedback: {fileID: 2427206249897550056}
+  useCoolDownCircleUIBetweenShots: 0
 --- !u!1 &8916766451532011633
 GameObject:
   m_ObjectHideFlags: 0

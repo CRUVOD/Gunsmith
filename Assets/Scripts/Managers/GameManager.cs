@@ -151,8 +151,6 @@ public class GameManager : MonoBehaviour, ExtendedEventListener<GeneralEvent>, E
             instance = this;
         }
 
-        DontDestroyOnLoad(gameObject);
-
         PointsOfEntry = new List<PointsOfEntryStorage>();
     }
 
@@ -337,7 +335,7 @@ public class GameManager : MonoBehaviour, ExtendedEventListener<GeneralEvent>, E
     {
         UIManager.instance.SetDeathScreen(false);
         instance.Reset();
-        SceneManager.LoadScene("Pre-Built Level Test");
+        SceneManager.LoadScene("MainMenu");
     }
 
     /// <summary>

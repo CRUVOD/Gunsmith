@@ -55,9 +55,9 @@ public class Character : MonoBehaviour, IDamageable
     protected Vector3 impact;
 
     [Header("Health")]
-    public int InitialHealth;
+    public float InitialHealth;
     [HideInInspector]
-    public int CurrentHealth;
+    public float CurrentHealth;
 
     [Header("Damage")]
     //Invulnerable is like a status effect, immune to damage is permanent
@@ -237,7 +237,7 @@ public class Character : MonoBehaviour, IDamageable
     /// Sets the current health to the specified new value, and updates the health bar
     /// </summary>
     /// <param name="newValue"></param>
-    public virtual void SetHealth(int newValue)
+    public virtual void SetHealth(float newValue)
     {
         CurrentHealth = newValue;
         //UpdateHealthBar(false);
@@ -317,14 +317,12 @@ public class Character : MonoBehaviour, IDamageable
         }
 
         // we decrease the character's health by the damage
-        int previousHealth = CurrentHealth;
+        float previousHealth = CurrentHealth;
 
-        SetHealth(CurrentHealth - damage);
+        SetHealth(Mathf.Clamp(CurrentHealth - damage, 0, InitialHealth));
 
-        if (OnHit != null)
-        {
-            OnHit();
-        }
+        //Send delegates that we've been hit
+        OnHit?.Invoke();
 
         // we prevent the character from colliding with Projectiles, Player and Enemies
         if (invincibilityDuration > 0)

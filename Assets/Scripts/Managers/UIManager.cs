@@ -28,8 +28,8 @@ public class UIManager : MonoBehaviour
 
     [Header("UIGroups")]
     public GameObject WeaponUI;
-    public GameObject HealthUI;
-    public GameObject BossUI;
+    public GameObject PlayerStatUI;
+    public BossUI BossUI;
 
     [Header("General Weapon UI")]
     public TextMeshProUGUI weaponTypeText;
@@ -39,6 +39,9 @@ public class UIManager : MonoBehaviour
     [Header("Ballistic Weapon UI")]
     public GameObject ballisticWeaponUIGroup;
     public TextMeshProUGUI weaponAmmo;
+
+    [Header("Other")]
+    public HealthPotionUI potionUI;
 
     void Awake()
     {
@@ -53,8 +56,6 @@ public class UIManager : MonoBehaviour
             instance = this;
             return;
         }
-
-        DontDestroyOnLoad(gameObject);
     }
 
     /// <summary>
@@ -106,8 +107,8 @@ public class UIManager : MonoBehaviour
     public void ToggleInGameUI(bool state)
     {
         WeaponUI.SetActive(state);
-        HealthUI.SetActive(state);
-        BossUI.SetActive(state);
+        PlayerStatUI.SetActive(state);
+        BossUI.gameObject.SetActive(state);
     }
 
     /// <summary>

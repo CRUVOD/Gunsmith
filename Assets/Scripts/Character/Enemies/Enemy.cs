@@ -249,7 +249,7 @@ public class Enemy : Character
     }
 
     // Adds to base function to update healthbar
-    public override void SetHealth(int newValue)
+    public override void SetHealth(float newValue)
     {
         base.SetHealth(newValue);
         enemyHealthBar.UpdateBar(newValue, 0f, InitialHealth, true);

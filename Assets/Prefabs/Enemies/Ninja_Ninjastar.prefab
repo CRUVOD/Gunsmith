@@ -818,6 +818,7 @@ MonoBehaviour:
   ag: {fileID: 3308836380075843318}
   enemyHealthBar: {fileID: 3308836380075843316}
   currentWeapon: {fileID: 981882921845241798}
+  HideEnemySpriteWhenInactive: 0
   timeTillBodyDisappear: 2
   stunResistance: 50
   stunThreshold: 2.2
@@ -890,7 +891,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1897519526702675867, guid: 1b82910e650c79648a98afbbc14b3aca, type: 3}
       propertyPath: projectileSpeed
-      value: 7
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 2427206248716920191, guid: 1b82910e650c79648a98afbbc14b3aca, type: 3}
       propertyPath: m_Layer

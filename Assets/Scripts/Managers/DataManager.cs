@@ -23,7 +23,6 @@ public class DataManager : MonoBehaviour
             return;
         }
 
-        DontDestroyOnLoad(gameObject);
         Initialise();
     }
 

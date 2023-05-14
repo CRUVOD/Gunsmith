@@ -13,6 +13,8 @@ public class SpawnSet
 
 public class EnemySpawner : MonoBehaviour
 {
+    public Animator animator;
+
     public List<SpawnSet> spawnSets;
 
     protected Queue<Enemy> enemiesToSpawn;
@@ -85,6 +87,7 @@ public class EnemySpawner : MonoBehaviour
 
     public void StartSpawningEnemies()
     {
+        animator.SetBool("activated", true);
         if (!isSpawningEnemies && enemiesToSpawn.Count > 0)
         {
             StartCoroutine(SpawnEnemies());
@@ -108,7 +111,7 @@ public class EnemySpawner : MonoBehaviour
         {
             Enemy spawnedEnemy = Instantiate(enemiesToSpawn.Dequeue(), this.gameObject.transform.position, Quaternion.identity);
             //On spawn event
-            OnSpawn(spawnedEnemy);
+            OnSpawn?.Invoke(spawnedEnemy);
             yield return new WaitForSeconds(timeBetweenEachEnemySpawned);
         }
         isSpawningEnemies = false;
@@ -121,8 +124,9 @@ public class EnemySpawner : MonoBehaviour
 
     private void SpawningFinished()
     {
+        animator.SetBool("activated", false);
         //On finish event
-        OnFinish(this);
+        OnFinish?.Invoke(this);
         //Small delay before destroy to make sure stuff is properly exiting before disappearing
         Destroy(this.gameObject, .1f);
     }
