@@ -127,4 +127,10 @@ public class Crosshair : MonoBehaviour
         coolDownCircle.fillAmount = 0;
         inCoolDown = false;
     }
+
+    private void OnDestroy()
+    {
+        //Make sure to enable the cursor again when the crosshair is gone
+        Cursor.visible = true;
+    }
 }

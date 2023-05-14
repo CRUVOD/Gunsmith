@@ -45,7 +45,6 @@ public class AudioManager : MonoBehaviour, ExtendedEventListener<AudioManagerSou
         }
 
         InitialiseAudioManager();
-        DontDestroyOnLoad(this);
     }
 
     private void Start()
@@ -512,6 +511,8 @@ public class AudioManager : MonoBehaviour, ExtendedEventListener<AudioManagerSou
 
     private void OnDestroy()
     {
+        SfxEvent.Unregister(OnSfxEvent);
+        AudioManagerPlaySoundEvent.Unregister(OnAudioManagerPlaySoundEvent);
         Debug.Log(StackTraceUtility.ExtractStackTrace());
     }
 }

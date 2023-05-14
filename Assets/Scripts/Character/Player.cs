@@ -64,6 +64,7 @@ public class Player : Character
     protected override void Start()
     {
         base.Start();
+        moveSoundAudioSource = null;
         //Initialise dodge to be true
         dodgeAvailable = true;
         movingParticles.Stop();
