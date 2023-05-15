@@ -107,6 +107,7 @@ GameObject:
   - component: {fileID: 7676089339594767290}
   - component: {fileID: 7676089339594767294}
   - component: {fileID: 7676089339594767295}
+  - component: {fileID: 752081339}
   m_Layer: 10
   m_Name: Player
   m_TagString: Player
@@ -220,6 +221,7 @@ MonoBehaviour:
   dodgeCoolDown: 0.6
   dodgeStaminaCost: 25
   moveSound: {fileID: 8300000, guid: 6be235ab610d212438b4530cf1df2401, type: 3}
+  moveSoundID: 1842
   isFiring: 0
   isFiringThreshold: 0.7
   playerInput: {x: 0, y: 0}
@@ -322,6 +324,21 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &752081339
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7676089339594767289}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 17fb35398b76ac243b8477d0cac9a4d1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  potionsMaxAmount: 4
+  potionsInInventory: 0
+  potionHealAmount: 40
 --- !u!1 &7676089339671374196
 GameObject:
   m_ObjectHideFlags: 0

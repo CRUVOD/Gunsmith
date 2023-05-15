@@ -50,6 +50,10 @@ public class AudioPool
     public virtual IEnumerator AutoDisableAudioSource(float duration, AudioSource source, AudioClip clip, bool doNotAutoRecycleIfNotDonePlaying)
     {
         yield return ExtraCoroutines.WaitFor(duration);
+        if (source == null)
+        {
+            yield break;
+        }
         if (source.clip != clip)
         {
             yield break;

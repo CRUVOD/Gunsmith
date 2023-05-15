@@ -5630,8 +5630,8 @@ MonoBehaviour:
   - {fileID: 2244094297286268782}
   - {fileID: 7050173619791719405}
   projectile: {fileID: 5920787274300679215, guid: 75cbe9761da297f449d91a9d2700a540, type: 3}
-  minDamage: 10
-  maxDamage: 15
+  minDamage: 20
+  maxDamage: 21
   projectileSpeed: 25
   projectileLifeTime: 2
   baseSpread: 5

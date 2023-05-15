@@ -427,11 +427,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 7251221786005338764, guid: 597e4c9c0eb8adb4f9468a6389216e9d, type: 3}
   m_PrefabInstance: {fileID: 885071062}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &82086010 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 7676089339594767289, guid: b5db73a21d9e3ee4597919154e731be1, type: 3}
-  m_PrefabInstance: {fileID: 7676089338851402248}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &92903813 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1926622683068698398, guid: d6489e6ebb5e2b846a57631b85cfd071, type: 3}
@@ -1013,6 +1008,7 @@ Transform:
   - {fileID: 66609407}
   - {fileID: 973524809}
   - {fileID: 2139506397}
+  - {fileID: 1432772371}
   m_Father: {fileID: 1419343425}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -15353,7 +15349,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 7676089339594767290, guid: b5db73a21d9e3ee4597919154e731be1, type: 3}
   m_PrefabInstance: {fileID: 7676089338851402248}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 82086010}
+  m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f01c9f28b25e59741b76d59dadeb4a13, type: 3}
@@ -15369,21 +15365,6 @@ Animator:
   m_CorrespondingSourceObject: {fileID: 7676089339594767295, guid: b5db73a21d9e3ee4597919154e731be1, type: 3}
   m_PrefabInstance: {fileID: 7676089338851402248}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &752081339
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 82086010}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 17fb35398b76ac243b8477d0cac9a4d1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  potionsMaxAmount: 4
-  potionsInInventory: 0
-  potionHealAmount: 40
 --- !u!1001 &758261331
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -19056,7 +19037,7 @@ MonoBehaviour:
   - {fileID: 483901540}
   - {fileID: 665738953}
   spawnerMethod: 0
-  timeTillSpawn: 15
+  timeTillSpawn: 10
   enemyCountThreshold: 0
 --- !u!1 &1336501652
 GameObject:
@@ -19539,6 +19520,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1329833700}
     m_Modifications:
+    - target: {fileID: 1718628619671454718, guid: 080bdb0fd64729f4c97788e5aafc74f3, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 2.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1718628619671454718, guid: 080bdb0fd64729f4c97788e5aafc74f3, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 2.5
+      objectReference: {fileID: 0}
     - target: {fileID: 8511524072368034560, guid: 080bdb0fd64729f4c97788e5aafc74f3, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -19549,7 +19538,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8511524072368034560, guid: 080bdb0fd64729f4c97788e5aafc74f3, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.5
+      value: -0.84
       objectReference: {fileID: 0}
     - target: {fileID: 8511524072368034560, guid: 080bdb0fd64729f4c97788e5aafc74f3, type: 3}
       propertyPath: m_LocalPosition.z
@@ -19690,6 +19679,53 @@ Canvas:
   m_SortingLayerID: 0
   m_SortingOrder: 20
   m_TargetDisplay: 0
+--- !u!1 &1432772370
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1432772371}
+  - component: {fileID: 1432772372}
+  m_Layer: 0
+  m_Name: MusicChange3
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1432772371
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1432772370}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 204576777}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1432772372
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1432772370}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 419e127f2fb2bbb42b0d57087c1c390d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  music: {fileID: 8300000, guid: d2a808a29c788834f94a067a4a1f2fba, type: 3}
+  fadeDuration: 2
+  enemy: {fileID: 1628991383}
 --- !u!1 &1433810839
 GameObject:
   m_ObjectHideFlags: 0
@@ -81786,7 +81822,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2139506396}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 154.53, y: -6.05, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -82189,7 +82225,7 @@ MonoBehaviour:
     IntensityIntervalMax: 0
   Sfx: {fileID: 8300000, guid: 7fa89f594eb277042b663d1f51864f93, type: 3}
   RandomSfx: []
-  PlayMethod: 0
+  PlayMethod: 2
   PoolSize: 10
   MinVolume: 0.5
   MaxVolume: 0.5
@@ -82259,6 +82295,7 @@ MonoBehaviour:
   holeTestPoints:
   - {fileID: 3192658030667365297}
   - {fileID: 468581323675784181}
+  canBeKnockedBack: 1
   ImpactFalloff: 10
   InitialHealth: 100
   CurrentHealth: 0
@@ -83037,18 +83074,18 @@ MonoBehaviour:
     UseIntensityInterval: 0
     IntensityIntervalMin: 0
     IntensityIntervalMax: 0
-  Sfx: {fileID: 0}
+  Sfx: {fileID: 8300000, guid: 73b62a73edfa18342812e7c891904e97, type: 3}
   RandomSfx:
   - {fileID: 8300000, guid: c4fe2906b4101d946a6f4e3bcb52bff5, type: 3}
   - {fileID: 8300000, guid: 73b62a73edfa18342812e7c891904e97, type: 3}
   - {fileID: 8300000, guid: c362bfad4e2260d49bb067e318f77369, type: 3}
-  PlayMethod: 0
+  PlayMethod: 2
   PoolSize: 10
   MinVolume: 0.2
   MaxVolume: 0.2
   MinPitch: 1
   MaxPitch: 1
-  SfxAudioMixerGroup: {fileID: 0}
+  SfxAudioMixerGroup: {fileID: -2787297698005042242, guid: 60e5df65664d0814f9078b7e410b8f52, type: 2}
 --- !u!95 &7282541775955305523
 Animator:
   serializedVersion: 4
@@ -83222,9 +83259,21 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 752081339, guid: b5db73a21d9e3ee4597919154e731be1, type: 3}
+      propertyPath: potionHealAmount
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 752081339, guid: b5db73a21d9e3ee4597919154e731be1, type: 3}
+      propertyPath: potionsMaxAmount
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 7676089339594767289, guid: b5db73a21d9e3ee4597919154e731be1, type: 3}
       propertyPath: m_Name
       value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 7676089339594767290, guid: b5db73a21d9e3ee4597919154e731be1, type: 3}
+      propertyPath: InitialHealth
+      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 7676089339594767290, guid: b5db73a21d9e3ee4597919154e731be1, type: 3}
       propertyPath: playerHealthBar

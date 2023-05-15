@@ -918,6 +918,7 @@ MonoBehaviour:
   ConditionState: 0
   canFallDownHole: 0
   holeTestPoints: []
+  canBeKnockedBack: 0
   ImpactFalloff: 500
   InitialHealth: 1000
   CurrentHealth: 0

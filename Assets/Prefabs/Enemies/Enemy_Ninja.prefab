@@ -242,6 +242,9 @@ MonoBehaviour:
   InitializationMode: 0
   Label: 
   weapon: {fileID: 3390556306358927195}
+  AutoHideWeapon: 0
+  LimitUsePerStateEnter: 0
+  WeaponUsesPerStateEnter: 0
 --- !u!114 &3354574736632137709
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -579,6 +582,7 @@ MonoBehaviour:
   ag: {fileID: 770053745264193049}
   enemyHealthBar: {fileID: 770053745264193051}
   currentWeapon: {fileID: 3390556306358927195}
+  HideEnemySpriteWhenInactive: 0
   timeTillBodyDisappear: 2
   stunResistance: 50
   stunThreshold: 2.2
@@ -816,7 +820,7 @@ MonoBehaviour:
   Target: {fileID: 0}
   _lastKnownTargetPosition: {x: 0, y: 0, z: 0}
   CoreActive: 1
-  ResetCoreOnStart: 1
+  ResetCoreOnStart: 0
   ResetCoreOnEnable: 0
   ActionsFrequency: 0.1
   DecisionFrequency: 0

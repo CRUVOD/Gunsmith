@@ -81,18 +81,18 @@ MonoBehaviour:
     UseIntensityInterval: 0
     IntensityIntervalMin: 0
     IntensityIntervalMax: 0
-  Sfx: {fileID: 0}
+  Sfx: {fileID: 8300000, guid: 73b62a73edfa18342812e7c891904e97, type: 3}
   RandomSfx:
   - {fileID: 8300000, guid: c4fe2906b4101d946a6f4e3bcb52bff5, type: 3}
   - {fileID: 8300000, guid: 73b62a73edfa18342812e7c891904e97, type: 3}
   - {fileID: 8300000, guid: c362bfad4e2260d49bb067e318f77369, type: 3}
-  PlayMethod: 0
+  PlayMethod: 2
   PoolSize: 10
   MinVolume: 0.5
   MaxVolume: 0.5
   MinPitch: 1
   MaxPitch: 1
-  SfxAudioMixerGroup: {fileID: 0}
+  SfxAudioMixerGroup: {fileID: -2787297698005042242, guid: 60e5df65664d0814f9078b7e410b8f52, type: 2}
 --- !u!1 &1561966636243705939
 GameObject:
   m_ObjectHideFlags: 0

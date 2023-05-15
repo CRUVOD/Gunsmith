@@ -48,7 +48,8 @@ public class Character : MonoBehaviour, IDamageable
     //velocity of the character
     protected Vector3 velocity;
 
-    [Header("Impact")]    
+    [Header("Impact")]
+    public bool canBeKnockedBack = true;
     //the speed at which external forces get lerped to zero
     public float ImpactFalloff = 10f;
     //impact on the character movement, used for recoil

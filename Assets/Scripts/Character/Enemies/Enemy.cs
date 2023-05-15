@@ -243,7 +243,10 @@ public class Enemy : Character
         velocity.x = Mathf.SmoothDamp(velocity.x, targetVelocity.x, ref velocityXSmoothing, accelerationTimeGrounded);
         velocity.y = Mathf.SmoothDamp(velocity.y, targetVelocity.y, ref velocityYSmoothing, accelerationTimeGrounded);
 
-        velocity = ApplyImpact(velocity);
+        if (canBeKnockedBack)
+        {
+            velocity = ApplyImpact(velocity);
+        }
 
         rb.velocity = velocity;
     }

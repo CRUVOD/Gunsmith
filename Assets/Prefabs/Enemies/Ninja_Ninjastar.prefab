@@ -566,7 +566,7 @@ MonoBehaviour:
   Target: {fileID: 0}
   _lastKnownTargetPosition: {x: 0, y: 0, z: 0}
   CoreActive: 1
-  ResetCoreOnStart: 1
+  ResetCoreOnStart: 0
   ResetCoreOnEnable: 0
   ActionsFrequency: 0.1
   DecisionFrequency: 0

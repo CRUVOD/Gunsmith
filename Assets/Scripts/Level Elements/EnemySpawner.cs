@@ -112,6 +112,7 @@ public class EnemySpawner : MonoBehaviour
             Enemy spawnedEnemy = Instantiate(enemiesToSpawn.Dequeue(), this.gameObject.transform.position, Quaternion.identity);
             //On spawn event
             OnSpawn?.Invoke(spawnedEnemy);
+            spawnedEnemy.ActivateEnemy(true);
             yield return new WaitForSeconds(timeBetweenEachEnemySpawned);
         }
         isSpawningEnemies = false;

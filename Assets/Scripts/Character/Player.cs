@@ -36,6 +36,7 @@ public class Player : Character
 
     [Header("Audio")]
     public AudioClip moveSound;
+    public int moveSoundID;
 
     [HideInInspector]
     //If the chracter is firing a weapon
@@ -47,8 +48,6 @@ public class Player : Character
 
     [HideInInspector]
     public Vector2 playerInput;
-
-    protected AudioSource moveSoundAudioSource;
 
     //Additional animation parametres
     //If a weapons is being fired
@@ -64,7 +63,6 @@ public class Player : Character
     protected override void Start()
     {
         base.Start();
-        moveSoundAudioSource = null;
         //Initialise dodge to be true
         dodgeAvailable = true;
         movingParticles.Stop();
@@ -320,12 +318,7 @@ public class Player : Character
             movingParticles.Stop();
         }
         //Stop playing the moving sound if it hasn't already
-        if (moveSoundAudioSource != null)
-        {
-            AudioManagerSoundControlEvent.Trigger(AudioManagerSoundControlEventTypes.Free, 0, moveSoundAudioSource);
-            moveSoundAudioSource = null;
-        }
-
+        AudioManagerSoundControlEvent.Trigger(AudioManagerSoundControlEventTypes.Free, moveSoundID);
 
         //Freeze the character in place in case weird shit happens
         rb.velocity = Vector3.zero;
@@ -350,11 +343,19 @@ public class Player : Character
             {
                 movingParticles.Play();
             }
+            AudioManagerOptions audioManagerOptions = AudioManagerOptions.Default;
+            audioManagerOptions.AudioManagerTrack = AudioManager.AudioManagerTracks.Sfx;
+            audioManagerOptions.Location = this.transform.position;
+            audioManagerOptions.Volume = 1.4f;
+            audioManagerOptions.ID = moveSoundID;
 
-            // Start playing the moving sound if it hasn't already
-            if (moveSoundAudioSource == null)
+            if (AudioManager.instance.FindByID(moveSoundID) == null)
             {
-                moveSoundAudioSource = AudioManagerPlaySoundEvent.Trigger(moveSound, AudioManager.AudioManagerTracks.Sfx, this.transform.position, true, 1.4f);
+                AudioManagerPlaySoundEvent.Trigger(moveSound, audioManagerOptions);
+            }
+            else if (!AudioManager.instance.FindByID(moveSoundID).isPlaying)
+            {
+                AudioManager.instance.PlaySound(moveSound, audioManagerOptions);
             }
         }
         else
@@ -365,11 +366,8 @@ public class Player : Character
             }
 
             //Stop playing the moving sound if it hasn't already
-            if (moveSoundAudioSource != null)
-            {
-                AudioManagerSoundControlEvent.Trigger(AudioManagerSoundControlEventTypes.Free, 0, moveSoundAudioSource);
-                moveSoundAudioSource = null;
-            }
+            AudioManagerSoundControlEvent.Trigger(AudioManagerSoundControlEventTypes.Free, moveSoundID);
+
         }
     }
 
@@ -417,11 +415,8 @@ public class Player : Character
         }
         // we trigger a Pause event for the GameManager and other classes that could be listening to it too
         //also we stop the audio from playing
-        if (moveSoundAudioSource != null)
-        {
-            AudioManagerSoundControlEvent.Trigger(AudioManagerSoundControlEventTypes.Free, 0, moveSoundAudioSource);
-            moveSoundAudioSource = null;
-        }
+
+        AudioManagerSoundControlEvent.Trigger(AudioManagerSoundControlEventTypes.Free, moveSoundID);
 
         GameEvent.Trigger(GameEvents.TogglePause, null);
     }
