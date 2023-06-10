@@ -16,7 +16,7 @@ public class AICore : MonoBehaviour
     public float TimeInThisState;
     /// the current target
     [HideInInspector]
-    public Transform Target;
+    public Vector3 TargetPosition;
     /// the last known world position of the target
     [HideInInspector]
     public Vector3 _lastKnownTargetPosition = Vector3.zero;
@@ -209,7 +209,7 @@ public class AICore : MonoBehaviour
         }
         if (stateName != "")
         {
-            Debug.LogError("You're trying to transition to state '" + stateName + "' in " + this.gameObject.name + "'s AI Brain, but no state of this name exists. Make sure your states are named properly, and that your transitions states match existing states.");
+            Debug.LogError("You're trying to transition to state '" + stateName + "' in " + this.gameObject.name + "'s AI Core, but no state of this name exists. Make sure your states are named properly, and that your transitions states match existing states.");
         }
         return null;
     }
@@ -219,9 +219,9 @@ public class AICore : MonoBehaviour
     /// </summary>
     protected virtual void StoreLastKnownPosition()
     {
-        if (Target != null)
+        if (TargetPosition != null)
         {
-            _lastKnownTargetPosition = Target.transform.position;
+            _lastKnownTargetPosition = TargetPosition;
         }
     }
 

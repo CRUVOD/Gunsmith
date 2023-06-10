@@ -1,5 +1,70 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &582626117
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 582626118}
+  - component: {fileID: 582626120}
+  - component: {fileID: 582626121}
+  m_Layer: 19
+  m_Name: Moving Away
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &582626118
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 582626117}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 6813589895792495736}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &582626120
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 582626117}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 93c8f266dfe3f3d4c8123324657f9e5b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  InitializationMode: 1
+  Label: 
+  ag: {fileID: 3308836380075843318}
+  rb: {fileID: 5541150388792684301}
+  minDistanceToWall: 3
+--- !u!114 &582626121
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 582626117}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 58706b0cc7514e343b3e01fa034acb03, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Label: 
+  ComparisonMode: 3
+  Distance: 4
 --- !u!1 &1496528493013969314
 GameObject:
   m_ObjectHideFlags: 0
@@ -33,7 +98,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 6813589895792495736}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &705175176225257218
 MonoBehaviour:
@@ -111,6 +176,7 @@ GameObject:
   - component: {fileID: 7025587605176924238}
   - component: {fileID: 2083515011719898826}
   - component: {fileID: 3585850590871792998}
+  - component: {fileID: 1984254939}
   m_Layer: 19
   m_Name: Idle
   m_TagString: Untagged
@@ -162,6 +228,21 @@ MonoBehaviour:
   Label: 
   AfterTimeMin: 0.2
   AfterTimeMax: 0.2
+--- !u!114 &1984254939
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1677086516171586388}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 58706b0cc7514e343b3e01fa034acb03, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Label: 
+  ComparisonMode: 1
+  Distance: 4
 --- !u!1 &3192196921208190195
 GameObject:
   m_ObjectHideFlags: 0
@@ -193,7 +274,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 6813589895792495736}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &3783163274718758587
 MonoBehaviour:
@@ -396,10 +477,11 @@ GameObject:
   m_Component:
   - component: {fileID: 8965240153730173528}
   - component: {fileID: 8907606597878454502}
-  - component: {fileID: 2314719957967550109}
   - component: {fileID: 2990634249970681914}
+  - component: {fileID: 1519981393}
+  - component: {fileID: 1519981394}
   m_Layer: 19
-  m_Name: Moving
+  m_Name: Moving Towards
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -435,22 +517,6 @@ MonoBehaviour:
   Label: 
   ComparisonMode: 1
   Distance: 10
---- !u!114 &2314719957967550109
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4752755826720104697}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 426fabeb1d6cac84699463d10cb34df4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  InitializationMode: 0
-  Label: 
-  ag: {fileID: 3308836380075843318}
-  rb: {fileID: 5541150388792684301}
 --- !u!114 &2990634249970681914
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -464,6 +530,36 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Label: 
+--- !u!114 &1519981393
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4752755826720104697}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7abaa194311b6514f92809bdbe4d17e8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  InitializationMode: 0
+  Label: 
+  ag: {fileID: 3308836380075843318}
+  rb: {fileID: 5541150388792684301}
+--- !u!114 &1519981394
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4752755826720104697}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fbb9f518445a9724abf30a012bdba624, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Label: 
+  maxDistance: 10
 --- !u!1 &5448048024748606206
 GameObject:
   m_ObjectHideFlags: 0
@@ -495,6 +591,7 @@ Transform:
   m_Children:
   - {fileID: 7025587605176924238}
   - {fileID: 8965240153730173528}
+  - {fileID: 582626118}
   - {fileID: 8922521620780607102}
   - {fileID: 5063569880644977331}
   m_Father: {fileID: 5541150388792684300}
@@ -521,22 +618,37 @@ MonoBehaviour:
     Transitions:
       array:
       - Decision: {fileID: 3585850590871792998}
-        TrueState: Moving
+        TrueState: Moving Towards
         FalseState: 
       - Decision: {fileID: 2417866089689071997}
         TrueState: Death
         FalseState: 
-  - StateName: Moving
+      - Decision: {fileID: 1984254939}
+        TrueState: Moving Away
+        FalseState: 
+  - StateName: Moving Towards
     Actions:
       array:
-      - {fileID: 2314719957967550109}
+      - {fileID: 1519981393}
     Transitions:
       array:
-      - Decision: {fileID: 8907606597878454502}
+      - Decision: {fileID: 1519981394}
         TrueState: Attacking
         FalseState: 
       - Decision: {fileID: 2990634249970681914}
         TrueState: Idle
+        FalseState: 
+      - Decision: {fileID: 2417866089689071997}
+        TrueState: Death
+        FalseState: 
+  - StateName: Moving Away
+    Actions:
+      array:
+      - {fileID: 582626120}
+    Transitions:
+      array:
+      - Decision: {fileID: 582626121}
+        TrueState: Attacking
         FalseState: 
       - Decision: {fileID: 2417866089689071997}
         TrueState: Death
@@ -548,11 +660,14 @@ MonoBehaviour:
     Transitions:
       array:
       - Decision: {fileID: 705175176225257218}
-        TrueState: Moving
+        TrueState: Moving Towards
         FalseState: 
-      - Decision: {fileID: 8922521620780607100}
-        TrueState: Moving
+      - Decision: {fileID: 1984254939}
+        TrueState: Moving Away
         FalseState: 
+      - Decision: {fileID: 1519981394}
+        TrueState: 
+        FalseState: Moving Towards
       - Decision: {fileID: 2417866089689071997}
         TrueState: Death
         FalseState: 
@@ -563,10 +678,10 @@ MonoBehaviour:
     Transitions:
       array: []
   TimeInThisState: 0
-  Target: {fileID: 0}
+  TargetPosition: {x: 0, y: 0, z: 0}
   _lastKnownTargetPosition: {x: 0, y: 0, z: 0}
   CoreActive: 1
-  ResetCoreOnStart: 0
+  ResetCoreOnStart: 1
   ResetCoreOnEnable: 0
   ActionsFrequency: 0.1
   DecisionFrequency: 0
@@ -767,7 +882,7 @@ NavMeshAgent:
   m_Enabled: 1
   m_AgentTypeID: 0
   m_Radius: 0.39
-  m_Speed: 5
+  m_Speed: 6
   m_Acceleration: 10
   avoidancePriority: 50
   m_AngularSpeed: 200
@@ -797,7 +912,7 @@ MonoBehaviour:
   isSpriteFlipped: 0
   Collider: {fileID: 8982559480937723020}
   CharacterType: 1
-  moveSpeed: 4.5
+  moveSpeed: 6
   accelerationTimeGrounded: 0.1
   velocityXSmoothing: 0.05
   velocityYSmoothing: 0.05
@@ -808,8 +923,9 @@ MonoBehaviour:
   holeTestPoints:
   - {fileID: 5318154682648970505}
   - {fileID: 4848783827361375582}
-  ImpactFalloff: 10
-  InitialHealth: 100
+  canBeKnockedBack: 1
+  ImpactFalloff: 20
+  InitialHealth: 80
   CurrentHealth: 0
   Invulnerable: 0
   ImmuneToDamage: 0
@@ -822,6 +938,7 @@ MonoBehaviour:
   timeTillBodyDisappear: 2
   stunResistance: 50
   stunThreshold: 2.2
+  minStunDuration: 0.5
   maxStunDuration: 1
   isStunned: 0
   externalMovementControl: 0

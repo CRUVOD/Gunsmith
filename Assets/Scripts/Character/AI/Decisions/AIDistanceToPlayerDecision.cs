@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 
 /// <summary>
-/// This Decision will return true if the current Core's Target is within the specified range, false otherwise.
+/// This Decision will return true if the current the player is within the specified range, false otherwise.
 /// </summary>
-public class AIDistanceToTargetDecision : AIDecision
+public class AIDistanceToPlayerDecision : AIDecision
 {
     /// The possible comparison modes
     public enum ComparisonModes { StrictlyLowerThan, LowerThan, Equals, GreaterThan, StrictlyGreaterThan }
@@ -31,12 +31,12 @@ public class AIDistanceToTargetDecision : AIDecision
     /// <returns></returns>
     protected virtual bool EvaluateDistance()
     {
-        if (core.TargetPosition == null)
+        if (LevelManager.instance.player == null)
         {
             return false;
         }
 
-        float distance = Vector3.Distance(this.transform.position, core.TargetPosition);
+        float distance = Vector3.Distance(this.transform.position, LevelManager.instance.player.transform.position);
 
         if (ComparisonMode == ComparisonModes.StrictlyLowerThan)
         {

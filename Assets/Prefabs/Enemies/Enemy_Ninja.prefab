@@ -375,9 +375,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6570312664638487223}
-  - component: {fileID: 6690857991188097033}
-  - component: {fileID: 530043136035554930}
   - component: {fileID: 1064046761787504853}
+  - component: {fileID: 1075848801}
+  - component: {fileID: 1075848804}
   m_Layer: 19
   m_Name: Moving
   m_TagString: Untagged
@@ -400,37 +400,6 @@ Transform:
   m_Father: {fileID: 8775867558189743255}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &6690857991188097033
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7399890119369478166}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b04513509384c9345b92473973a76dbf, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Label: 
-  ComparisonMode: 1
-  Distance: 2.2
---- !u!114 &530043136035554930
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7399890119369478166}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 426fabeb1d6cac84699463d10cb34df4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  InitializationMode: 0
-  Label: 
-  ag: {fileID: 770053745264193049}
-  rb: {fileID: 7755902308807892962}
 --- !u!114 &1064046761787504853
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -444,6 +413,37 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Label: 
+--- !u!114 &1075848801
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7399890119369478166}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 58706b0cc7514e343b3e01fa034acb03, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Label: 
+  ComparisonMode: 1
+  Distance: 2.2
+--- !u!114 &1075848804
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7399890119369478166}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7abaa194311b6514f92809bdbe4d17e8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  InitializationMode: 0
+  Label: 
+  ag: {fileID: 770053745264193049}
+  rb: {fileID: 7755902308807892962}
 --- !u!1 &7755902308807892965
 GameObject:
   m_ObjectHideFlags: 0
@@ -531,7 +531,7 @@ NavMeshAgent:
   m_Enabled: 1
   m_AgentTypeID: 0
   m_Radius: 0.39
-  m_Speed: 5
+  m_Speed: 4.5
   m_Acceleration: 10
   avoidancePriority: 50
   m_AngularSpeed: 200
@@ -572,7 +572,8 @@ MonoBehaviour:
   holeTestPoints:
   - {fileID: 3192658030083794873}
   - {fileID: 468581323126820861}
-  ImpactFalloff: 10
+  canBeKnockedBack: 1
+  ImpactFalloff: 20
   InitialHealth: 100
   CurrentHealth: 0
   Invulnerable: 0
@@ -586,6 +587,7 @@ MonoBehaviour:
   timeTillBodyDisappear: 2
   stunResistance: 50
   stunThreshold: 2.2
+  minStunDuration: 0.1
   maxStunDuration: 1
   isStunned: 0
   externalMovementControl: 0
@@ -783,10 +785,10 @@ MonoBehaviour:
   - StateName: Moving
     Actions:
       array:
-      - {fileID: 530043136035554930}
+      - {fileID: 1075848804}
     Transitions:
       array:
-      - Decision: {fileID: 6690857991188097033}
+      - Decision: {fileID: 1075848801}
         TrueState: Attacking
         FalseState: 
       - Decision: {fileID: 1064046761787504853}
@@ -817,10 +819,10 @@ MonoBehaviour:
     Transitions:
       array: []
   TimeInThisState: 0
-  Target: {fileID: 0}
+  TargetPosition: {x: 0, y: 0, z: 0}
   _lastKnownTargetPosition: {x: 0, y: 0, z: 0}
   CoreActive: 1
-  ResetCoreOnStart: 0
+  ResetCoreOnStart: 1
   ResetCoreOnEnable: 0
   ActionsFrequency: 0.1
   DecisionFrequency: 0

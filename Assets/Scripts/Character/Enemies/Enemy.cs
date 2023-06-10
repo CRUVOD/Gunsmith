@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
+using Unity.Mathematics;
 
 /// <summary>
 /// Child script that contains some enemy specific fields for referencing,
@@ -31,6 +32,7 @@ public class Enemy : Character
     public float stunResistance;
     //Impact forces after resistance calculation above this threshould will apply a stun to the AICore
     public float stunThreshold;
+    public float minStunDuration;
     public float maxStunDuration;
     [HideInInspector]
     public bool isStunned;
@@ -178,16 +180,26 @@ public class Enemy : Character
 
     protected override void HandleMovement()
     {
-        if (!externalMovementControl)
+        //We only apply impact if enemy is stunned and can be knocked back
+        if (impact.magnitude > 0.2f && canBeKnockedBack && isStunned)
         {
-            Move(Vector3.zero);
+            rb.velocity = ApplyImpact(rb.velocity);
+            DebugText.instance.SetText(impact.magnitude.ToString());
         }
+        else
+        {
+            rb.velocity = Vector3.zero;
+        }
+        velocity = ag.velocity;
     }
 
     public override void Death()
     {
         //On death event delegate
         OnDeath?.Invoke(this);
+
+        //Disable navmesh agent
+        ag.enabled = false;
 
         //Disable weapons
         currentWeapon.StopWeapon();
@@ -210,26 +222,6 @@ public class Enemy : Character
         {
             Destroy(this.gameObject, timeTillBodyDisappear);
         }
-    }
-
-    /// <summary>
-    /// Calcualtes the appropriate velocity to be given to the rigidbody
-    /// This is used by AIAction scripts, since AIAction scripts usually
-    /// dictate the movement of the AI, also sets the velocity variable
-    /// to the calculated result, which isnt actually applied to the rigidbody
-    /// </summary>
-    /// <param name="UncalculatedVelocity"></param>
-    /// <returns></returns>
-    public Vector2 CalculateVelocity(Vector3 UncalculatedVelocity)
-    {
-        Vector2 targetVelocity = UncalculatedVelocity.normalized * moveSpeed;
-
-        UncalculatedVelocity.x = Mathf.SmoothDamp(rb.velocity.x, targetVelocity.x, ref velocityXSmoothing, accelerationTimeGrounded);
-        UncalculatedVelocity.y = Mathf.SmoothDamp(rb.velocity.y, targetVelocity.y, ref velocityYSmoothing, accelerationTimeGrounded);
-
-        velocity = ApplyImpact(UncalculatedVelocity);
-
-        return velocity;
     }
 
     /// <summary>
@@ -284,11 +276,11 @@ public class Enemy : Character
     /// <param name="impactForce"></param>
     protected virtual void HandleStun(float impactForce)
     {
-        float stunAmount = impactForce / stunResistance;
+        float stunAmount = Mathf.Clamp(impactForce - stunResistance, -1000, 1000);
 
-        if (stunAmount > stunThreshold)
+        if (stunAmount > 0)
         {
-            stunAmount = Mathf.Clamp(stunAmount, stunThreshold, maxStunDuration);
+            float stunDuration = math.remap(0, 1000, minStunDuration, maxStunDuration, stunAmount);
 
             if (stunCoroutine != null)
             {
@@ -296,7 +288,7 @@ public class Enemy : Character
                 StopCoroutine(stunCoroutine);
             }
 
-            stunCoroutine = StartCoroutine(Stun(stunAmount));
+            stunCoroutine = StartCoroutine(Stun(stunDuration));
         }
     }
 

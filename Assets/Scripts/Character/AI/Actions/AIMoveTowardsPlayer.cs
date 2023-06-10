@@ -1,10 +1,9 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
-public class AIMoveTowardsTarget : AIAction
+public class AIMoveTowardsPlayer : AIAction
 {
     public NavMeshAgent ag;
 
@@ -17,23 +16,8 @@ public class AIMoveTowardsTarget : AIAction
     public override void Initialisation()
     {
         base.Initialisation();
-        core.TargetPosition = LevelManager.instance.player.transform.position;
         ag.updateRotation = false;
         ag.updateUpAxis = false;
-    }
-
-    private void Update()
-    {
-        if (ActionInProgress && core.CoreActive && ag.enabled)
-        {
-            if (ag.remainingDistance > ag.stoppingDistance)
-            {
-                // Move rigibody by agent velocity and update agent position
-                core.Owner.Move(ag.velocity);
-                ag.nextPosition = rb.position;
-            }
-        }
-        //CheckAgentStatus();
     }
 
     /// <summary>
@@ -44,28 +28,22 @@ public class AIMoveTowardsTarget : AIAction
         if (!ActionInProgress || !core.CoreActive)
         {
             ag.enabled = false;
-            core.Owner.externalMovementControl = false;
         }
         else if (ActionInProgress && core.CoreActive)
         {
             ag.enabled = true;
-            core.Owner.externalMovementControl = true;
         }
     }
 
     public override void OnEnterState()
     {
         base.OnEnterState();
-        //Take control over movement
-        core.Owner.externalMovementControl = true;
         ag.enabled = true;
     }
 
     public override void OnExitState()
     {
         base.OnExitState();
-        //Rescind control over movement
-        core.Owner.externalMovementControl = false;
         ag.enabled = false;
     }
 
@@ -80,7 +58,7 @@ public class AIMoveTowardsTarget : AIAction
     {
         if (ag.enabled)
         {
-            ag.SetDestination(core.TargetPosition);
+            ag.SetDestination(LevelManager.instance.player.transform.position);
         }
     }
 

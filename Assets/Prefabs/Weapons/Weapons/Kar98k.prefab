@@ -10203,8 +10203,6 @@ MonoBehaviour:
   - {fileID: 3542567051192935150}
   - {fileID: 5846534920772244058}
   - {fileID: 3882722479151756945}
-  HitScanTrail: {fileID: 4240070357067194032, guid: 2729dedfab78be5469d1976f39e08dba, type: 3}
-  impactParticleSystem: {fileID: 7625845536068949805, guid: 824641833940bff48893e93560ece8c1, type: 3}
   rayTravelDistance: 20
   fireRate: 60
   isMagazineBased: 1
@@ -10214,7 +10212,7 @@ MonoBehaviour:
   inReload: 0
   MinDamageCaused: 60
   MaxDamageCaused: 80
-  impactForce: 500
+  impactForce: 250
   TargetLayerMask:
     serializedVersion: 2
     m_Bits: 524544
@@ -10231,6 +10229,8 @@ MonoBehaviour:
   HitAnythingEvent:
     m_PersistentCalls:
       m_Calls: []
+  HitScanTrail: {fileID: 4240070357067194032, guid: 2729dedfab78be5469d1976f39e08dba, type: 3}
+  impactParticleSystem: {fileID: 7625845536068949805, guid: 824641833940bff48893e93560ece8c1, type: 3}
   weaponUseFeedback: {fileID: 8794434508599816625}
   weaponBoltPullFeedback: {fileID: 4227450098784302554}
   weaponReloadFeedback: {fileID: 1607527394}

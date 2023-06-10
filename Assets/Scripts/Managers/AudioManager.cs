@@ -50,7 +50,6 @@ public class AudioManager : MonoBehaviour, ExtendedEventListener<AudioManagerSou
     private void Start()
     {
         instance = this;
-        Debug.Log(instance);
     }
 
     /// <summary>
