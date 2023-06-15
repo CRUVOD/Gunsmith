@@ -730,7 +730,7 @@ MonoBehaviour:
         TrueState: Death
         FalseState: 
   TimeInThisState: 0
-  Target: {fileID: 0}
+  TargetPosition: {x: 0, y: 0, z: 0}
   _lastKnownTargetPosition: {x: 0, y: 0, z: 0}
   CoreActive: 1
   ResetCoreOnStart: 0
@@ -813,6 +813,7 @@ GameObject:
   - component: {fileID: 8511524072368034560}
   - component: {fileID: 8511524072368034561}
   - component: {fileID: 8511524072368034562}
+  - component: {fileID: 8977865919230750337}
   - component: {fileID: 8511524072368034622}
   m_Layer: 19
   m_Name: Watchful Guardian
@@ -891,6 +892,28 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
+--- !u!195 &8977865919230750337
+NavMeshAgent:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8511524072368034564}
+  m_Enabled: 1
+  m_AgentTypeID: 0
+  m_Radius: 0.5
+  m_Speed: 0
+  m_Acceleration: 0
+  avoidancePriority: 50
+  m_AngularSpeed: 0
+  m_StoppingDistance: 0
+  m_AutoTraverseOffMeshLink: 0
+  m_AutoBraking: 1
+  m_AutoRepath: 0
+  m_Height: 2
+  m_BaseOffset: 0
+  m_WalkableMask: 0
+  m_ObstacleAvoidanceType: 0
 --- !u!114 &8511524072368034622
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -926,13 +949,14 @@ MonoBehaviour:
   ImmuneToDamage: 0
   OnDamageFeedback: {fileID: 8511524072561151192}
   core: {fileID: 8511524072165643809}
-  ag: {fileID: 0}
+  ag: {fileID: 8977865919230750337}
   enemyHealthBar: {fileID: 0}
   currentWeapon: {fileID: 2151442597429219699}
   HideEnemySpriteWhenInactive: 0
   timeTillBodyDisappear: -1
   stunResistance: 100000
   stunThreshold: 100000
+  minStunDuration: 0
   maxStunDuration: 0
   isStunned: 0
   externalMovementControl: 0

@@ -20,7 +20,9 @@ public class WeaponAttachmentReference : ScriptableObject
     [Header("Basic Properties")]
     [Tooltip("unique name for object")]
     public string ID;
+    [Tooltip("Where the attachment attaches to on the weapon")]
     public AttachmentPoint attachmentPoint;
+    public Rarity rarity;
 
     [Header("Images")]
     //square icon to display

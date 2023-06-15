@@ -31,7 +31,6 @@ public class AIPlayerLineOfSightDecision : AIDecision
         LayerMask layerMask = LayerManager.ObstaclesLayerMask | LayerManager.PlayerLayerMask;
         Vector3 playerDir = (LevelManager.instance.player.transform.position - transform.position).normalized;
         RaycastHit2D raycastHit = Physics2D.Raycast(transform.position, playerDir, 10000f, layerMask);
-        Debug.Log(raycastHit.collider.name);
         return (raycastHit.collider.tag == "Player");
     }
 

@@ -99,6 +99,9 @@ public class GameManager : MonoBehaviour, ExtendedEventListener<GeneralEvent>, E
     /// the target frame rate for the game
     [Tooltip("the target frame rate for the game")]
     public int TargetFrameRate = 300;
+    [Header("Save File")]
+    [Tooltip("Debug Use Only. Deletes the save file on start")]
+    public bool deleteSaveFileOnStart;
     [Header("Lives")]
     /// the maximum amount of lives the character can currently have
     [Tooltip("the maximum amount of lives the character can currently have")]
@@ -162,6 +165,11 @@ public class GameManager : MonoBehaviour, ExtendedEventListener<GeneralEvent>, E
         Application.targetFrameRate = TargetFrameRate;
         _initialCurrentLives = CurrentLives;
         _initialMaximumLives = MaximumLives;
+
+        if (deleteSaveFileOnStart)
+        {
+            SaveSystem.DeleteSave();
+        }
     }
 
     /// <summary>

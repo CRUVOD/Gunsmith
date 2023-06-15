@@ -21,6 +21,7 @@ public class UIManager : MonoBehaviour
     public GameObject DeathScreen;
     [Tooltip("the victory screen")]
     public GameObject VictoryScreen;
+    public LoadoutCustomisationScreen loadoutCustomisationScreen;
 
     [Header("Crosshair")]
     //The cursor/crosshair
@@ -28,7 +29,7 @@ public class UIManager : MonoBehaviour
 
     [Header("UIGroups")]
     public GameObject WeaponUI;
-    public GameObject PlayerStatUI;
+    public PlayerUI PlayerStatUI;
     public BossUI BossUI;
 
     [Header("General Weapon UI")]
@@ -107,7 +108,7 @@ public class UIManager : MonoBehaviour
     public void ToggleInGameUI(bool state)
     {
         WeaponUI.SetActive(state);
-        PlayerStatUI.SetActive(state);
+        PlayerStatUI.gameObject.SetActive(state);
         BossUI.gameObject.SetActive(state);
     }
 

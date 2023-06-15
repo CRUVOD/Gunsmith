@@ -3,14 +3,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.EventSystems;
 
 /// <summary>
 /// Simple class for the attachment display icons, holding some references
 /// </summary>
-public class AttachmentDisplayIcon : MonoBehaviour
+public class AttachmentDisplayIcon : MonoBehaviour, IPointerDownHandler, IBeginDragHandler, IEndDragHandler, IDragHandler
 {
     public Image icon;
-    public Button button;
     public WeaponAttachmentReference reference;
     public Sprite emptySprite;
     private TooltipTrigger tooltipTrigger;
@@ -48,22 +48,7 @@ public class AttachmentDisplayIcon : MonoBehaviour
     }
 
     /// <summary>
-    /// Reverts the icon to nothing with no function
-    /// </summary>
-    public void RevertToEmptyComplete()
-    {
-        SetEmptySprite();
-        if (tooltipTrigger != null)
-        {
-            tooltipTrigger.header = "";
-            tooltipTrigger.content = "";
-        }
-        reference = null;
-        button.onClick.RemoveAllListeners();
-    }
-
-    /// <summary>
-    /// Only reverts the icon to nothing
+    /// Reverts the icon to nothing
     /// </summary>
     public void RevertToEmpty()
     {
@@ -75,4 +60,56 @@ public class AttachmentDisplayIcon : MonoBehaviour
         }
         reference = null;
     }
+
+
+    #region Drag&Drop
+
+    public void OnPointerDown(PointerEventData eventData)
+    {
+        if (reference == null)
+        {
+            return;
+        }
+    }
+
+    public void OnBeginDrag(PointerEventData eventData)
+    {
+        if (reference == null)
+        {
+            return;
+        }
+
+        //Set icon to be slightly transparent and makes sure IDropHandler can be raycasted
+        CanvasGroup canvasGroup = icon.GetComponent<CanvasGroup>();
+        canvasGroup.blocksRaycasts = false;
+        canvasGroup.alpha = 0.6f;
+    }
+
+    public void OnDrag(PointerEventData eventData)
+    {
+        if (reference == null)
+        {
+            return;
+        }
+
+        icon.rectTransform.anchoredPosition += eventData.delta;
+    }
+
+    public void OnEndDrag(PointerEventData eventData)
+    {
+        if (reference == null)
+        {
+            return;
+        }
+
+        //Return the icon to original position
+        icon.rectTransform.anchoredPosition = Vector2.zero;
+
+        //Return transparency and raycast blocking
+        CanvasGroup canvasGroup = icon.GetComponent<CanvasGroup>();
+        canvasGroup.blocksRaycasts = true;
+        canvasGroup.alpha = 1f;
+    }
+
+    #endregion
 }

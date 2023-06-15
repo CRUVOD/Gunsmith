@@ -23,6 +23,11 @@ public class PlayerEnterWeaponGiver : MonoBehaviour
             player = collision.gameObject.GetComponent<Player>();
             hasBeenTriggered = true;
             player.AddWeaponToLoadout(weaponToGive);
+
+            //Unlocks the weapon in data as well
+            PlayerData playerData = new PlayerData();
+            playerData.AddUnlockedWeapon(weaponToGive.reference.ID);
+            SaveSystem.SavePlayer(playerData);
         }
     }
 }

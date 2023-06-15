@@ -87,6 +87,7 @@ GameObject:
   - component: {fileID: 6193247850255387716}
   - component: {fileID: 4766421029918828606}
   - component: {fileID: 1279636250048896691}
+  - component: {fileID: 452137631033320824}
   m_Layer: 5
   m_Name: AttachmentIcon
   m_TagString: Untagged
@@ -152,6 +153,18 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!225 &452137631033320824
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4028386964076330106}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1 &5944649775842599824
 GameObject:
   m_ObjectHideFlags: 0
@@ -331,7 +344,6 @@ MonoBehaviour:
   button: {fileID: 8545730684443657596}
   reference: {fileID: 0}
   emptySprite: {fileID: 21300010, guid: 2bdcc5376b8ef4540bfc87f41506ffcd, type: 3}
-  tooltipTrigger: {fileID: -4638274135774028917}
   attachmentPoint: 0
 --- !u!114 &-4638274135774028917
 MonoBehaviour:

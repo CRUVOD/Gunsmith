@@ -127,4 +127,46 @@ public class DataManager : MonoBehaviour
             return null;
         }
     }
+
+    /// <summary>
+    /// Returns an array of weapon references based on the ID array
+    /// </summary>
+    /// <param name="IDs"></param>
+    /// <returns></returns>
+    public WeaponReference[] TryGetWeaponReferences(string[] IDs)
+    {
+        List<WeaponReference> weaponReferencesList = new List<WeaponReference>();
+        foreach (string ID in IDs)
+        {
+            WeaponReference reference;
+
+            if (weaponDictionary.TryGetValue(ID, out reference))
+            {
+                weaponReferencesList.Add(reference);
+            }
+        }
+
+        return weaponReferencesList.ToArray();
+    }
+
+    /// <summary>
+    /// Returns an array of attachment references based on the ID array
+    /// </summary>
+    /// <param name="IDs"></param>
+    /// <returns></returns>
+    public WeaponAttachmentReference[] TryGetAttachmentReferences(string[] IDs)
+    {
+        List<WeaponAttachmentReference> attachmentReferenceList = new List<WeaponAttachmentReference>();
+        foreach (string ID in IDs)
+        {
+            WeaponAttachmentReference reference;
+
+            if (attachmentDictionary.TryGetValue(ID, out reference))
+            {
+                attachmentReferenceList.Add(reference);
+            }
+        }
+
+        return attachmentReferenceList.ToArray();
+    }
 }

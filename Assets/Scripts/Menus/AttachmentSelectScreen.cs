@@ -11,16 +11,19 @@ public class AttachmentSelectScreen : MonoBehaviour
     public Image weaponIcon;
 
     [Header("Attachment Positions")]
-    public AttachmentDisplayIcon[] attachmentPointIcons;
+    public AttachmentLoadoutIcon[] attachmentPointLoadoutIcons;
 
     [Header("Attachment Display")]
     public GridLayoutGroup AttachmentDisplay;
     public AttachmentDisplayIcon attachmentDisplayIconPrefab;
+    [HideInInspector]
     public List<AttachmentDisplayIcon> attachmentDisplayIcons;
 
     private void Start()
     {
         GenerateEmptyDisplayIcons();
+        //We run the start function then set itself to inactive
+        this.gameObject.SetActive(false);
     }
 
     /// <summary>
@@ -30,7 +33,7 @@ public class AttachmentSelectScreen : MonoBehaviour
     private void GenerateEmptyDisplayIcons()
     {
         attachmentDisplayIcons = new List<AttachmentDisplayIcon>();
-        for (int i = 0; i < 20; i++)
+        for (int i = 0; i < DataManager.instance.GetAttachmentDictionary().Count; i++)
         {
             attachmentDisplayIcons.Add(Instantiate(attachmentDisplayIconPrefab, AttachmentDisplay.gameObject.transform));
         }
@@ -45,14 +48,13 @@ public class AttachmentSelectScreen : MonoBehaviour
         currentWeapon = reference;
         weaponIcon.sprite = currentWeapon.icon;
         //Disable attachment point icons for points not on the weapon, and load the attachments given 
-        for (int i = 0; i < attachmentPointIcons.Length; i++)
+        for (int i = 0; i < attachmentPointLoadoutIcons.Length; i++)
         {
-            AttachmentDisplayIcon displayIcon = attachmentPointIcons[i];
+            AttachmentLoadoutIcon loadoutIcon = attachmentPointLoadoutIcons[i];
             //Fist enable all and clear whatever was displaying before
-            displayIcon.gameObject.SetActive(true);
-            displayIcon.RevertToEmpty();
-
-            int pos = Array.IndexOf(reference.attachmentPoints, displayIcon.attachmentPoint);
+            loadoutIcon.gameObject.SetActive(true);
+            loadoutIcon.RevertToEmpty();
+            int pos = Array.IndexOf(reference.attachmentPoints, loadoutIcon.attachmentPoint);
             if (pos > -1)
             {
                 //The point exists on the weapon
@@ -67,13 +69,13 @@ public class AttachmentSelectScreen : MonoBehaviour
                     if (attachmentReferences[j].attachmentPoint == reference.attachmentPoints[pos])
                     {
                         //There is an attachment at this point given
-                        displayIcon.UpdateDisplay(attachmentReferences[j]);
+                        loadoutIcon.UpdateDisplay(attachmentReferences[j]);
                     }
                 }
             }
             else
             {
-                displayIcon.gameObject.SetActive(false);
+                loadoutIcon.gameObject.SetActive(false);
             }
         }
         ClearAttachmentDisplay();
@@ -86,7 +88,7 @@ public class AttachmentSelectScreen : MonoBehaviour
     {
         foreach (AttachmentDisplayIcon displayIcon in attachmentDisplayIcons)
         {
-            displayIcon.RevertToEmptyComplete();
+            displayIcon.RevertToEmpty();
         }
     }
 
@@ -102,18 +104,18 @@ public class AttachmentSelectScreen : MonoBehaviour
         if (!Enum.IsDefined(typeof(AttachmentPoint), attachmentPoint) && !attachmentPoint.ToString().Contains(","))
         {
             throw new InvalidOperationException(
-                $"{attachmentPointString} is not an underlying value of the YourEnum enumeration."
+                $"{attachmentPointString} is not an underlying value of the attachment point enumeration."
             );
         }
 
-        foreach (AttachmentDisplayIcon displayIcon in attachmentPointIcons)
+        foreach (AttachmentLoadoutIcon loadoutIcon in attachmentPointLoadoutIcons)
         {
-            if (displayIcon.attachmentPoint == attachmentPoint)
+            if (loadoutIcon.attachmentPoint == attachmentPoint)
             {
-                if (displayIcon.reference)
+                if (loadoutIcon.reference)
                 {
                     //There is already something equipped, so we dequip it first
-                    displayIcon.RevertToEmpty();
+                    loadoutIcon.RevertToEmpty();
                 }
             }
         }
@@ -127,7 +129,6 @@ public class AttachmentSelectScreen : MonoBehaviour
             if (index < attachmentDisplayIcons.Count)
             {
                 attachmentDisplayIcons[index].UpdateDisplay(reference);
-                attachmentDisplayIcons[index].button.onClick.AddListener(delegate { SetAttachmentToPoint(reference); });
                 index += 1;
             }
         }
@@ -141,9 +142,10 @@ public class AttachmentSelectScreen : MonoBehaviour
     /// <returns></returns>
     private List<WeaponAttachmentReference> GetCompatibleAttachments(AttachmentPoint attachmentPoint, WeaponCategories weaponCategory)
     {
-        Dictionary<string, WeaponAttachmentReference> attachmentLibrary = DataManager.instance.GetAttachmentDictionary();
+        PlayerData playerData = SaveSystem.LoadPlayer();
+        WeaponAttachmentReference[] attachmentLibrary = DataManager.instance.TryGetAttachmentReferences(playerData.attachmentsUnlocked);
         List<WeaponAttachmentReference> compatibleReferences = new List<WeaponAttachmentReference>();
-        foreach (WeaponAttachmentReference reference in attachmentLibrary.Values)
+        foreach (WeaponAttachmentReference reference in attachmentLibrary)
         {
             bool point = (attachmentPoint == reference.attachmentPoint);
             bool category = false;
@@ -166,7 +168,7 @@ public class AttachmentSelectScreen : MonoBehaviour
 
     public void SetAttachmentToPoint(WeaponAttachmentReference reference)
     {
-        foreach (AttachmentDisplayIcon displayIcon in attachmentPointIcons)
+        foreach (AttachmentLoadoutIcon displayIcon in attachmentPointLoadoutIcons)
         {
             if (displayIcon.attachmentPoint == reference.attachmentPoint)
             {
@@ -179,7 +181,7 @@ public class AttachmentSelectScreen : MonoBehaviour
     {
         List<WeaponAttachmentReference> references = new List<WeaponAttachmentReference>();
 
-        foreach (AttachmentDisplayIcon displayIcon in attachmentPointIcons)
+        foreach (AttachmentLoadoutIcon displayIcon in attachmentPointLoadoutIcons)
         {
             if (displayIcon.reference != null)
             {

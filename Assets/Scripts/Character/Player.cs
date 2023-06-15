@@ -83,6 +83,8 @@ public class Player : Character
             }
             currentWeapon.UpdateUI();
         }
+        playerHealthBar = UIManager.instance.PlayerStatUI.healthbar;
+        playerStaminaBar = UIManager.instance.PlayerStatUI.staminaBar;
     }
 
     protected override void Update()

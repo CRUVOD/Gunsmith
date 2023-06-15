@@ -12,89 +12,127 @@ public class WeaponSelectScreen : MonoBehaviour
     //number of weapons the player can equip
     public int numWeaponSlots;
 
-    //The index of the current wepaon displayed in each slot
-    private int[] weaponSlotIndices;
-
     string[] weaponReferenceIDs;
-    public Image[] weaponSlotIcons;
+    public WeaponLoadoutIcon[] loadoutSlotIcons;
+
+    public WeaponDisplayIcon weaponDisplayIconPrefab;
+    public GridLayoutGroup weaponDisplay;
+    [HideInInspector]
+    public List<WeaponDisplayIcon> weaponDisplayIcons;
+
 
     private void Start()
     {
-        weaponSlotIndices = new int[numWeaponSlots];
         weaponReferenceIDs = new string[DataManager.instance.GetWeaponDictionary().Count];
         DataManager.instance.GetWeaponDictionary().Keys.CopyTo(weaponReferenceIDs, 0);
+        GenerateEmptyDisplayIcons();
 
+        //We run the start function then set itself to inactive
+        this.gameObject.SetActive(false);
+    }
+
+    //Generates empty display icons for use
+    private void GenerateEmptyDisplayIcons()
+    {
+        weaponDisplayIcons = new List<WeaponDisplayIcon>();
+        for (int i = 0; i < DataManager.instance.GetWeaponDictionary().Count; i++)
+        {
+            WeaponDisplayIcon icon = Instantiate(weaponDisplayIconPrefab, weaponDisplay.gameObject.transform);
+            weaponDisplayIcons.Add(icon);
+            icon.gameObject.SetActive(false);
+        }
+    }
+
+    /// <summary>
+    /// Call this function on entering/enabling weapon select screen
+    /// This will fill the screen with correct information based on player data
+    /// </summary>
+    public void UpdateDisplayInformation()
+    {
         PlayerData playerData = SaveSystem.LoadPlayer();
         if (playerData != null)
         {
-            InitialiseWithPlayerData(playerData);
+            weaponReferenceIDs = playerData.weaponsUnlocked;
+            UpdateLoadoutDisplay(playerData);
+            UpdateWeaponDisplay(playerData);
         }
         else
         {
-            //Default to 0 on all slots which weapon to display if player data is not loaded
-            for (int i = 0; i < weaponSlotIndices.Length; i++)
-            {
-                weaponSlotIndices[i] = 0;
-                SetWeapon(i, DataManager.instance.TryGetWeaponReference(weaponReferenceIDs[0]));
-            }
+            return;
         }
     }
 
     /// <summary>
-    /// Initialises the weapon loadout screen with saved player loadout
+    /// Updates the weapon loadout screen with saved player loadout (left side)
     /// </summary>
     /// <param name="playerData"></param>
-    private void InitialiseWithPlayerData(PlayerData playerData)
+    private void UpdateLoadoutDisplay(PlayerData playerData)
     {
-        for (int i = 0; i < playerData.weaponsInLoadout.Length; i++)
+        if (playerData.weaponsInLoadout != null)
         {
-            SetWeapon(i, DataManager.instance.TryGetWeaponReference(playerData.weaponsInLoadout[i]));
-            for (int j = 0; j < weaponReferenceIDs.Length; j++)
+            for (int i = 0; i < playerData.weaponsInLoadout.Length; i++)
             {
-                //Set index of the two weapon slots for previous/next navigation
-                if (weaponReferenceIDs[j] == playerData.weaponsInLoadout[i])
-                {
-                    weaponSlotIndices[i] = j;
-                }
+                SetLoadoutWeapon(i, DataManager.instance.TryGetWeaponReference(playerData.weaponsInLoadout[i]));
+            }
+        }
+        else
+        {
+            for (int i = 0; i < playerData.weaponsUnlocked.Length; i++)
+            {
+                SetLoadoutWeapon(i, DataManager.instance.TryGetWeaponReference(playerData.weaponsUnlocked[i]));
             }
         }
     }
 
     /// <summary>
-    /// Set display of weapon in loadout slot, this does not change the indices
+    /// Updates the weapon selection with player unlocked weapons
+    /// </summary>
+    /// <param name="playerData"></param>
+    private void UpdateWeaponDisplay(PlayerData playerData)
+    {
+        ClearWeaponDisplay();
+        if (playerData.weaponsUnlocked != null)
+        {
+            for (int i = 0; i < playerData.weaponsUnlocked.Length; i++)
+            {
+                weaponDisplayIcons[i].UpdateDisplay(playerData.weaponsUnlocked[i]);
+            }
+        }
+    }
+
+    /// <summary>
+    /// Removes all currently displayed weapon for all icons and set the game object active
+    /// </summary>
+    private void ClearWeaponDisplay()
+    {
+        for (int i = 0; i < weaponDisplayIcons.Count; i++)
+        {
+            weaponDisplayIcons[i].gameObject.SetActive(true);
+            weaponDisplayIcons[i].SetEmptySprite();
+        }
+    }
+
+    /// <summary>
+    /// Set display of weapon in loadout slot
     /// </summary>
     /// <param name="slotNum"></param>
     /// <param name="reference"></param>
-    public void SetWeapon(int slotNum, WeaponReference reference)
+    public void SetLoadoutWeapon(int slotNum, WeaponReference reference)
     {
         //Debug.Log("Setting slot " + slotNum + " with" + reference.ID);
+        if (slotNum >= loadoutSlotIcons.Length)
+        {
+            //Too many weapons in loadout/we don't have a loadout so we are just putting in the first two unlocked weapons
+            return;
+        }
 
-        weaponSlotIcons[slotNum].sprite = reference.icon;
+        if (!WeaponExistsInLoadout(reference))
+        {
+            loadoutSlotIcons[slotNum].UpdateDisplay(reference);
+        }
     }
 
     #region ButtonInteractions
-
-    public void PreviousWeapon(int slotNum)
-    {
-        //First check if there exist a previous weapon
-        if (weaponSlotIndices[slotNum] > 0)
-        {
-            //Roll back one index on the weapon references
-            weaponSlotIndices[slotNum] -= 1;
-            SetWeapon(slotNum, DataManager.instance.TryGetWeaponReference(weaponReferenceIDs[weaponSlotIndices[slotNum]]));
-        }
-    }
-
-    public void NextWeapon(int slotNum)
-    {
-        //First check if there exist a next weapon
-        if (weaponSlotIndices[slotNum] < weaponReferenceIDs.Length - 1)
-        {
-            //Advance one index on the weapon references
-            weaponSlotIndices[slotNum] += 1;
-            SetWeapon(slotNum, DataManager.instance.TryGetWeaponReference(weaponReferenceIDs[weaponSlotIndices[slotNum]]));
-        }
-    }
 
     public void ConfirmAndSaveLoadout()
     {
@@ -106,12 +144,31 @@ public class WeaponSelectScreen : MonoBehaviour
 
     #endregion
 
+    /// <summary>
+    /// Returns true if the reference is already selected in the loadout
+    /// </summary>
+    /// <param name="reference"></param>
+    /// <returns></returns>
+    public bool WeaponExistsInLoadout(WeaponReference reference)
+    {
+        for (int i = 0; i < loadoutSlotIcons.Length; i++)
+        {
+            if (loadoutSlotIcons[i].reference != null && loadoutSlotIcons[i].reference.ID.Equals(reference.ID))
+            {
+                //Duplicate weapon in another loadout slot, return early
+                return true;
+            }
+        }
+
+        return false;
+    }
+
     private List<Weapon> GetCurrentSelectedWeapons()
     {
         List<Weapon> currentSelectedWeapons = new List<Weapon>();
         for (int i = 0; i < numWeaponSlots; i++)
         {
-            Weapon weapon = DataManager.instance.TryGetWeaponReference(weaponReferenceIDs[weaponSlotIndices[i]]).weaponObject;
+            Weapon weapon = (loadoutSlotIcons[i].reference.weaponObject);
             currentSelectedWeapons.Add(weapon);
         }
 
@@ -125,7 +182,7 @@ public class WeaponSelectScreen : MonoBehaviour
     /// <returns></returns>
     public WeaponReference GetSelectedWeapon(int slotNum)
     {
-        WeaponReference reference = DataManager.instance.TryGetWeaponReference(weaponReferenceIDs[weaponSlotIndices[slotNum]]);
+        WeaponReference reference = loadoutSlotIcons[slotNum].reference;
         return reference;
     }
 
@@ -135,7 +192,7 @@ public class WeaponSelectScreen : MonoBehaviour
 
         for (int i = 0; i < numWeaponSlots; i++)
         {
-            WeaponReference reference = DataManager.instance.TryGetWeaponReference(weaponReferenceIDs[weaponSlotIndices[i]]);
+            WeaponReference reference = loadoutSlotIcons[i].reference;
             references.Add(reference);
         }
 

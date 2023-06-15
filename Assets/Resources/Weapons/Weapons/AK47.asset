@@ -13,9 +13,10 @@ MonoBehaviour:
   m_Name: AK47
   m_EditorClassIdentifier: 
   ID: AK47
+  rarity: 1
   icon: {fileID: 21300008, guid: b528708a5a8f28343aefa9e1d46670a7, type: 3}
   weaponObject: {fileID: 3713712288743788199, guid: d7e36a478177ec149b14379d51848a9a, type: 3}
-  weaponType: 0
+  weaponCategory: 0
   firingMechanism: 1
   ammoType: 0
   shortDescription: Distinctive, and reliable

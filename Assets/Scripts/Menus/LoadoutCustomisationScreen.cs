@@ -26,6 +26,7 @@ public class LoadoutCustomisationScreen : MonoBehaviour
     public void EnterLoadoutCustomisation()
     {
         WeaponSelectScreen.gameObject.SetActive(true);
+        WeaponSelectScreen.UpdateDisplayInformation();
         AttachmentSelectScreen.gameObject.SetActive(false);
     }
 

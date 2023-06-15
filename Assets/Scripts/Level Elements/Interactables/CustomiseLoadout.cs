@@ -14,6 +14,11 @@ public class CustomiseLoadout : MonoBehaviour, Interactable
     //If the player is already customising their loadout or not
     public bool inCustomisation;
 
+    void Start()
+    {
+        LoadoutCustomiseScreen = UIManager.instance.loadoutCustomisationScreen;
+    }
+
     public void Interact(Player player)
     {
         if (!inCustomisation)

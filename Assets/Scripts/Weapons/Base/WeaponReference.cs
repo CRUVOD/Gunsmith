@@ -14,6 +14,8 @@ public enum WeaponCategories { AR, DMR, Sniper, Pistol, Shotgun, Melee , Grenade
 public enum FiringMechanism { Single, Auto}
 //What type of ammo the weapon uses, ballistic is magazine fed, energy builds heat, none is neither
 public enum AmmoTypes { Ballistic, Energy , None}
+//The rarity levels of every item in game
+public enum Rarity { Common, Uncommon, Rare, Exquisite, Legendary};
 
 /// <summary>
 /// ScriptableObject to establish links and references between weapon prefab, name, icon, ID etc together
@@ -26,6 +28,7 @@ public class WeaponReference : ScriptableObject
     [Header("Basic Properties")]
     [Tooltip("unique name for object")]
     public string ID;
+    public Rarity rarity;
 
     [Header("Images")]
     //square icon to display

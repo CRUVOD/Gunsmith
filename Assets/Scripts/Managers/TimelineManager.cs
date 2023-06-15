@@ -89,6 +89,8 @@ public class TimelineManager : MonoBehaviour
     /// <param name="id"></param>
     public void PlayTimeline(string id)
     {
+        //Hide UI
+        UIManager.instance.ToggleInGameUI(false);
         if (timelines.ContainsKey(id))
         {
             timelines[id].timelineDirector.Play();
@@ -116,6 +118,9 @@ public class TimelineManager : MonoBehaviour
     /// <param name="index"></param>
     public void PlayTimeline(int index)
     {
+        //Hide UI
+        UIManager.instance.ToggleInGameUI(false);
+
         if (index < timelineList.Length)
         {
             timelineList[index].timelineDirector.Play();
