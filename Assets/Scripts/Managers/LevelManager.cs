@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.Rendering.Universal;
 
 /// <summary>
 /// The level manager will handle enemy spawning, level changing, enemy groups, rooms
@@ -13,6 +14,7 @@ using UnityEngine.SceneManagement;
 public class LevelManager : MonoBehaviour, ExtendedEventListener<GameEvent>
 {
     public static LevelManager instance;
+    public Light2D LevelGlobalLight;
 
     [Header("Basic Fields")]
     public Player player;

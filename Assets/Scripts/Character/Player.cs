@@ -34,10 +34,6 @@ public class Player : Character
     public float dodgeStaminaCost;
     float dodgeCoolDownTimer;
 
-    [Header("Audio")]
-    public AudioClip moveSound;
-    public int moveSoundID;
-
     [HideInInspector]
     //If the chracter is firing a weapon
     public bool isFiring;
@@ -108,7 +104,7 @@ public class Player : Character
                 }
                 HandleStaminaRecharge();
             }
-            HandleParticlesAndSound();
+            HandleParticles();
             HandleAnimators();
         }
 
@@ -319,8 +315,6 @@ public class Player : Character
         {
             movingParticles.Stop();
         }
-        //Stop playing the moving sound if it hasn't already
-        AudioManagerSoundControlEvent.Trigger(AudioManagerSoundControlEventTypes.Free, moveSoundID);
 
         //Freeze the character in place in case weird shit happens
         rb.velocity = Vector3.zero;
@@ -337,27 +331,13 @@ public class Player : Character
     /// <summary>
     /// Sets the moving particles on or off based on player condition and velocity
     /// </summary>
-    private void HandleParticlesAndSound()
+    private void HandleParticles()
     {
         if (MovementState == CharacterStates.MovementStates.Moving && ConditionState != CharacterStates.CharacterConditions.Dead && rb.velocity.magnitude >= 0.4f)
         {
             if (!movingParticles.isEmitting)
             {
                 movingParticles.Play();
-            }
-            AudioManagerOptions audioManagerOptions = AudioManagerOptions.Default;
-            audioManagerOptions.AudioManagerTrack = AudioManager.AudioManagerTracks.Sfx;
-            audioManagerOptions.Location = this.transform.position;
-            audioManagerOptions.Volume = 1.4f;
-            audioManagerOptions.ID = moveSoundID;
-
-            if (AudioManager.instance.FindByID(moveSoundID) == null)
-            {
-                AudioManagerPlaySoundEvent.Trigger(moveSound, audioManagerOptions);
-            }
-            else if (!AudioManager.instance.FindByID(moveSoundID).isPlaying)
-            {
-                AudioManager.instance.PlaySound(moveSound, audioManagerOptions);
             }
         }
         else
@@ -366,10 +346,6 @@ public class Player : Character
             {
                 movingParticles.Stop();
             }
-
-            //Stop playing the moving sound if it hasn't already
-            AudioManagerSoundControlEvent.Trigger(AudioManagerSoundControlEventTypes.Free, moveSoundID);
-
         }
     }
 
@@ -416,9 +392,6 @@ public class Player : Character
             return;
         }
         // we trigger a Pause event for the GameManager and other classes that could be listening to it too
-        //also we stop the audio from playing
-
-        AudioManagerSoundControlEvent.Trigger(AudioManagerSoundControlEventTypes.Free, moveSoundID);
 
         GameEvent.Trigger(GameEvents.TogglePause, null);
     }

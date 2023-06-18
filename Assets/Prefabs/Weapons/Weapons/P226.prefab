@@ -5377,8 +5377,8 @@ MonoBehaviour:
   RandomSfx: []
   PlayMethod: 0
   PoolSize: 10
-  MinVolume: 0.9
-  MaxVolume: 0.9
+  MinVolume: 0.8
+  MaxVolume: 0.8
   MinPitch: 1
   MaxPitch: 1
   SfxAudioMixerGroup: {fileID: -2787297698005042242, guid: 60e5df65664d0814f9078b7e410b8f52, type: 2}
