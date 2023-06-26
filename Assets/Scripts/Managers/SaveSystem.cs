@@ -39,7 +39,11 @@ public static class SaveSystem
         else
         {
             Debug.LogWarning("Player save file not found at" + path);
-            return null;
+            Debug.LogWarning("Making default player");
+            PlayerData defaultData = new PlayerData(new string[] { "K98K", "P226" }, new string[] { "Overdrive" });
+            defaultData.weaponsInLoadout = new string[] { "K98K", "P226" };
+            SavePlayer(defaultData);
+            return defaultData;
         }
     }
 

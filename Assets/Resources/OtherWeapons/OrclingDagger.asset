@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 46acd5c13ad6d5f4aabb57e78d2e4daf, type: 3}
+  m_Name: OrclingDagger
+  m_EditorClassIdentifier: 
+  ID: OrclingDagger
+  rarity: 0
+  icon: {fileID: -971766367, guid: af20e81d63bd50a4c85b7334ce453bf9, type: 3}
+  weaponObject: {fileID: 0}
+  weaponCategory: 0
+  firingMechanism: 0
+  ammoType: 0
+  shortDescription: 
+  fullDescription: 
+  isMagazineBased: 0
+  magazineSize: 0
+  heatMax: 0
+  attachmentPoints: 

@@ -919,6 +919,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: NinjaSword
       objectReference: {fileID: 0}
+    - target: {fileID: 5790335083992199893, guid: 34745759eab756e4da5e82bb9c1a81ae, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 34745759eab756e4da5e82bb9c1a81ae, type: 3}
 --- !u!114 &3390556306358927195 stripped

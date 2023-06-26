@@ -114,7 +114,7 @@ public class MeleeWeapon : Weapon
         DisableDamageArea();
         Animator.SetBool("Attacking", false);
         attackInProgress = false;
-        WeaponUsedFeedback.StopFeedbacks();
+        WeaponUsedFeedback?.StopFeedbacks();
     }
 
     #endregion
@@ -128,7 +128,7 @@ public class MeleeWeapon : Weapon
         if (attackInProgress) { yield break; }
 
         attackInProgress = true;
-        WeaponUsedFeedback.PlayFeedbacks();
+        WeaponUsedFeedback?.PlayFeedbacks();
         Animator.SetBool("Attacking", true);
         yield return new WaitForSeconds(InitialDelay);
         EnableDamageArea();

@@ -36,15 +36,30 @@ public class LevelManager : MonoBehaviour, ExtendedEventListener<GameEvent>
             instance = this;
         }
 
-        InitialiseLevelManager();
+        InitialiseLevel();
     }
 
-    private void InitialiseLevelManager()
+    protected virtual void InitialiseLevel()
     {
         if (player == null)
         {
             Debug.Log("ayo we don't have a player rn?");
         }
+        else
+        {
+            InitialisePlayer();
+        }
+    }
+
+    protected virtual void InitialisePlayer()
+    {
+        GivePlayerLoadout();
+    }
+
+    private void GivePlayerLoadout()
+    {
+        PlayerData playerData = SaveSystem.LoadPlayer();
+        player.LoadPlayer(playerData);
     }
 
     internal void CharacterPause(bool state)

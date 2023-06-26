@@ -614,8 +614,14 @@ public class Player : Character
         }
     }
 
-    public void UpdateLoadout(PlayerData playerData)
+    public void LoadPlayer(PlayerData playerData)
     {
+        //Health
+        InitialHealth = playerData.initialHealth;
+        CurrentHealth = InitialHealth;
+
+        //Weapons
+
         //Destroy all old weapon gameobjects
         for (int i = weaponsInLoadout.Count - 1; i >= 0; i--)
         {
@@ -626,20 +632,23 @@ public class Player : Character
 
         for (int i = 0; i < playerData.weaponsInLoadout.Length; i++)
         {
-            //Instantiate the weapons
+            //Instantiate the weapon
             WeaponReference weaponReference = DataManager.instance.TryGetWeaponReference(playerData.weaponsInLoadout[i]);
             Weapon weapon = Instantiate<Weapon>(weaponReference.weaponObject, weaponEquipPoint);
             weaponsInLoadout.Add(weapon);
             weaponsInLoadout[i].User = CharacterTypes.Player;
 
-            //Instantiate the attachments for that weapon and equips them
-            for (int j = 0; j < playerData.attachmentsInLoadout[i].Length; j++)
+            if (playerData.attachmentsInLoadout.Length > 0 && playerData.attachmentsInLoadout[i] != null)
             {
-                WeaponAttachmentReference weaponAttachmentReference = DataManager.instance.TryGetAttachmentReference(playerData.attachmentsInLoadout[i][j]);
-                WeaponAttachment attachment = Instantiate<WeaponAttachment>(weaponAttachmentReference.attachmentObject);
-                if (!weapon.TryEquipAttachment(attachment))
+                //Instantiate the attachments for that weapon and equips them
+                for (int j = 0; j < playerData.attachmentsInLoadout[i].Length; j++)
                 {
-                    Destroy(attachment);
+                    WeaponAttachmentReference weaponAttachmentReference = DataManager.instance.TryGetAttachmentReference(playerData.attachmentsInLoadout[i][j]);
+                    WeaponAttachment attachment = Instantiate<WeaponAttachment>(weaponAttachmentReference.attachmentObject);
+                    if (!weapon.TryEquipAttachment(attachment))
+                    {
+                        Destroy(attachment);
+                    }
                 }
             }
 

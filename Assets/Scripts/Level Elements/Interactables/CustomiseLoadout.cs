@@ -14,29 +14,53 @@ public class CustomiseLoadout : MonoBehaviour, Interactable
     //If the player is already customising their loadout or not
     public bool inCustomisation;
 
-    void Start()
+    private void Update()
     {
-        LoadoutCustomiseScreen = UIManager.instance.loadoutCustomisationScreen;
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            ExitLoadoutCustomisation();
+        }
     }
 
     public void Interact(Player player)
     {
         if (!inCustomisation)
         {
-            LoadoutCustomiseScreen.EnterLoadoutCustomisation();
-            inCustomisation = true;
-            //Freeze player movement
-            player.FreezePlayerMovement(true);
-            //Set cursor to be visible
-            UIManager.instance.crosshair.ToggleCrosshair(false);
+            EnterLoadoutCustomisation(player);
         }
         else
         {
-            LoadoutCustomiseScreen.ExitLoadoutCustomisation();
-            inCustomisation = false;
-            //Unfreeze player movement
-            player.FreezePlayerMovement(false);
-            UIManager.instance.crosshair.ToggleCrosshair(true);
+            ExitLoadoutCustomisation(player);
         }
+    }
+
+    private void EnterLoadoutCustomisation(Player player)
+    {
+        LoadoutCustomiseScreen.gameObject.SetActive(true);
+        LoadoutCustomiseScreen.EnterLoadoutCustomisation();
+        inCustomisation = true;
+        //Freeze player movement
+        player.FreezePlayerMovement(true);
+        //Toggle UI
+        UIManager.instance.MenuMode(true);
+    }
+
+    private void ExitLoadoutCustomisation()
+    {
+        LoadoutCustomiseScreen.gameObject.SetActive(false);
+        LoadoutCustomiseScreen.ExitLoadoutCustomisation();
+        inCustomisation = false;
+        LevelManager.instance.player.FreezePlayerMovement(false);
+        UIManager.instance.MenuMode(false);
+    }
+
+    private void ExitLoadoutCustomisation(Player player)
+    {
+        LoadoutCustomiseScreen.gameObject.SetActive(false);
+        LoadoutCustomiseScreen.ExitLoadoutCustomisation();
+        inCustomisation = false;
+        //Unfreeze player movement
+        player.FreezePlayerMovement(false);
+        UIManager.instance.MenuMode(false);
     }
 }

@@ -19,6 +19,7 @@ public class Weapon : MonoBehaviour, ExtendedEventListener<GameEvent>
     public Transform firePoint;
     //links to all fields, prefabs etc for UI or anything else to use
     public WeaponReference reference;
+    public bool flipWeaponSprite = true;
     //knockback recoil
     public float recoil;
     //which way is the weapon pointing
@@ -185,14 +186,17 @@ public class Weapon : MonoBehaviour, ExtendedEventListener<GameEvent>
             transform.rotation = MouseDirectionQuaternion();
             weaponDirection = MouseDirectionVector2();
 
-            //Flip weapon sprite if pointing leftwards
-            if (weaponDirection.x < 0)
+            if (flipWeaponSprite)
             {
-                weaponSprite.transform.localScale = new Vector3(weaponSprite.transform.localScale.x, Mathf.Abs(weaponSprite.transform.localScale.y) * -1f);
-            }
-            else
-            {
-                weaponSprite.transform.localScale = new Vector3(weaponSprite.transform.localScale.x, Mathf.Abs(weaponSprite.transform.localScale.y));
+                //Flip weapon sprite if pointing leftwards
+                if (weaponDirection.x < 0)
+                {
+                    weaponSprite.transform.localScale = new Vector3(weaponSprite.transform.localScale.x, Mathf.Abs(weaponSprite.transform.localScale.y) * -1f);
+                }
+                else
+                {
+                    weaponSprite.transform.localScale = new Vector3(weaponSprite.transform.localScale.x, Mathf.Abs(weaponSprite.transform.localScale.y));
+                }
             }
         }
         else
@@ -200,14 +204,17 @@ public class Weapon : MonoBehaviour, ExtendedEventListener<GameEvent>
             transform.rotation = PlayerDirectionQuaternion();
             weaponDirection = PlayerDirectionVector2();
 
-            //Flip weapon sprite if pointing leftwards
-            if (weaponDirection.x < 0)
+            if (flipWeaponSprite)
             {
-                weaponSprite.transform.localScale = new Vector3(weaponSprite.transform.localScale.x, Mathf.Abs(weaponSprite.transform.localScale.y) * -1f);
-            }
-            else
-            {
-                weaponSprite.transform.localScale = new Vector3(weaponSprite.transform.localScale.x, Mathf.Abs(weaponSprite.transform.localScale.y));
+                //Flip weapon sprite if pointing leftwards
+                if (weaponDirection.x < 0)
+                {
+                    weaponSprite.transform.localScale = new Vector3(weaponSprite.transform.localScale.x, Mathf.Abs(weaponSprite.transform.localScale.y) * -1f);
+                }
+                else
+                {
+                    weaponSprite.transform.localScale = new Vector3(weaponSprite.transform.localScale.x, Mathf.Abs(weaponSprite.transform.localScale.y));
+                }
             }
         }
     }

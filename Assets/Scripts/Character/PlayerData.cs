@@ -195,7 +195,7 @@ public class PlayerData
         else
         {
             //Returns placeholder
-            return null;
+            return new string[] { };
         }
     }
 
@@ -237,7 +237,7 @@ public class PlayerData
         else
         {
             //Returns placeholder
-            return null;
+            return new string[][] { };
         }
     }
 

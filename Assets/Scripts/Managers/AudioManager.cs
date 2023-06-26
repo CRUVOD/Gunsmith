@@ -39,7 +39,7 @@ public class AudioManager : MonoBehaviour, ExtendedEventListener<AudioManagerSou
         }
         else
         {
-            Destroy(instance.gameObject);
+            Destroy(instance);
             instance = this;
             return;
         }
@@ -512,6 +512,6 @@ public class AudioManager : MonoBehaviour, ExtendedEventListener<AudioManagerSou
     {
         SfxEvent.Unregister(OnSfxEvent);
         AudioManagerPlaySoundEvent.Unregister(OnAudioManagerPlaySoundEvent);
-        Debug.Log(StackTraceUtility.ExtractStackTrace());
+        //Debug.Log(StackTraceUtility.ExtractStackTrace());
     }
 }

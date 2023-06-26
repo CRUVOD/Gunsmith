@@ -212,6 +212,10 @@ public class Enemy : Character
         //Change condition state
         ConditionState = CharacterStates.CharacterConditions.Dead;
 
+        //Disable collisions
+        Collider2D collider2D = GetComponent<Collider2D>();
+        collider2D.enabled = false;
+
         //Hide weapons
         //not implemented yet
 

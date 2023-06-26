@@ -9,6 +9,9 @@ public class AIMoveTowardsPlayer : AIAction
 
     public Rigidbody2D rb;
 
+    //bool that controls if the navmesh agent is disabled on exit of state
+    public bool disableAgOnExit = true;
+
     /// <summary>
     /// Make the target the player, this can be changed later to like decoy or something
     /// This script will take control over the defualt enemy movement on entering
@@ -44,7 +47,10 @@ public class AIMoveTowardsPlayer : AIAction
     public override void OnExitState()
     {
         base.OnExitState();
-        ag.enabled = false;
+        if (disableAgOnExit)
+        {
+            ag.enabled = false;
+        }
     }
 
     public override void PerformAction()

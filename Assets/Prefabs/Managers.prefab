@@ -45,6 +45,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   TargetFrameRate: 300
+  deleteSaveFileOnStart: 0
   MaximumLives: 0
   CurrentLives: 0
   GameOverScene: 
@@ -94,8 +95,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eaeadf474f1af214eb9060b14c981a32, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  weaponDataFolder: Weapons/Weapons
-  attachmentDataFolder: Weapons/Attachments
+  weaponDataFolder: PlayerWeapons/Weapons
+  attachmentDataFolder: PlayerWeapons/Attachments
 --- !u!1 &3044761502144648264
 GameObject:
   m_ObjectHideFlags: 0

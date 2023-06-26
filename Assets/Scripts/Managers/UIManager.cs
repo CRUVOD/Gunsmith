@@ -21,7 +21,6 @@ public class UIManager : MonoBehaviour
     public GameObject DeathScreen;
     [Tooltip("the victory screen")]
     public GameObject VictoryScreen;
-    public LoadoutCustomisationScreen loadoutCustomisationScreen;
 
     [Header("Crosshair")]
     //The cursor/crosshair
@@ -43,6 +42,7 @@ public class UIManager : MonoBehaviour
 
     [Header("Other")]
     public HealthPotionUI potionUI;
+
 
     void Awake()
     {
@@ -70,6 +70,7 @@ public class UIManager : MonoBehaviour
             PauseScreen.SetActive(state);
             ToggleInGameUI(!state);
             EventSystem.current.sendNavigationEvents = state;
+            crosshair.ToggleCrosshair(!state);
         }
     }
 
@@ -110,6 +111,19 @@ public class UIManager : MonoBehaviour
         WeaponUI.SetActive(state);
         PlayerStatUI.gameObject.SetActive(state);
         BossUI.gameObject.SetActive(state);
+    }
+
+    /// <summary>
+    /// Changes the game UI into menu mode
+    /// Affecting crosshair and in game UI
+    /// </summary>
+    /// <param name="state"></param>
+    public void MenuMode(bool state)
+    {
+        WeaponUI.SetActive(!state);
+        PlayerStatUI.gameObject.SetActive(!state);
+        BossUI.gameObject.SetActive(!state);
+        crosshair.ToggleCrosshair(!state);
     }
 
     /// <summary>
