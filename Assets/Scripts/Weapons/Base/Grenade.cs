@@ -136,19 +136,21 @@ public class Grenade : Projectile
     /// Describes what happens when colliding with a damageable object
     /// </summary>
     /// <param name="health">Health.</param>
-    protected virtual void OnExplosionCollision(Character character)
+    protected virtual void OnExplosionCollision(IDamageable damageable)
     {
-        if (!character.CanTakeDamageThisFrame())
+        if (!damageable.CanTakeDamageThisFrame())
         {
             return;
         }
 
-        Vector3 distance = character.transform.position - this.transform.position;
-        //we apply the damage to the thing we've collided with
+        //TODO
 
-        Vector3 direction = (character.transform.position - this.transform.position).normalized;
-        //Apply knockback/impact force on collided character and damage
-        character.Damage(explosionDamage, gameObject, InvincibilityDuration, direction, explosionForce);
+        //Vector3 distance = character.transform.position - this.transform.position;
+        ////we apply the damage to the thing we've collided with
+
+        //Vector3 direction = (character.transform.position - this.transform.position).normalized;
+        ////Apply knockback/impact force on collided character and damage
+        //character.Damage(explosionDamage, gameObject, InvincibilityDuration, direction, explosionForce);
     }
 
     #endregion

@@ -69,8 +69,8 @@ public class Character : MonoBehaviour, IDamageable
     public FeedbackPlayer OnDamageFeedback;
 
     //hit delegate
-    public delegate void OnHitDelegate();
-    public OnHitDelegate OnHit;
+    public delegate void OnDamageDelegate();
+    public OnDamageDelegate OnDamage;
 
     public Bounds ColliderBounds
     {
@@ -323,7 +323,7 @@ public class Character : MonoBehaviour, IDamageable
         SetHealth(Mathf.Clamp(CurrentHealth - damage, 0, InitialHealth));
 
         //Send delegates that we've been hit
-        OnHit?.Invoke();
+        OnDamage?.Invoke();
 
         // we prevent the character from colliding with Projectiles, Player and Enemies
         if (invincibilityDuration > 0)

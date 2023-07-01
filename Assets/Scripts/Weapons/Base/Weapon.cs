@@ -34,7 +34,7 @@ public class Weapon : MonoBehaviour, ExtendedEventListener<GameEvent>
     [Header("Weapon Rules")]
     private IWeaponFireRule[] weaponFireRules;
 
-    bool rotationFrozen;
+    protected bool rotationFrozen;
 
     protected virtual void Start()
     {

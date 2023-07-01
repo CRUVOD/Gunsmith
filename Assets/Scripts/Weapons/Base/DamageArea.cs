@@ -8,14 +8,13 @@ public class DamageArea : MonoBehaviour
 {
     public Collider2D damageCollider;
 
-    /// the layers that will be damaged by this object
-    [Tooltip("the layers that will be damaged by this object")]
+    [Tooltip("the layers that will be detected by this object")]
     public LayerMask TargetLayerMask;
 
     [Header("Events")]
     /// Events
     /// an event to trigger when hitting a Damageable
-    public UnityEvent<Character> HitDamageableEvent;
+    public UnityEvent<IDamageable> HitDamageableEvent;
     /// an event to trigger when hitting a non Damageable
     public UnityEvent<GameObject> HitNonDamageableEvent;
 
@@ -100,12 +99,12 @@ public class DamageArea : MonoBehaviour
             return;
         }
 
-        Character collidedCharacter = collider.gameObject.GetComponent<Character>();
+        IDamageable collidedDamageable = collider.gameObject.GetComponent<IDamageable>();
 
         // if what we're colliding with is damageable
-        if (collidedCharacter != null)
+        if (collidedDamageable != null)
         {
-            HitDamageableEvent?.Invoke(collidedCharacter);
+            HitDamageableEvent?.Invoke(collidedDamageable);
         }
         else // if what we're colliding with can't be damaged
         {
@@ -114,7 +113,7 @@ public class DamageArea : MonoBehaviour
     }
 
     /// <summary>
-    /// Checks whether or not damage should be applied this frame
+    /// Checks if collider is in the target layer
     /// </summary>
     /// <param name="collider"></param>
     /// <returns></returns>
@@ -125,7 +124,7 @@ public class DamageArea : MonoBehaviour
         // if what we're colliding with isn't part of the target layers, we do nothing and exit
         if (!ExtraLayers.LayerInLayerMask(collider.layer, TargetLayerMask)) { return false; }
 
-        // if we're on our first frame, we don't apply damage
+        // if we're on our first frame, we don't apply count this collision
         if (Time.time == 0f) { return false; }
         return true;
     }

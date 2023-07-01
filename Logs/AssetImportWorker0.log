@@ -15,7 +15,7 @@ D:/Unity-Gunsmith/Gunsmith
 -logFile
 Logs/AssetImportWorker0.log
 -srvPort
-54058
+54218
 Successfully changed project path to: D:/Unity-Gunsmith/Gunsmith
 D:/Unity-Gunsmith/Gunsmith
 [UnityMemory] Configuration Parameters - Can be set up in boot.config
@@ -47,7 +47,7 @@ D:/Unity-Gunsmith/Gunsmith
     "memorysetup-temp-allocator-size-cloud-worker=32768"
     "memorysetup-temp-allocator-size-gi-baking-worker=262144"
     "memorysetup-temp-allocator-size-gfx=262144"
-Refreshing native plugins compatible for Editor in 108.32 ms, found 4 plugins.
+Refreshing native plugins compatible for Editor in 120.05 ms, found 4 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Initialize engine version: 2021.3.8f1 (b30333d56e81)
 [Subsystems] Discovering subsystems at path C:/Program Files/Unity/Hub/Editor/2021.3.8f1/Editor/Data/Resources/UnitySubsystems
@@ -63,89 +63,89 @@ Initialize mono
 Mono path[0] = 'C:/Program Files/Unity/Hub/Editor/2021.3.8f1/Editor/Data/Managed'
 Mono path[1] = 'C:/Program Files/Unity/Hub/Editor/2021.3.8f1/Editor/Data/MonoBleedingEdge/lib/mono/unityjit-win32'
 Mono config path = 'C:/Program Files/Unity/Hub/Editor/2021.3.8f1/Editor/Data/MonoBleedingEdge/etc'
-Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56184
+Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56456
 Begin MonoManager ReloadAssembly
 Registering precompiled unity dll's ...
 Register platform support module: C:/Program Files/Unity/Hub/Editor/2021.3.8f1/Editor/Data/PlaybackEngines/WindowsStandaloneSupport/UnityEditor.WindowsStandalone.Extensions.dll
-Registered in 0.008301 seconds.
+Registered in 0.009182 seconds.
 Native extension for WindowsStandalone target not found
-Refreshing native plugins compatible for Editor in 112.28 ms, found 4 plugins.
+Refreshing native plugins compatible for Editor in 114.38 ms, found 4 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Mono: successfully reloaded assembly
-- Completed reload, in  0.566 seconds
+- Completed reload, in  0.585 seconds
 Domain Reload Profiling:
-	ReloadAssembly (566ms)
-		BeginReloadAssembly (64ms)
+	ReloadAssembly (585ms)
+		BeginReloadAssembly (68ms)
 			ExecutionOrderSort (0ms)
 			DisableScriptedObjects (0ms)
 			BackupInstance (0ms)
 			ReleaseScriptingObjects (0ms)
 			CreateAndSetChildDomain (1ms)
-		EndReloadAssembly (403ms)
-			LoadAssemblies (62ms)
+		EndReloadAssembly (418ms)
+			LoadAssemblies (65ms)
 			RebuildTransferFunctionScriptingTraits (0ms)
-			SetupTypeCache (73ms)
+			SetupTypeCache (77ms)
 			ReleaseScriptCaches (0ms)
-			RebuildScriptCaches (20ms)
-			SetupLoadedEditorAssemblies (265ms)
+			RebuildScriptCaches (21ms)
+			SetupLoadedEditorAssemblies (275ms)
 				LogAssemblyErrors (0ms)
-				InitializePlatformSupportModulesInManaged (7ms)
+				InitializePlatformSupportModulesInManaged (8ms)
 				SetLoadedEditorAssemblies (0ms)
-				RefreshPlugins (112ms)
+				RefreshPlugins (114ms)
 				BeforeProcessingInitializeOnLoad (1ms)
-				ProcessInitializeOnLoadAttributes (110ms)
-				ProcessInitializeOnLoadMethodAttributes (34ms)
+				ProcessInitializeOnLoadAttributes (113ms)
+				ProcessInitializeOnLoadMethodAttributes (38ms)
 				AfterProcessingInitializeOnLoad (0ms)
 				EditorAssembliesLoaded (0ms)
 			ExecutionOrderSort2 (0ms)
 			AwakeInstancesAfterBackupRestoration (0ms)
 Platform modules already initialized, skipping
 Registering precompiled user dll's ...
-Registered in 0.006372 seconds.
+Registered in 0.006888 seconds.
 Begin MonoManager ReloadAssembly
 Symbol file LoadedFromMemory doesn't match image D:\Unity-Gunsmith\Gunsmith\Library\PackageCache\com.unity.visualscripting@1.7.8\Editor\VisualScripting.Core\Dependencies\YamlDotNet\Unity.VisualScripting.YamlDotNet.dll
 Symbol file LoadedFromMemory doesn't match image D:\Unity-Gunsmith\Gunsmith\Library\PackageCache\com.unity.visualscripting@1.7.8\Editor\VisualScripting.Core\Dependencies\DotNetZip\Unity.VisualScripting.IonicZip.dll
 Native extension for WindowsStandalone target not found
-Refreshing native plugins compatible for Editor in 102.65 ms, found 4 plugins.
+Refreshing native plugins compatible for Editor in 117.06 ms, found 4 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Mono: successfully reloaded assembly
-- Completed reload, in  1.154 seconds
+- Completed reload, in  1.196 seconds
 Domain Reload Profiling:
-	ReloadAssembly (1154ms)
-		BeginReloadAssembly (104ms)
+	ReloadAssembly (1197ms)
+		BeginReloadAssembly (100ms)
 			ExecutionOrderSort (0ms)
-			DisableScriptedObjects (6ms)
+			DisableScriptedObjects (5ms)
 			BackupInstance (0ms)
 			ReleaseScriptingObjects (0ms)
-			CreateAndSetChildDomain (19ms)
-		EndReloadAssembly (955ms)
-			LoadAssemblies (88ms)
+			CreateAndSetChildDomain (18ms)
+		EndReloadAssembly (993ms)
+			LoadAssemblies (92ms)
 			RebuildTransferFunctionScriptingTraits (0ms)
-			SetupTypeCache (205ms)
+			SetupTypeCache (218ms)
 			ReleaseScriptCaches (1ms)
-			RebuildScriptCaches (60ms)
-			SetupLoadedEditorAssemblies (567ms)
+			RebuildScriptCaches (58ms)
+			SetupLoadedEditorAssemblies (594ms)
 				LogAssemblyErrors (0ms)
-				InitializePlatformSupportModulesInManaged (4ms)
+				InitializePlatformSupportModulesInManaged (5ms)
 				SetLoadedEditorAssemblies (0ms)
-				RefreshPlugins (103ms)
-				BeforeProcessingInitializeOnLoad (112ms)
-				ProcessInitializeOnLoadAttributes (263ms)
-				ProcessInitializeOnLoadMethodAttributes (74ms)
-				AfterProcessingInitializeOnLoad (10ms)
+				RefreshPlugins (117ms)
+				BeforeProcessingInitializeOnLoad (113ms)
+				ProcessInitializeOnLoadAttributes (269ms)
+				ProcessInitializeOnLoadMethodAttributes (79ms)
+				AfterProcessingInitializeOnLoad (11ms)
 				EditorAssembliesLoaded (0ms)
 			ExecutionOrderSort2 (0ms)
-			AwakeInstancesAfterBackupRestoration (4ms)
+			AwakeInstancesAfterBackupRestoration (5ms)
 Platform modules already initialized, skipping
 ========================================================================
 Worker process is ready to serve import requests
 Launched and connected shader compiler UnityShaderCompiler.exe after 0.05 seconds
-Refreshing native plugins compatible for Editor in 1.10 ms, found 4 plugins.
+Refreshing native plugins compatible for Editor in 0.96 ms, found 4 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
-Unloading 6066 Unused Serialized files (Serialized files now loaded: 0)
-Unloading 69 unused Assets / (2.0 MB). Loaded Objects now: 6504.
-Memory consumption went from 245.3 MB to 243.3 MB.
-Total: 3.762400 ms (FindLiveObjects: 0.440400 ms CreateObjectMapping: 0.163300 ms MarkObjects: 2.571000 ms  DeleteObjects: 0.587100 ms)
+Unloading 6075 Unused Serialized files (Serialized files now loaded: 0)
+Unloading 69 unused Assets / (2.0 MB). Loaded Objects now: 6513.
+Memory consumption went from 245.9 MB to 243.9 MB.
+Total: 4.436500 ms (FindLiveObjects: 0.515400 ms CreateObjectMapping: 0.157900 ms MarkObjects: 3.080700 ms  DeleteObjects: 0.681800 ms)
 
 AssetImportParameters requested are different than current active one (requested -> active):
   custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
@@ -160,343 +160,7 @@ AssetImportParameters requested are different than current active one (requested
   custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
 ========================================================================
 Received Import Request.
-  Time since last request: 877788.570089 seconds.
-  path: Assets/Sprites/Character/Enemies/Orcling/Orcling_Falling.png
-  artifactKey: Guid(394cf83225a2a074cbc6722d670fafd0) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Sprites/Character/Enemies/Orcling/Orcling_Falling.png using Guid(394cf83225a2a074cbc6722d670fafd0) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '59482caecda37fcc6ef53ca77b272a34') in 0.093374 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 2.366784 seconds.
-  path: Assets/Sprites/Character/Enemies/Orcling/Orcling_Dead.clip
-  artifactKey: Guid(ce97a69ea61edca4ca2902b764e513df) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Sprites/Character/Enemies/Orcling/Orcling_Dead.clip using Guid(ce97a69ea61edca4ca2902b764e513df) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '4d972dc910908eabfddfd064cc0a47fa') in 0.008909 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 2.082250 seconds.
-  path: Assets/Sprites/Character/Enemies/Orcling/Orcling_Damage.clip
-  artifactKey: Guid(784ac163298992a44b5d7004bcdd787a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Sprites/Character/Enemies/Orcling/Orcling_Damage.clip using Guid(784ac163298992a44b5d7004bcdd787a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '45b62b35bc3d3290a56c8f1e7c7ed3bd') in 0.007026 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 4.820120 seconds.
-  path: Assets/Sprites/Character/Enemies/Orcling/Orcling_Damage.png
-  artifactKey: Guid(1aaf3aa064cd50a4b887ee22a261c329) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Sprites/Character/Enemies/Orcling/Orcling_Damage.png using Guid(1aaf3aa064cd50a4b887ee22a261c329) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '1eb7eda700da373fd7e52e8d8053357f') in 0.015967 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 26.947916 seconds.
-  path: Assets/Sprites/Character/Enemies/Orcling/Orcling_Run.png
-  artifactKey: Guid(e705294919082474c975b5e3cb51ab4a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Sprites/Character/Enemies/Orcling/Orcling_Run.png using Guid(e705294919082474c975b5e3cb51ab4a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '934b871c9451fd07e56a287c8996cca8') in 0.010063 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 0.015512 seconds.
-  path: Assets/Sprites/Character/Enemies/Orcling/Orcling_Damage.png
-  artifactKey: Guid(1aaf3aa064cd50a4b887ee22a261c329) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Sprites/Character/Enemies/Orcling/Orcling_Damage.png using Guid(1aaf3aa064cd50a4b887ee22a261c329) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '1afdd413af9f5021e90cf930b4cd2ff7') in 0.022677 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 0.000023 seconds.
-  path: Assets/Sprites/Character/Enemies/Orcling/Orcling_Falling.png
-  artifactKey: Guid(394cf83225a2a074cbc6722d670fafd0) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Sprites/Character/Enemies/Orcling/Orcling_Falling.png using Guid(394cf83225a2a074cbc6722d670fafd0) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '436d38eaa88fb98e11d5ecd728161521') in 0.009385 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 3.270068 seconds.
-  path: Assets/Sprites/Character/Enemies/Orcling/Orcling_Run.png
-  artifactKey: Guid(e705294919082474c975b5e3cb51ab4a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Sprites/Character/Enemies/Orcling/Orcling_Run.png using Guid(e705294919082474c975b5e3cb51ab4a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '511f04cefb04621037dd9c72a2954eb3') in 0.011761 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 2.611098 seconds.
-  path: Assets/Sprites/Character/Enemies/Orcling/Orcling_Falling.png
-  artifactKey: Guid(394cf83225a2a074cbc6722d670fafd0) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Sprites/Character/Enemies/Orcling/Orcling_Falling.png using Guid(394cf83225a2a074cbc6722d670fafd0) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '45e54ced69fadad933269e5720cee53d') in 0.010925 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 119.543747 seconds.
-  path: Assets/Sprites/Character/Enemies/Orcling/Orcling_Falling.png
-  artifactKey: Guid(394cf83225a2a074cbc6722d670fafd0) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Sprites/Character/Enemies/Orcling/Orcling_Falling.png using Guid(394cf83225a2a074cbc6722d670fafd0) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'b414d79182154e91257c57eb3c9854e1') in 0.013721 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 14.081468 seconds.
-  path: Assets/Sprites/Character/Enemies/Orcling/Orcling_Run.png
-  artifactKey: Guid(e705294919082474c975b5e3cb51ab4a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Sprites/Character/Enemies/Orcling/Orcling_Run.png using Guid(e705294919082474c975b5e3cb51ab4a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '2f81745c295b95cfc7d92c321743f65a') in 0.021267 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 4.368912 seconds.
-  path: Assets/Sprites/Character/Enemies/Orcling/Orcling_Run.png
-  artifactKey: Guid(e705294919082474c975b5e3cb51ab4a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Sprites/Character/Enemies/Orcling/Orcling_Run.png using Guid(e705294919082474c975b5e3cb51ab4a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '56fd1abac4c3700f1ffb1770bd551839') in 0.011336 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 3.860907 seconds.
-  path: Assets/Sprites/Character/Enemies/Orcling/Orcling_Falling.png
-  artifactKey: Guid(394cf83225a2a074cbc6722d670fafd0) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Sprites/Character/Enemies/Orcling/Orcling_Falling.png using Guid(394cf83225a2a074cbc6722d670fafd0) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '8bd05ed4de01948c2007ff999a1226b6') in 0.010611 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 48.668153 seconds.
-  path: Assets/Sprites/Character/Enemies/Orcling/Orcling_Falling.png
-  artifactKey: Guid(394cf83225a2a074cbc6722d670fafd0) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Sprites/Character/Enemies/Orcling/Orcling_Falling.png using Guid(394cf83225a2a074cbc6722d670fafd0) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '2a4aacff75f5fb2086fa775d2b8c293a') in 0.013303 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 4.223363 seconds.
-  path: Assets/Sprites/Character/Enemies/Orcling/Orcling_Run.png
-  artifactKey: Guid(e705294919082474c975b5e3cb51ab4a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Sprites/Character/Enemies/Orcling/Orcling_Run.png using Guid(e705294919082474c975b5e3cb51ab4a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '8ad46d6129f61d450a379c0d1b16d73b') in 0.011700 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 8.208573 seconds.
-  path: Assets/Sprites/Character/Enemies/Orcling/Orcling_Run.png
-  artifactKey: Guid(e705294919082474c975b5e3cb51ab4a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Sprites/Character/Enemies/Orcling/Orcling_Run.png using Guid(e705294919082474c975b5e3cb51ab4a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'd356c9065046ec32c35ea76f4b8129b4') in 0.037287 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 22.201403 seconds.
-  path: Assets/Sprites/Character/Enemies/Orcling/Orcling_Falling.png
-  artifactKey: Guid(394cf83225a2a074cbc6722d670fafd0) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Sprites/Character/Enemies/Orcling/Orcling_Falling.png using Guid(394cf83225a2a074cbc6722d670fafd0) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '8cb36b0de887984c589d4576e3fe8726') in 0.053318 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 732.625487 seconds.
-  path: Assets/Animation/Character/NinjaSprite.controller
-  artifactKey: Guid(dcde6e7f5ee5d4e4985cae245da8c9aa) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Animation/Character/NinjaSprite.controller using Guid(dcde6e7f5ee5d4e4985cae245da8c9aa) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'cd0e9e8ec18c74f5b8e0fa17e7d69fb3') in 0.011511 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 24.628163 seconds.
-  path: Assets/Animation/Character/Sprite.controller
-  artifactKey: Guid(29be03a313d8a6c4e8619bda2edbe642) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Animation/Character/Sprite.controller using Guid(29be03a313d8a6c4e8619bda2edbe642) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '02ca6c5f7a651e2a48b7cade55e33053') in 0.007541 seconds 
-========================================================================
-Received Prepare
-Registering precompiled user dll's ...
-Registered in 0.006707 seconds.
-Begin MonoManager ReloadAssembly
-Symbol file LoadedFromMemory doesn't match image D:\Unity-Gunsmith\Gunsmith\Library\PackageCache\com.unity.visualscripting@1.7.8\Editor\VisualScripting.Core\Dependencies\YamlDotNet\Unity.VisualScripting.YamlDotNet.dll
-Symbol file LoadedFromMemory doesn't match image D:\Unity-Gunsmith\Gunsmith\Library\PackageCache\com.unity.visualscripting@1.7.8\Editor\VisualScripting.Core\Dependencies\DotNetZip\Unity.VisualScripting.IonicZip.dll
-Native extension for WindowsStandalone target not found
-Refreshing native plugins compatible for Editor in 1.33 ms, found 4 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-Mono: successfully reloaded assembly
-- Completed reload, in  1.029 seconds
-Domain Reload Profiling:
-	ReloadAssembly (1030ms)
-		BeginReloadAssembly (116ms)
-			ExecutionOrderSort (0ms)
-			DisableScriptedObjects (6ms)
-			BackupInstance (0ms)
-			ReleaseScriptingObjects (0ms)
-			CreateAndSetChildDomain (36ms)
-		EndReloadAssembly (833ms)
-			LoadAssemblies (85ms)
-			RebuildTransferFunctionScriptingTraits (0ms)
-			SetupTypeCache (227ms)
-			ReleaseScriptCaches (2ms)
-			RebuildScriptCaches (46ms)
-			SetupLoadedEditorAssemblies (432ms)
-				LogAssemblyErrors (0ms)
-				InitializePlatformSupportModulesInManaged (12ms)
-				SetLoadedEditorAssemblies (1ms)
-				RefreshPlugins (1ms)
-				BeforeProcessingInitializeOnLoad (87ms)
-				ProcessInitializeOnLoadAttributes (243ms)
-				ProcessInitializeOnLoadMethodAttributes (75ms)
-				AfterProcessingInitializeOnLoad (12ms)
-				EditorAssembliesLoaded (0ms)
-			ExecutionOrderSort2 (0ms)
-			AwakeInstancesAfterBackupRestoration (8ms)
-Platform modules already initialized, skipping
-Refreshing native plugins compatible for Editor in 2.40 ms, found 4 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-Unloading 5893 Unused Serialized files (Serialized files now loaded: 0)
-Unloading 44 unused Assets / (2.0 MB). Loaded Objects now: 6551.
-Memory consumption went from 237.0 MB to 235.0 MB.
-Total: 4.176100 ms (FindLiveObjects: 0.446100 ms CreateObjectMapping: 0.433300 ms MarkObjects: 2.863800 ms  DeleteObjects: 0.430900 ms)
-
-AssetImportParameters requested are different than current active one (requested -> active):
-  custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
-  custom:container-muxer-webm: aa71ff27fc2769a1b78a27578f13a17b -> 
-  custom:container-demuxer-webm: 4f35f7cbe854078d1ac9338744f61a02 -> 
-  custom:video-encoder-webm-vp8: eb34c28f22e8b96e1ab97ce403110664 -> 
-  custom:video-codec-MediaFoundation-h265: 746d11721c4dcdbdad8f713fa42b33f4 -> 
-  custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
-  custom:framework-win-MediaFoundation: 216162199b28c13a410421893ffa2e32 -> 
-  custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
-  custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
-  custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
-========================================================================
-Received Prepare
-Registering precompiled user dll's ...
-Registered in 0.006575 seconds.
-Begin MonoManager ReloadAssembly
-Symbol file LoadedFromMemory doesn't match image D:\Unity-Gunsmith\Gunsmith\Library\PackageCache\com.unity.visualscripting@1.7.8\Editor\VisualScripting.Core\Dependencies\YamlDotNet\Unity.VisualScripting.YamlDotNet.dll
-Symbol file LoadedFromMemory doesn't match image D:\Unity-Gunsmith\Gunsmith\Library\PackageCache\com.unity.visualscripting@1.7.8\Editor\VisualScripting.Core\Dependencies\DotNetZip\Unity.VisualScripting.IonicZip.dll
-Native extension for WindowsStandalone target not found
-Refreshing native plugins compatible for Editor in 1.14 ms, found 4 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-Mono: successfully reloaded assembly
-- Completed reload, in  1.025 seconds
-Domain Reload Profiling:
-	ReloadAssembly (1026ms)
-		BeginReloadAssembly (109ms)
-			ExecutionOrderSort (0ms)
-			DisableScriptedObjects (5ms)
-			BackupInstance (0ms)
-			ReleaseScriptingObjects (0ms)
-			CreateAndSetChildDomain (33ms)
-		EndReloadAssembly (832ms)
-			LoadAssemblies (84ms)
-			RebuildTransferFunctionScriptingTraits (0ms)
-			SetupTypeCache (221ms)
-			ReleaseScriptCaches (2ms)
-			RebuildScriptCaches (48ms)
-			SetupLoadedEditorAssemblies (431ms)
-				LogAssemblyErrors (0ms)
-				InitializePlatformSupportModulesInManaged (11ms)
-				SetLoadedEditorAssemblies (0ms)
-				RefreshPlugins (1ms)
-				BeforeProcessingInitializeOnLoad (88ms)
-				ProcessInitializeOnLoadAttributes (244ms)
-				ProcessInitializeOnLoadMethodAttributes (75ms)
-				AfterProcessingInitializeOnLoad (11ms)
-				EditorAssembliesLoaded (0ms)
-			ExecutionOrderSort2 (0ms)
-			AwakeInstancesAfterBackupRestoration (8ms)
-Platform modules already initialized, skipping
-Refreshing native plugins compatible for Editor in 2.75 ms, found 4 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-Unloading 5893 Unused Serialized files (Serialized files now loaded: 0)
-Unloading 44 unused Assets / (2.0 MB). Loaded Objects now: 6566.
-Memory consumption went from 237.0 MB to 235.0 MB.
-Total: 4.341800 ms (FindLiveObjects: 0.384600 ms CreateObjectMapping: 0.419900 ms MarkObjects: 3.026900 ms  DeleteObjects: 0.509700 ms)
-
-AssetImportParameters requested are different than current active one (requested -> active):
-  custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
-  custom:container-muxer-webm: aa71ff27fc2769a1b78a27578f13a17b -> 
-  custom:container-demuxer-webm: 4f35f7cbe854078d1ac9338744f61a02 -> 
-  custom:video-encoder-webm-vp8: eb34c28f22e8b96e1ab97ce403110664 -> 
-  custom:video-codec-MediaFoundation-h265: 746d11721c4dcdbdad8f713fa42b33f4 -> 
-  custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
-  custom:framework-win-MediaFoundation: 216162199b28c13a410421893ffa2e32 -> 
-  custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
-  custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
-  custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
-========================================================================
-Received Prepare
-Registering precompiled user dll's ...
-Registered in 0.006840 seconds.
-Begin MonoManager ReloadAssembly
-Symbol file LoadedFromMemory doesn't match image D:\Unity-Gunsmith\Gunsmith\Library\PackageCache\com.unity.visualscripting@1.7.8\Editor\VisualScripting.Core\Dependencies\YamlDotNet\Unity.VisualScripting.YamlDotNet.dll
-Symbol file LoadedFromMemory doesn't match image D:\Unity-Gunsmith\Gunsmith\Library\PackageCache\com.unity.visualscripting@1.7.8\Editor\VisualScripting.Core\Dependencies\DotNetZip\Unity.VisualScripting.IonicZip.dll
-Native extension for WindowsStandalone target not found
-Refreshing native plugins compatible for Editor in 1.23 ms, found 4 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-Mono: successfully reloaded assembly
-- Completed reload, in  1.049 seconds
-Domain Reload Profiling:
-	ReloadAssembly (1049ms)
-		BeginReloadAssembly (121ms)
-			ExecutionOrderSort (0ms)
-			DisableScriptedObjects (5ms)
-			BackupInstance (0ms)
-			ReleaseScriptingObjects (0ms)
-			CreateAndSetChildDomain (39ms)
-		EndReloadAssembly (847ms)
-			LoadAssemblies (92ms)
-			RebuildTransferFunctionScriptingTraits (0ms)
-			SetupTypeCache (219ms)
-			ReleaseScriptCaches (2ms)
-			RebuildScriptCaches (54ms)
-			SetupLoadedEditorAssemblies (436ms)
-				LogAssemblyErrors (0ms)
-				InitializePlatformSupportModulesInManaged (12ms)
-				SetLoadedEditorAssemblies (0ms)
-				RefreshPlugins (1ms)
-				BeforeProcessingInitializeOnLoad (88ms)
-				ProcessInitializeOnLoadAttributes (245ms)
-				ProcessInitializeOnLoadMethodAttributes (77ms)
-				AfterProcessingInitializeOnLoad (12ms)
-				EditorAssembliesLoaded (0ms)
-			ExecutionOrderSort2 (0ms)
-			AwakeInstancesAfterBackupRestoration (8ms)
-Platform modules already initialized, skipping
-Refreshing native plugins compatible for Editor in 2.35 ms, found 4 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-Unloading 5893 Unused Serialized files (Serialized files now loaded: 0)
-Unloading 44 unused Assets / (2.0 MB). Loaded Objects now: 6581.
-Memory consumption went from 237.0 MB to 235.1 MB.
-Total: 4.292900 ms (FindLiveObjects: 0.403900 ms CreateObjectMapping: 0.426000 ms MarkObjects: 2.950600 ms  DeleteObjects: 0.511400 ms)
-
-AssetImportParameters requested are different than current active one (requested -> active):
-  custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
-  custom:container-muxer-webm: aa71ff27fc2769a1b78a27578f13a17b -> 
-  custom:container-demuxer-webm: 4f35f7cbe854078d1ac9338744f61a02 -> 
-  custom:video-encoder-webm-vp8: eb34c28f22e8b96e1ab97ce403110664 -> 
-  custom:video-codec-MediaFoundation-h265: 746d11721c4dcdbdad8f713fa42b33f4 -> 
-  custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
-  custom:framework-win-MediaFoundation: 216162199b28c13a410421893ffa2e32 -> 
-  custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
-  custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
-  custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
-========================================================================
-Received Prepare
-Registering precompiled user dll's ...
-Registered in 0.006350 seconds.
-Begin MonoManager ReloadAssembly
-Symbol file LoadedFromMemory doesn't match image D:\Unity-Gunsmith\Gunsmith\Library\PackageCache\com.unity.visualscripting@1.7.8\Editor\VisualScripting.Core\Dependencies\YamlDotNet\Unity.VisualScripting.YamlDotNet.dll
-Symbol file LoadedFromMemory doesn't match image D:\Unity-Gunsmith\Gunsmith\Library\PackageCache\com.unity.visualscripting@1.7.8\Editor\VisualScripting.Core\Dependencies\DotNetZip\Unity.VisualScripting.IonicZip.dll
-Native extension for WindowsStandalone target not found
-Refreshing native plugins compatible for Editor in 1.13 ms, found 4 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-Mono: successfully reloaded assembly
-- Completed reload, in  1.049 seconds
-Domain Reload Profiling:
-	ReloadAssembly (1049ms)
-		BeginReloadAssembly (113ms)
-			ExecutionOrderSort (0ms)
-			DisableScriptedObjects (5ms)
-			BackupInstance (0ms)
-			ReleaseScriptingObjects (0ms)
-			CreateAndSetChildDomain (37ms)
-		EndReloadAssembly (854ms)
-			LoadAssemblies (85ms)
-			RebuildTransferFunctionScriptingTraits (0ms)
-			SetupTypeCache (218ms)
-			ReleaseScriptCaches (2ms)
-			RebuildScriptCaches (49ms)
-			SetupLoadedEditorAssemblies (453ms)
-				LogAssemblyErrors (0ms)
-				InitializePlatformSupportModulesInManaged (12ms)
-				SetLoadedEditorAssemblies (0ms)
-				RefreshPlugins (1ms)
-				BeforeProcessingInitializeOnLoad (90ms)
-				ProcessInitializeOnLoadAttributes (254ms)
-				ProcessInitializeOnLoadMethodAttributes (84ms)
-				AfterProcessingInitializeOnLoad (11ms)
-				EditorAssembliesLoaded (0ms)
-			ExecutionOrderSort2 (0ms)
-			AwakeInstancesAfterBackupRestoration (8ms)
-Platform modules already initialized, skipping
-Refreshing native plugins compatible for Editor in 2.56 ms, found 4 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-Unloading 5893 Unused Serialized files (Serialized files now loaded: 0)
-Unloading 44 unused Assets / (2.0 MB). Loaded Objects now: 6596.
-Memory consumption went from 237.0 MB to 235.1 MB.
-Total: 4.776200 ms (FindLiveObjects: 0.488000 ms CreateObjectMapping: 0.344000 ms MarkObjects: 3.479200 ms  DeleteObjects: 0.464000 ms)
-
-AssetImportParameters requested are different than current active one (requested -> active):
-  custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
-  custom:container-muxer-webm: aa71ff27fc2769a1b78a27578f13a17b -> 
-  custom:container-demuxer-webm: 4f35f7cbe854078d1ac9338744f61a02 -> 
-  custom:video-encoder-webm-vp8: eb34c28f22e8b96e1ab97ce403110664 -> 
-  custom:video-codec-MediaFoundation-h265: 746d11721c4dcdbdad8f713fa42b33f4 -> 
-  custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
-  custom:framework-win-MediaFoundation: 216162199b28c13a410421893ffa2e32 -> 
-  custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
-  custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
-  custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+  Time since last request: 100942.301404 seconds.
+  path: Assets/Prefabs/Enemies/Mage Of Scorch.prefab
+  artifactKey: Guid(d2da94ef7beb4d348801ad93772d90dd) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Prefabs/Enemies/Mage Of Scorch.prefab using Guid(d2da94ef7beb4d348801ad93772d90dd) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '7b138c3d71ec114d55f80646d6a52d08') in 0.227002 seconds 
