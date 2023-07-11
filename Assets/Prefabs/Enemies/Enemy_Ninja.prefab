@@ -444,6 +444,7 @@ MonoBehaviour:
   Label: 
   ag: {fileID: 770053745264193049}
   rb: {fileID: 7755902308807892962}
+  disableAgOnExit: 1
 --- !u!1 &7755902308807892965
 GameObject:
   m_ObjectHideFlags: 0
@@ -910,6 +911,14 @@ PrefabInstance:
     - target: {fileID: 45369151602084315, guid: 34745759eab756e4da5e82bb9c1a81ae, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1266755920617773578, guid: 34745759eab756e4da5e82bb9c1a81ae, type: 3}
+      propertyPath: User
+      value: 
+      objectReference: {fileID: 770053745264193030}
+    - target: {fileID: 1266755920617773578, guid: 34745759eab756e4da5e82bb9c1a81ae, type: 3}
+      propertyPath: UserType
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1266755920617773578, guid: 34745759eab756e4da5e82bb9c1a81ae, type: 3}
       propertyPath: impactForce

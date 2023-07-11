@@ -18,6 +18,9 @@ public class Character : MonoBehaviour, IDamageable
     public CharacterTypes CharacterType = CharacterTypes.AI;
     public float moveSpeed;
 
+    //This variable modifies the move speed of the character, separate from the base move speed variable
+    protected float movementModifier = 1;
+
     [Header("Velocity Smoothing")]
     public float accelerationTimeGrounded = 0.1f;
     public float velocityXSmoothing = 0.05f;
@@ -392,6 +395,15 @@ public class Character : MonoBehaviour, IDamageable
     }
 
     #endregion
+
+    /// <summary>
+    /// Applies a movement modifier to the AI
+    /// </summary>
+    /// <param name="scale"></param>
+    public void ApplyMovementModifer(float scale)
+    {
+        movementModifier *= scale;
+    }
 
     #region HelperFunctions
 

@@ -186,6 +186,8 @@ public class HitScanWeapon : Weapon
     /// </summary>
     public override void OnEquip()
     {
+        base.OnEquip();
+
         if (inReload)
         {
             UIManager.instance.crosshair.SetCoolDownUI(timeToReload, reloadTime);
@@ -206,6 +208,7 @@ public class HitScanWeapon : Weapon
     /// </summary>
     public override void OnDequip()
     {
+        base.OnDequip();
         if (isMagazineBased)
         {
             ReloadCancel();

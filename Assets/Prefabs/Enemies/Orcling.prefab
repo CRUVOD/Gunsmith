@@ -882,6 +882,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Orcling Dagger
       objectReference: {fileID: 0}
+    - target: {fileID: 1643573310457461330, guid: 855d42d0acfdf9042b9f306c5da50db9, type: 3}
+      propertyPath: User
+      value: 
+      objectReference: {fileID: 5366778985049989614}
+    - target: {fileID: 1643573310457461330, guid: 855d42d0acfdf9042b9f306c5da50db9, type: 3}
+      propertyPath: UserType
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1643573310457461331, guid: 855d42d0acfdf9042b9f306c5da50db9, type: 3}
       propertyPath: m_RootOrder
       value: 1

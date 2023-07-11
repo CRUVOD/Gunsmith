@@ -10196,9 +10196,12 @@ MonoBehaviour:
   Animator: {fileID: 0}
   firePoint: {fileID: 562627240714810398}
   reference: {fileID: 11400000, guid: 1f3c17c6d3f7750459e3fa0167d616be, type: 2}
+  flipWeaponSprite: 1
+  movementPenalty: 0.5
   recoil: 150
   weaponDirection: {x: 0, y: 0}
-  User: 0
+  UserType: 0
+  User: {fileID: 0}
   weaponAttachmentSlots:
   - {fileID: 3542567051192935150}
   - {fileID: 5846534920772244058}

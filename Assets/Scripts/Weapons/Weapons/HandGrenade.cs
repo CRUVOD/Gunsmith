@@ -24,7 +24,7 @@ public class HandGrenade : GrenadeWeapon
             Grenade newGrenade;
 
             //Instantiate the bullet and send it flying
-            if (User == CharacterTypes.Player)
+            if (UserType == CharacterTypes.Player)
             {
                 newGrenade = Instantiate(grenade, firePoint.position, MouseDirectionQuaternion());
             }

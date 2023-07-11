@@ -20,13 +20,18 @@ public class Weapon : MonoBehaviour, ExtendedEventListener<GameEvent>
     //links to all fields, prefabs etc for UI or anything else to use
     public WeaponReference reference;
     public bool flipWeaponSprite = true;
+    //The movement scaling when equipping this weapon
+    [Range(0f, 1f)]
+    public float movementPenalty = 1f;
     //knockback recoil
     public float recoil;
     //which way is the weapon pointing
     [HideInInspector]
     public Vector2 weaponDirection;
-    //who is using this weapon
-    public CharacterTypes User = CharacterTypes.Player;
+    //the type of character that is using this weapon
+    public CharacterTypes UserType = CharacterTypes.Player;
+    //The instance character using this weapon
+    public Character User;
 
     [Header("Attachments")]
     public List<WeaponAttachmentSlot> weaponAttachmentSlots;
@@ -134,7 +139,7 @@ public class Weapon : MonoBehaviour, ExtendedEventListener<GameEvent>
     /// </summary>
     public virtual void UpdateUI()
     {
-        if (User == CharacterTypes.Player)
+        if (UserType == CharacterTypes.Player)
         {
             UIManager.instance.ChangeWeaponUI(reference);
         }
@@ -145,6 +150,19 @@ public class Weapon : MonoBehaviour, ExtendedEventListener<GameEvent>
     /// </summary>
     public virtual void OnEquip()
     {
+        if (UserType == CharacterTypes.AI)
+        {
+            return;
+        }
+        else
+        {
+            if (User != null)
+            {
+                //Apply movement penalty of weapon on player
+                User.ApplyMovementModifer(movementPenalty);
+            }
+        }
+
         return;
     }
 
@@ -153,6 +171,19 @@ public class Weapon : MonoBehaviour, ExtendedEventListener<GameEvent>
     /// </summary>
     public virtual void OnDequip()
     {
+        if (UserType == CharacterTypes.AI)
+        {
+            return;
+        }
+        else
+        {
+            if (User != null)
+            {
+                //Revert movement penalty on player
+                User.ApplyMovementModifer(1/movementPenalty);
+            }
+        }
+
         return;
     }
 
@@ -181,7 +212,7 @@ public class Weapon : MonoBehaviour, ExtendedEventListener<GameEvent>
             return;
         }
 
-        if (User == CharacterTypes.Player)
+        if (UserType == CharacterTypes.Player)
         {
             transform.rotation = MouseDirectionQuaternion();
             weaponDirection = MouseDirectionVector2();

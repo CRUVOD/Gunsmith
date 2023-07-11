@@ -404,9 +404,12 @@ MonoBehaviour:
   Animator: {fileID: 0}
   firePoint: {fileID: 2445405222221208680}
   reference: {fileID: 11400000, guid: 44e9748826d576b4c8a9c8371235839f, type: 2}
+  flipWeaponSprite: 1
+  movementPenalty: 1
   recoil: 0
   weaponDirection: {x: 0, y: 0}
-  User: 1
+  UserType: 1
+  User: {fileID: 8511524072368034622}
   weaponAttachmentSlots: []
   projectile: {fileID: 5920787274300679215, guid: 925a7ec1b3fdb3643880913b9bea6d4e, type: 3}
   minDamage: 15
@@ -1902,9 +1905,12 @@ MonoBehaviour:
   Animator: {fileID: 0}
   firePoint: {fileID: 8511524071461732393}
   reference: {fileID: 0}
+  flipWeaponSprite: 1
+  movementPenalty: 1
   recoil: 0
   weaponDirection: {x: 0, y: 0}
-  User: 1
+  UserType: 1
+  User: {fileID: 8511524072368034622}
   weaponAttachmentSlots: []
   rayTravelDistance: 1000
   fireRate: 100
@@ -2238,9 +2244,12 @@ MonoBehaviour:
   Animator: {fileID: 7925812998317074953}
   firePoint: {fileID: 7875780258780577406}
   reference: {fileID: 11400000, guid: b06aa375ce7a4ce40b5feadda8bf3d8e, type: 2}
+  flipWeaponSprite: 1
+  movementPenalty: 1
   recoil: 0
   weaponDirection: {x: 0, y: 0}
-  User: 1
+  UserType: 1
+  User: {fileID: 8511524072368034622}
   weaponAttachmentSlots: []
   DamageArea: {fileID: 15648883706477043}
   WeaponUsedFeedback: {fileID: 7904100200173732192}

@@ -137,7 +137,7 @@ GameObject:
   - component: {fileID: 7289354023083785077}
   - component: {fileID: 7289354023083785064}
   m_Layer: 19
-  m_Name: Mage Of Scorch
+  m_Name: Mage Of Frost
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -586,7 +586,7 @@ GameObject:
   - component: {fileID: 5361577958192948251}
   - component: {fileID: 5361577958192948252}
   m_Layer: 19
-  m_Name: Staff of Scorch
+  m_Name: Staff of Frost
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -631,7 +631,7 @@ MonoBehaviour:
   UserType: 1
   User: {fileID: 7289354023083785077}
   weaponAttachmentSlots: []
-  AOEPrefab: {fileID: 4219912091375475954, guid: 5b27ba8cd90f85c4392fae5a923df6a4, type: 3}
+  AOEPrefab: {fileID: 8155431113511963377, guid: 9f80298f0710aca449ed3c44319d50a0, type: 3}
   recastTime: 2
 --- !u!1 &5361577959920604873
 GameObject:

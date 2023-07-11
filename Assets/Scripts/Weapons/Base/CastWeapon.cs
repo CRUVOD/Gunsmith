@@ -12,17 +12,27 @@ public class CastWeapon : Weapon
 
     private AOESpellInstance currentSpellCast;
 
+    //The instant a cast starts, this timer starts, this is analagous to fire rate
+    public float recastTime;
+    private float recastTimer;
+
     bool castInProgress;
 
     protected override void Start()
     {
         base.Start();
         castInProgress = false;
+        recastTimer = 0;
     }
 
     protected virtual void Update()
     {
         RotateWeapon();
+        //Count down recast
+        if (recastTimer >= 0)
+        {
+            recastTimer -= Time.deltaTime;
+        }
     }
 
     protected override void RotateWeapon()
@@ -32,7 +42,7 @@ public class CastWeapon : Weapon
             return;
         }
 
-        if (User == CharacterTypes.Player)
+        if (UserType == CharacterTypes.Player)
         {
             weaponDirection = MouseDirectionVector2();
 
@@ -70,10 +80,10 @@ public class CastWeapon : Weapon
 
     public override bool Use()
     {
-        if (!castInProgress)
+        if (!castInProgress && recastTimer < 0)
         {
             //We currently are not casting the AOE yet/we don't have an AOE to cast
-            if (User == CharacterTypes.Player)
+            if (UserType == CharacterTypes.Player)
             {
                 //TODO
                 return false;
@@ -82,6 +92,7 @@ public class CastWeapon : Weapon
             {
                 CreateAOEPlayerTarget();
                 castInProgress = true;
+                recastTimer = recastTime;
             }
         }
         else
@@ -107,6 +118,11 @@ public class CastWeapon : Weapon
     /// </summary>
     private void Cast()
     {
+        if (currentSpellCast == null)
+        {
+            return;
+        }
+
         currentSpellCast.Cast();
 
         if (currentSpellCast.successfullyCast)

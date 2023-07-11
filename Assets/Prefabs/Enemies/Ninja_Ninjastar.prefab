@@ -546,6 +546,7 @@ MonoBehaviour:
   Label: 
   ag: {fileID: 3308836380075843318}
   rb: {fileID: 5541150388792684301}
+  disableAgOnExit: 1
 --- !u!114 &1519981394
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1005,6 +1006,14 @@ PrefabInstance:
     - target: {fileID: 1341584464747747895, guid: 1b82910e650c79648a98afbbc14b3aca, type: 3}
       propertyPath: m_Layer
       value: 19
+      objectReference: {fileID: 0}
+    - target: {fileID: 1897519526702675867, guid: 1b82910e650c79648a98afbbc14b3aca, type: 3}
+      propertyPath: User
+      value: 
+      objectReference: {fileID: 3308836380075843305}
+    - target: {fileID: 1897519526702675867, guid: 1b82910e650c79648a98afbbc14b3aca, type: 3}
+      propertyPath: UserType
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1897519526702675867, guid: 1b82910e650c79648a98afbbc14b3aca, type: 3}
       propertyPath: projectileSpeed

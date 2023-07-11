@@ -10637,7 +10637,7 @@ MonoBehaviour:
     Transitions:
       array: []
   TimeInThisState: 0
-  Target: {fileID: 0}
+  TargetPosition: {x: 0, y: 0, z: 0}
   _lastKnownTargetPosition: {x: 0, y: 0, z: 0}
   CoreActive: 1
   ResetCoreOnStart: 1
@@ -10882,6 +10882,7 @@ MonoBehaviour:
   holeTestPoints:
   - {fileID: 5318154682648970505}
   - {fileID: 4848783827361375582}
+  canBeKnockedBack: 1
   ImpactFalloff: 10
   InitialHealth: 100
   CurrentHealth: 0
@@ -10892,9 +10893,11 @@ MonoBehaviour:
   ag: {fileID: 3308836380075843318}
   enemyHealthBar: {fileID: 3308836380075843316}
   currentWeapon: {fileID: 2726357604899453887}
+  HideEnemySpriteWhenInactive: 0
   timeTillBodyDisappear: 2
   stunResistance: 50
   stunThreshold: 2.2
+  minStunDuration: 0
   maxStunDuration: 1
   isStunned: 0
   externalMovementControl: 0
@@ -11058,9 +11061,12 @@ MonoBehaviour:
   Animator: {fileID: 0}
   firePoint: {fileID: 1864861299343603364}
   reference: {fileID: 11400000, guid: 3e330ae971045f0478c27c35c1fe1ed1, type: 2}
+  flipWeaponSprite: 1
+  movementPenalty: 1
   recoil: 5
   weaponDirection: {x: 0, y: 0}
-  User: 1
+  UserType: 1
+  User: {fileID: 3308836380075843305}
   weaponAttachmentSlots: []
   projectile: {fileID: 5920787274300679215, guid: 9ff7b20ad763ef4469ad5875c0f1cd8a, type: 3}
   minDamage: 15
@@ -11074,10 +11080,10 @@ MonoBehaviour:
   reloadTime: 1.2
   currentAmmoInMagazine: 0
   inReload: 0
-  useCoolDownCircleUIBetweenShots: 0
   weaponUseFeedback: {fileID: 7215769980505912075}
   weaponReloadFeedback: {fileID: 2175110004786129240}
   weaponEmptyFeedback: {fileID: 2175110003802631372}
+  useCoolDownCircleUIBetweenShots: 0
 --- !u!1 &6289366250735906740
 GameObject:
   m_ObjectHideFlags: 0

@@ -71,13 +71,14 @@ public class Player : Character
             //Set user of weapons to be player, and disable the sprite of the other weapons
             for (int i = 0; i < weaponsInLoadout.Count; i++)
             {
-                weaponsInLoadout[i].User = CharacterTypes.Player;
+                weaponsInLoadout[i].UserType = CharacterTypes.Player;
+                weaponsInLoadout[i].User = this;
                 if (i >= 1)
                 {
                     weaponsInLoadout[i].weaponSprite.SetActive(false);
                 }
             }
-            currentWeapon.UpdateUI();
+            SwitchWeapon(0);
         }
         playerHealthBar = UIManager.instance.PlayerStatUI.healthbar;
         playerStaminaBar = UIManager.instance.PlayerStatUI.staminaBar;
@@ -183,7 +184,8 @@ public class Player : Character
     {
         playerInput = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
 
-        Vector2 targetVelocity = playerInput.normalized * moveSpeed;
+        Vector2 targetVelocity = playerInput.normalized * moveSpeed * movementModifier;
+        DebugText.instance.SetText((movementModifier).ToString());
 
         velocity.x = Mathf.SmoothDamp(velocity.x, targetVelocity.x, ref velocityXSmoothing, accelerationTimeGrounded);
         velocity.y = Mathf.SmoothDamp(velocity.y, targetVelocity.y, ref velocityYSmoothing, accelerationTimeGrounded);
@@ -581,7 +583,8 @@ public class Player : Character
     public void AddWeaponToLoadout(Weapon weaponPrefab)
     {
         Weapon weapon = Instantiate<Weapon>(weaponPrefab, weaponEquipPoint);
-        weapon.User = CharacterTypes.Player;
+        weapon.UserType = CharacterTypes.Player;
+        weapon.User = this;
         weaponsInLoadout.Add(weapon);
         SwitchWeapon(weaponsInLoadout.Count-1);
     }
@@ -601,7 +604,8 @@ public class Player : Character
         {
             Weapon weapon = Instantiate<Weapon>(newLoadout[i], weaponEquipPoint);
             weaponsInLoadout.Add(weapon);
-            weaponsInLoadout[i].User = CharacterTypes.Player;
+            weapon.User = this;
+            weaponsInLoadout[i].UserType = CharacterTypes.Player;
             if (i >= 1)
             {
                 weaponsInLoadout[i].weaponSprite.SetActive(false);
@@ -609,8 +613,7 @@ public class Player : Character
         }
         if (weaponsInLoadout.Count > 0)
         {
-            currentWeapon = weaponsInLoadout[0];
-            currentWeapon.UpdateUI();
+            SwitchWeapon(0);
         }
     }
 
@@ -636,7 +639,8 @@ public class Player : Character
             WeaponReference weaponReference = DataManager.instance.TryGetWeaponReference(playerData.weaponsInLoadout[i]);
             Weapon weapon = Instantiate<Weapon>(weaponReference.weaponObject, weaponEquipPoint);
             weaponsInLoadout.Add(weapon);
-            weaponsInLoadout[i].User = CharacterTypes.Player;
+            weaponsInLoadout[i].UserType = CharacterTypes.Player;
+            weapon.User = this;
 
             if (playerData.attachmentsInLoadout.Length > 0 && playerData.attachmentsInLoadout[i] != null)
             {
@@ -660,8 +664,7 @@ public class Player : Character
 
         if (weaponsInLoadout.Count > 0)
         {
-            currentWeapon = weaponsInLoadout[0];
-            currentWeapon.UpdateUI();
+            SwitchWeapon(0);
         }
     }
 

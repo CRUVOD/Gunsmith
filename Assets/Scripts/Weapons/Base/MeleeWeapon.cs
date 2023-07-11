@@ -100,11 +100,13 @@ public class MeleeWeapon : Weapon
 
     public override void OnEquip()
     {
+        base.OnEquip();
         DisableDamageArea();
     }
 
     public override void OnDequip()
     {
+        base.OnDequip();
         DisableDamageArea();
     }
 

@@ -10196,9 +10196,12 @@ MonoBehaviour:
   Animator: {fileID: 0}
   firePoint: {fileID: 562627240714810398}
   reference: {fileID: 11400000, guid: 1d329f6192f4f3945849deab1446db0b, type: 2}
+  flipWeaponSprite: 1
+  movementPenalty: 0.8
   recoil: 45
   weaponDirection: {x: 0, y: 0}
-  User: 0
+  UserType: 0
+  User: {fileID: 0}
   weaponAttachmentSlots:
   - {fileID: 4140401716503515984}
   - {fileID: 1496624837677178456}
@@ -10216,12 +10219,12 @@ MonoBehaviour:
   reloadTime: 2
   currentAmmoInMagazine: 0
   inReload: 0
-  maxSpread: 40
-  spreadIncreaseRate: 4
-  spreadResetRate: 20
   weaponUseFeedback: {fileID: 8794434508599816625}
   weaponReloadFeedback: {fileID: 1607527394}
   weaponEmptyFeedback: {fileID: 91352694}
+  maxSpread: 40
+  spreadIncreaseRate: 4
+  spreadResetRate: 20
 --- !u!114 &1593185003204939103
 MonoBehaviour:
   m_ObjectHideFlags: 0

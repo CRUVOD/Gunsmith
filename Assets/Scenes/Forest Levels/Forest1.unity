@@ -1386,6 +1386,63 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 775226166}
   maxDistanceFromPlayer: 2
+--- !u!1001 &1920351041
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 298850690073561744, guid: 55fc20ceb2f8a194ca22a988732f6436, type: 3}
+      propertyPath: m_RootOrder
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 298850690073561744, guid: 55fc20ceb2f8a194ca22a988732f6436, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 4.7267447
+      objectReference: {fileID: 0}
+    - target: {fileID: 298850690073561744, guid: 55fc20ceb2f8a194ca22a988732f6436, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1.7435163
+      objectReference: {fileID: 0}
+    - target: {fileID: 298850690073561744, guid: 55fc20ceb2f8a194ca22a988732f6436, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 298850690073561744, guid: 55fc20ceb2f8a194ca22a988732f6436, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 298850690073561744, guid: 55fc20ceb2f8a194ca22a988732f6436, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 298850690073561744, guid: 55fc20ceb2f8a194ca22a988732f6436, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 298850690073561744, guid: 55fc20ceb2f8a194ca22a988732f6436, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 298850690073561744, guid: 55fc20ceb2f8a194ca22a988732f6436, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 298850690073561744, guid: 55fc20ceb2f8a194ca22a988732f6436, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 298850690073561744, guid: 55fc20ceb2f8a194ca22a988732f6436, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 298850690073561750, guid: 55fc20ceb2f8a194ca22a988732f6436, type: 3}
+      propertyPath: m_Name
+      value: Mage Of Frost
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 55fc20ceb2f8a194ca22a988732f6436, type: 3}
 --- !u!1001 &1995226259
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4938,60 +4995,3 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!1001 &5361577959498438944
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 298850690073561744, guid: d2da94ef7beb4d348801ad93772d90dd, type: 3}
-      propertyPath: m_RootOrder
-      value: 9
-      objectReference: {fileID: 0}
-    - target: {fileID: 298850690073561744, guid: d2da94ef7beb4d348801ad93772d90dd, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 5.55
-      objectReference: {fileID: 0}
-    - target: {fileID: 298850690073561744, guid: d2da94ef7beb4d348801ad93772d90dd, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: -0.1387721
-      objectReference: {fileID: 0}
-    - target: {fileID: 298850690073561744, guid: d2da94ef7beb4d348801ad93772d90dd, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 298850690073561744, guid: d2da94ef7beb4d348801ad93772d90dd, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 298850690073561744, guid: d2da94ef7beb4d348801ad93772d90dd, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 298850690073561744, guid: d2da94ef7beb4d348801ad93772d90dd, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 298850690073561744, guid: d2da94ef7beb4d348801ad93772d90dd, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 298850690073561744, guid: d2da94ef7beb4d348801ad93772d90dd, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 298850690073561744, guid: d2da94ef7beb4d348801ad93772d90dd, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 298850690073561744, guid: d2da94ef7beb4d348801ad93772d90dd, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 298850690073561750, guid: d2da94ef7beb4d348801ad93772d90dd, type: 3}
-      propertyPath: m_Name
-      value: Mage Of Scorch
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: d2da94ef7beb4d348801ad93772d90dd, type: 3}

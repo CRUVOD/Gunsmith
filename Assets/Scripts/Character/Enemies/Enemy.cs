@@ -184,7 +184,6 @@ public class Enemy : Character
         if (impact.magnitude > 0.2f && canBeKnockedBack && isStunned)
         {
             rb.velocity = ApplyImpact(rb.velocity);
-            DebugText.instance.SetText(impact.magnitude.ToString());
         }
         else
         {

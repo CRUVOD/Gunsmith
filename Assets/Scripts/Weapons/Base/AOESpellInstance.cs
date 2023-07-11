@@ -130,6 +130,7 @@ public class AOESpellInstance : MonoBehaviour
 
     /// <summary>
     /// Apply the effect of the AOE, countdown is in the update of the AOE spell instance class
+    /// Called every update if not single effect
     /// </summary>
     protected virtual void Effect()
     {
