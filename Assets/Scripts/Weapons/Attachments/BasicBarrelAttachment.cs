@@ -5,11 +5,11 @@ using UnityEngine;
 public class BasicBarrelAttachment : WeaponAttachment
 {
     [Tooltip("Multiplier")]
-    public float spreadModifier;
+    public float spreadModifier = 1f;
     [Tooltip("Multiplier")]
-    public float projectileSpeedModifier;
+    public float projectileSpeedModifier = 1f;
     [Tooltip("Addition")]
-    public int projectileDamageModifier;
+    public int projectileDamageModifier = 0;
 
     public override void InitialiseAttachment(Weapon weapon)
     {

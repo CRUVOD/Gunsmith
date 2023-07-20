@@ -10209,7 +10209,7 @@ MonoBehaviour:
   rayTravelDistance: 20
   fireRate: 60
   isMagazineBased: 1
-  magazineSize: 5
+  ammoCapacity: 5
   reloadTime: 2.5
   currentAmmoInMagazine: 0
   inReload: 0

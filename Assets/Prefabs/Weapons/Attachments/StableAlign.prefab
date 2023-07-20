@@ -130,6 +130,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   reference: {fileID: 11400000, guid: f740f3d4fc6274c40a40819b6551de99, type: 2}
+  sprite: {fileID: 5504084262593967313}
   spreadModifier: 0.6
   projectileSpeedModifier: 1
   projectileDamageModifier: 0

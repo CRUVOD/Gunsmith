@@ -6,6 +6,7 @@ public class WeaponAttachmentSlot : MonoBehaviour
 {
     public WeaponAttachment attachment;
     public AttachmentPoint attachmentPoint;
+    public bool hideAttachmentSprite = false;
 
     /// <summary>
     /// Tries to set attachment of this slot, return false if type mismatch
@@ -17,6 +18,10 @@ public class WeaponAttachmentSlot : MonoBehaviour
         if (attachmentPoint == attachment.reference.attachmentPoint)
         {
             this.attachment = attachment;
+            if (hideAttachmentSprite)
+            {
+                attachment.ToggleSprite(false);
+            }
             return true;
         }
         return false;

@@ -217,11 +217,6 @@ public class Player : Character
 
     protected override void HandleWeapon()
     {
-        if (currentWeapon == null)
-        {
-            return;
-        }
-
         // Animation stuff
         if (isFiring)
         {
@@ -232,6 +227,11 @@ public class Player : Character
             {
                 isFiring = false;
             }
+        }
+
+        if (currentWeapon == null)
+        {
+            return;
         }
         
         //Go to the appropriate function for weapon handling based on firing mechanism
@@ -577,6 +577,24 @@ public class Player : Character
     }
 
     /// <summary>
+    /// Wipes the current loadout
+    /// </summary>
+    public void ClearLoadout()
+    {
+        //Destroy all old weapon gameobjects
+        for (int i = weaponsInLoadout.Count - 1; i >= 0; i--)
+        {
+            weaponsInLoadout[i].StopWeapon();
+            Destroy(weaponsInLoadout[i].gameObject);
+        }
+        //Clears old loadout
+        weaponsInLoadout.Clear();
+        UIManager.instance.ClearWeaponUI();
+        //Reset movement modifier
+        movementModifier = 1f;
+    }
+
+    /// <summary>
     /// Adds a weapon to the loadout and switches to it
     /// </summary>
     /// <param name="weaponPrefab"></param>
@@ -591,13 +609,7 @@ public class Player : Character
 
     public void UpdateLoadout(List<Weapon> newLoadout)
     {
-        //Destroy all old weapon gameobjects
-        for (int i = weaponsInLoadout.Count-1; i >= 0; i--)
-        {
-            Destroy(weaponsInLoadout[i].gameObject);
-        }
-        //Clears old loadout
-        weaponsInLoadout.Clear();
+        ClearLoadout();
 
         //Instantiate the weapons, set user of weapons to be player, and disable the sprite of the other weapons
         for (int i = 0; i < newLoadout.Count; i++)
@@ -617,6 +629,49 @@ public class Player : Character
         }
     }
 
+    /// <summary>
+    /// Updates current loadout to the ones saved in playerdata, does not change anything else about the current player
+    /// </summary>
+    /// <param name="playerData"></param>
+    public void UpdateLoadout(PlayerData playerData)
+    {
+        ClearLoadout();
+
+        for (int i = 0; i < playerData.weaponsInLoadout.Length; i++)
+        {
+            //Instantiate the weapon
+            WeaponReference weaponReference = DataManager.instance.TryGetWeaponReference(playerData.weaponsInLoadout[i]);
+            Weapon weapon = Instantiate<Weapon>(weaponReference.weaponObject, weaponEquipPoint);
+            weaponsInLoadout.Add(weapon);
+            weaponsInLoadout[i].UserType = CharacterTypes.Player;
+            weapon.User = this;
+
+            if (playerData.attachmentsInLoadout.Length > 0 && playerData.attachmentsInLoadout[i] != null)
+            {
+                //Instantiate the attachments for that weapon and equips them
+                for (int j = 0; j < playerData.attachmentsInLoadout[i].Length; j++)
+                {
+                    WeaponAttachmentReference weaponAttachmentReference = DataManager.instance.TryGetAttachmentReference(playerData.attachmentsInLoadout[i][j]);
+                    WeaponAttachment attachment = Instantiate<WeaponAttachment>(weaponAttachmentReference.attachmentObject);
+                    if (!weapon.TryEquipAttachment(attachment))
+                    {
+                        Destroy(attachment);
+                    }
+                }
+            }
+
+            if (i >= 1)
+            {
+                weaponsInLoadout[i].weaponSprite.SetActive(false);
+            }
+        }
+
+        if (weaponsInLoadout.Count > 0)
+        {
+            SwitchWeapon(0);
+        }
+    }
+
     public void LoadPlayer(PlayerData playerData)
     {
         //Health
@@ -624,14 +679,7 @@ public class Player : Character
         CurrentHealth = InitialHealth;
 
         //Weapons
-
-        //Destroy all old weapon gameobjects
-        for (int i = weaponsInLoadout.Count - 1; i >= 0; i--)
-        {
-            Destroy(weaponsInLoadout[i].gameObject);
-        }
-        //Clears old loadout
-        weaponsInLoadout.Clear();
+        ClearLoadout();
 
         for (int i = 0; i < playerData.weaponsInLoadout.Length; i++)
         {

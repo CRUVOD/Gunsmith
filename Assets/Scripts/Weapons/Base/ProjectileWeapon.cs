@@ -27,9 +27,8 @@ public class ProjectileWeapon : Weapon
     float timeToReload;
 
     [Header("Magazine")]
-    //Attributes if the weapon has a limited magazine size
     public bool isMagazineBased;
-    public int magazineSize;
+    public int projectileCapacity;
     public float reloadTime;
     [HideInInspector]
     public int currentAmmoInMagazine;
@@ -43,9 +42,13 @@ public class ProjectileWeapon : Weapon
 
     protected virtual void Update()
     {
-        countDownTimeBetweenShots();
-        countDownReloadTime();
-        RotateWeapon();
+        if (currentlyEquipped)
+        {
+            countDownTimeBetweenShots();
+            countDownReloadTime();
+            RotateWeapon();
+            UpdateUI();
+        }
     }
 
     public void ResetTimeBetweenShots()
@@ -64,18 +67,14 @@ public class ProjectileWeapon : Weapon
     /// <param name="newAmmo"></param>
     public void ChangeAmmoCount(int newAmmo)
     {
-        if (!isMagazineBased)
-        {
-            return;
-        }
         currentAmmoInMagazine = newAmmo;
-        UIManager.instance.UpdateBallisticAmmoUI(newAmmo, magazineSize);
+        UIManager.instance.UpdateBallisticAmmoUI(newAmmo, projectileCapacity);
     }
 
     public override void UpdateUI()
     {
         base.UpdateUI();
-        UIManager.instance.UpdateBallisticAmmoUI(currentAmmoInMagazine, magazineSize);
+        UIManager.instance.UpdateBallisticAmmoUI(currentAmmoInMagazine, projectileCapacity);
     }
 
     public override void Reload()
@@ -150,7 +149,7 @@ public class ProjectileWeapon : Weapon
             else if (timeToReload <= 0)
             {
                 //reload complete, give full ammo to player
-                ChangeAmmoCount(magazineSize);
+                ChangeAmmoCount(projectileCapacity);
                 inReload = false;
             }
         }

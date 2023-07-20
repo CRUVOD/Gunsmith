@@ -13,7 +13,7 @@ public class Pistol : ProjectileWeapon
     {
         base.Start();
         // Set start ammo to max
-        currentAmmoInMagazine = magazineSize;
+        currentAmmoInMagazine = projectileCapacity;
 
         inReload = false;
     }

@@ -60,6 +60,7 @@ public class Character : MonoBehaviour, IDamageable
 
     [Header("Health")]
     public float InitialHealth;
+    public bool infiniteHealth = false;
     [HideInInspector]
     public float CurrentHealth;
 
@@ -72,7 +73,7 @@ public class Character : MonoBehaviour, IDamageable
     public FeedbackPlayer OnDamageFeedback;
 
     //hit delegate
-    public delegate void OnDamageDelegate();
+    public delegate void OnDamageDelegate(float damage, Vector3 direction);
     public OnDamageDelegate OnDamage;
 
     public Bounds ColliderBounds
@@ -243,6 +244,11 @@ public class Character : MonoBehaviour, IDamageable
     /// <param name="newValue"></param>
     public virtual void SetHealth(float newValue)
     {
+        if (infiniteHealth)
+        {
+            return;
+        }
+
         CurrentHealth = newValue;
         //UpdateHealthBar(false);
         //HealthChangeEvent.Trigger(this, newValue);
@@ -313,7 +319,7 @@ public class Character : MonoBehaviour, IDamageable
     /// <param name="damage">The amount of health points that will get lost.</param>
     /// <param name="instigator">The object that caused the damage.</param>
     /// <param name="invincibilityDuration">The duration of the short invincibility following the hit.</param>
-    public virtual void Damage(int damage, GameObject instigator, float invincibilityDuration, Vector3 direciton, float force)
+    public virtual void Damage(int damage, GameObject instigator, float invincibilityDuration, Vector3 direction, float force)
     {
         if (!CanTakeDamageThisFrame())
         {
@@ -326,7 +332,7 @@ public class Character : MonoBehaviour, IDamageable
         SetHealth(Mathf.Clamp(CurrentHealth - damage, 0, InitialHealth));
 
         //Send delegates that we've been hit
-        OnDamage?.Invoke();
+        OnDamage?.Invoke(damage, direction);
 
         // we prevent the character from colliding with Projectiles, Player and Enemies
         if (invincibilityDuration > 0)
@@ -336,7 +342,7 @@ public class Character : MonoBehaviour, IDamageable
         }
 
         //Do knockback
-        Impact(direciton, force);
+        Impact(direction, force);
 
         // we trigger a damage taken event
         //MMDamageTakenEvent.Trigger(_character, instigator, CurrentHealth, damage, previousHealth);

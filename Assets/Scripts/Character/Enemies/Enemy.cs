@@ -42,6 +42,8 @@ public class Enemy : Character
     //Set to true if this enemy's rigibody is being controlled by another script on the update cycle
     //usually an AIAction script
     public bool externalMovementControl = false;
+    [Header("Facing")]
+    [SerializeField]
     //Forces the enemy to face a specific way, usually for dialogue or cutscene reasons
     private bool forceFacing = false;
 
@@ -201,8 +203,8 @@ public class Enemy : Character
         ag.enabled = false;
 
         //Disable weapons
-        currentWeapon.StopWeapon();
-        currentWeapon.weaponSprite.SetActive(false);
+        currentWeapon?.StopWeapon();
+        currentWeapon?.weaponSprite.SetActive(false);
 
         // Max velocity that a dead body can travel is currently defined here, might be something to look into later
         rb.velocity = Vector3.ClampMagnitude(rb.velocity, 5f);
@@ -249,6 +251,11 @@ public class Enemy : Character
     // Adds to base function to update healthbar
     public override void SetHealth(float newValue)
     {
+        if (infiniteHealth)
+        {
+            return;
+        }
+
         base.SetHealth(newValue);
         enemyHealthBar.UpdateBar(newValue, 0f, InitialHealth, true);
     }

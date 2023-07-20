@@ -41,6 +41,7 @@ public class UIManager : MonoBehaviour
     public TextMeshProUGUI weaponAmmo;
 
     [Header("Other")]
+    public Sprite emptySprite;
     public HealthPotionUI potionUI;
 
 
@@ -57,6 +58,11 @@ public class UIManager : MonoBehaviour
             instance = this;
             return;
         }
+    }
+
+    private void Start()
+    {
+        ClearWeaponUI();
     }
 
     /// <summary>
@@ -124,6 +130,19 @@ public class UIManager : MonoBehaviour
         PlayerStatUI.gameObject.SetActive(!state);
         BossUI.gameObject.SetActive(!state);
         crosshair.ToggleCrosshair(!state);
+    }
+
+    /// <summary>
+    /// Resets the weapon UI back to default
+    /// </summary>
+    public void ClearWeaponUI()
+    {
+        //set the icon
+        weaponIcon.sprite = emptySprite;
+        //set the text fields
+        weaponTypeText.text = "";
+        weaponNameText.text = "";
+        weaponAmmo.text = "";
     }
 
     /// <summary>

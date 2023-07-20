@@ -226,6 +226,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   attachment: {fileID: 0}
   attachmentPoint: 2
+  hideAttachmentSprite: 0
 --- !u!1 &1640148979522148890
 GameObject:
   m_ObjectHideFlags: 0
@@ -10112,6 +10113,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   attachment: {fileID: 0}
   attachmentPoint: 0
+  hideAttachmentSprite: 0
 --- !u!1 &5289436317590859022
 GameObject:
   m_ObjectHideFlags: 0
@@ -10215,7 +10217,7 @@ MonoBehaviour:
   baseSpread: 1
   fireRate: 450
   isMagazineBased: 1
-  magazineSize: 30
+  projectileCapacity: 30
   reloadTime: 2
   currentAmmoInMagazine: 0
   inReload: 0
@@ -10371,6 +10373,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   attachment: {fileID: 0}
   attachmentPoint: 1
+  hideAttachmentSprite: 0
 --- !u!1 &6490141029476210415
 GameObject:
   m_ObjectHideFlags: 0
@@ -15346,6 +15349,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   attachment: {fileID: 0}
   attachmentPoint: 4
+  hideAttachmentSprite: 0
 --- !u!1 &8485216283079377238
 GameObject:
   m_ObjectHideFlags: 0

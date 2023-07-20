@@ -8,6 +8,8 @@ public class WeaponAttachment : MonoBehaviour
     public WeaponAttachmentReference reference;
     //links to the weapon it is attached to
     private Weapon weapon;
+    //The sprite of the attachment
+    public SpriteRenderer sprite;
 
     /// <summary>
     /// Generic initialise
@@ -26,5 +28,13 @@ public class WeaponAttachment : MonoBehaviour
     public virtual void InitialiseAttachment(HitScanWeapon weapon)
     {
         this.weapon = weapon;
+    }
+
+    /// <summary>
+    /// Simply toggles the sprite to be visible or not
+    /// </summary>
+    public void ToggleSprite(bool state)
+    {
+        sprite?.gameObject.SetActive(state);
     }
 }

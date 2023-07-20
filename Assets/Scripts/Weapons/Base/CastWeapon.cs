@@ -135,6 +135,7 @@ public class CastWeapon : Weapon
     {
         base.StopWeapon();
         currentSpellCast?.CancelCast();
+        currentSpellCast = null;
         castInProgress = false;
     }
 

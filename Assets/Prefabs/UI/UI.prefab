@@ -6286,7 +6286,6 @@ MonoBehaviour:
   PauseScreen: {fileID: 7968832970579297849}
   DeathScreen: {fileID: 7968832971611516600}
   VictoryScreen: {fileID: 7968832971284997412}
-  loadoutCustomisationScreen: {fileID: 0}
   crosshair: {fileID: 462056343241065020}
   WeaponUI: {fileID: 7968832971374952214}
   PlayerStatUI: {fileID: 8312017914720581487}
@@ -6296,6 +6295,7 @@ MonoBehaviour:
   weaponNameText: {fileID: 7968832970866066983}
   ballisticWeaponUIGroup: {fileID: 7968832971042709249}
   weaponAmmo: {fileID: 7968832971626638787}
+  emptySprite: {fileID: 21300000, guid: 015e2afc4eba0164ca69647fc1c02867, type: 3}
   potionUI: {fileID: 8021378080949390257}
 --- !u!1 &7968832971515416019
 GameObject:

@@ -5,9 +5,9 @@ using UnityEngine;
 public class BasicUnderbarrelAttachment : WeaponAttachment
 {
     [Tooltip("Multiplier")]
-    public float fireRateModifier;
+    public float fireRateModifier = 1f;
     [Tooltip("Multiplier")]
-    public float recoilModifier;
+    public float recoilModifier = 1f;
 
     public override void InitialiseAttachment(Weapon weapon)
     {

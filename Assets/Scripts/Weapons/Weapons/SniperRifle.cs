@@ -21,7 +21,7 @@ public class SniperRifle : HitScanWeapon
     {
         base.Start();
         // Set start ammo to max
-        currentAmmoInMagazine = magazineSize;
+        currentAmmoReady = ammoCapacity;
 
         inReload = false;
     }
@@ -37,7 +37,7 @@ public class SniperRifle : HitScanWeapon
             return false;
         }
 
-        if (isMagazineBased && currentAmmoInMagazine <= 0)
+        if (isMagazineBased && currentAmmoReady <= 0)
         {
             return false;
         }
@@ -79,10 +79,10 @@ public class SniperRifle : HitScanWeapon
             }
 
             //Use ammo in clip
-            ChangeAmmoCount(currentAmmoInMagazine - 1);
+            ChangeAmmoCount(currentAmmoReady - 1);
 
             //Reset time between shots according to fire rate if theres stil ammo in the clip
-            if (currentAmmoInMagazine > 0)
+            if (currentAmmoReady > 0)
             {
                 ResetTimeBetweenShots();
                 //Calls to UIManager for displaying cooldown
@@ -94,7 +94,7 @@ public class SniperRifle : HitScanWeapon
             weaponBoltPullFeedback.PlayFeedbacks();
             return true;
         }
-        else if (currentAmmoInMagazine <= 0)
+        else if (currentAmmoReady <= 0)
         {
             weaponEmptyFeedback.PlayFeedbacks();
         }

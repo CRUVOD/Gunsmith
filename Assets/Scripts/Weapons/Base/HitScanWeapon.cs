@@ -11,16 +11,17 @@ public class HitScanWeapon : Weapon
     //bullets per minute
     public float fireRate;
     //time between shots, calculated from fireRate
-    float timeBetweenShots;
+    protected float timeBetweenShots;
     //counting down reload time
-    float timeToReload;
+    protected float timeToReload;
 
-    //Attributes if the weapon has a limited magazine size
+    //If the weapon reloads by a magazine
     public bool isMagazineBased;
-    public int magazineSize;
+    //The total number of bullets/shots in the chamber
+    public int ammoCapacity;
     public float reloadTime;
     [HideInInspector]
-    public int currentAmmoInMagazine;
+    public int currentAmmoReady;
     [HideInInspector]
     public bool inReload;
 
@@ -63,9 +64,13 @@ public class HitScanWeapon : Weapon
 
     protected virtual void Update()
     {
-        countDownTimeBetweenShots();
-        countDownReloadTime();
-        RotateWeapon();
+        if (currentlyEquipped)
+        {
+            countDownTimeBetweenShots();
+            countDownMagazineReloadTime();
+            RotateWeapon();
+            UpdateUI();
+        }
     }
 
     public void ResetTimeBetweenShots()
@@ -84,23 +89,26 @@ public class HitScanWeapon : Weapon
     /// <param name="newAmmo"></param>
     public void ChangeAmmoCount(int newAmmo)
     {
-        if (!isMagazineBased)
-        {
-            return;
-        }
-        currentAmmoInMagazine = newAmmo;
-        UIManager.instance.UpdateBallisticAmmoUI(newAmmo, magazineSize);
+        currentAmmoReady = newAmmo;
+        UIManager.instance.UpdateBallisticAmmoUI(newAmmo, ammoCapacity);
     }
 
     public override void UpdateUI()
     {
         base.UpdateUI();
-        UIManager.instance.UpdateBallisticAmmoUI(currentAmmoInMagazine, magazineSize);
+        UIManager.instance.UpdateBallisticAmmoUI(currentAmmoReady, ammoCapacity);
     }
 
     public override void Reload()
     {
-        MagazineReload();
+        if (isMagazineBased)
+        {
+            MagazineReload();
+        }
+        else
+        {
+            NonMagazineReload();
+        }
     }
 
     public override void ReloadCancel()
@@ -115,12 +123,20 @@ public class HitScanWeapon : Weapon
     }
 
     /// <summary>
+    /// Non-standard magazine reload method, can be overridden to do anything
+    /// </summary>
+    public virtual void NonMagazineReload()
+    {
+        Debug.LogWarning("Non-magazine reload not implemented");
+    }
+
+    /// <summary>
     /// Reloads the magazine to max by default, can be overriden
     /// </summary>
     public virtual void MagazineReload()
     {
         //Check if weapon is already reloading, then start reload, set timebetweenshots to zero
-        if (isMagazineBased && !inReload)
+        if (!inReload)
         {
             timeToReload = reloadTime;
             inReload = true;
@@ -149,9 +165,9 @@ public class HitScanWeapon : Weapon
     }
 
     // counts down the timer between reloads, call every update
-    public virtual void countDownReloadTime()
+    public virtual void countDownMagazineReloadTime()
     {
-        if (inReload)
+        if (inReload && isMagazineBased)
         {
             if (timeToReload > 0)
             {
@@ -160,7 +176,7 @@ public class HitScanWeapon : Weapon
             else if (timeToReload <= 0)
             {
                 //reload complete, give full ammo to player
-                ChangeAmmoCount(magazineSize);
+                ChangeAmmoCount(ammoCapacity);
                 inReload = false;
             }
         }
@@ -209,10 +225,7 @@ public class HitScanWeapon : Weapon
     public override void OnDequip()
     {
         base.OnDequip();
-        if (isMagazineBased)
-        {
-            ReloadCancel();
-        }
+        ReloadCancel();
     }
 
     #region OnCollision

@@ -130,5 +130,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   reference: {fileID: 11400000, guid: 68512af05dcbfb34b95617b0cc7f925c, type: 2}
-  fireRateModifier: 0
+  sprite: {fileID: 5504084262593967313}
+  fireRateModifier: 1
   recoilModifier: 0.5

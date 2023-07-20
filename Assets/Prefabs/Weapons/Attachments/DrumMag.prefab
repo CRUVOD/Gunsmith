@@ -130,5 +130,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   reference: {fileID: 11400000, guid: 89471a9811e702e478881f9571d24064, type: 2}
+  sprite: {fileID: 5504084262593967313}
   projectileCapacityModifier: 1.5
   reloadTimeModifier: 1.2

@@ -32,7 +32,7 @@ public class AIOnDamageDecision : AIDecision
         return hasTakenDamage;
     }
 
-    public void OnDamageTaken()
+    public void OnDamageTaken(float damage, Vector3 direction)
     {
         //If taken damage, we set the return of Decide() to true
         hasTakenDamage = true;

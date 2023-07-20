@@ -18,7 +18,7 @@ public class AR : ProjectileWeapon
     {
         base.Start();
         // Set start ammo to max
-        currentAmmoInMagazine = magazineSize;
+        currentAmmoInMagazine = projectileCapacity;
         //Set default spread
         spread = baseSpread;
         inReload = false;

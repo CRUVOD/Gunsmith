@@ -130,6 +130,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   reference: {fileID: 11400000, guid: e6c722d9b72705447b543ac77de072d2, type: 2}
+  sprite: {fileID: 5504084262593967313}
   shieldHealth: 20
   delayBeforeRecharge: 4
   rechargeRate: 10

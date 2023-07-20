@@ -33,6 +33,8 @@ public class Weapon : MonoBehaviour, ExtendedEventListener<GameEvent>
     //The instance character using this weapon
     public Character User;
 
+    protected bool currentlyEquipped;
+
     [Header("Attachments")]
     public List<WeaponAttachmentSlot> weaponAttachmentSlots;
 
@@ -150,6 +152,7 @@ public class Weapon : MonoBehaviour, ExtendedEventListener<GameEvent>
     /// </summary>
     public virtual void OnEquip()
     {
+        currentlyEquipped = true;
         if (UserType == CharacterTypes.AI)
         {
             return;
@@ -171,6 +174,7 @@ public class Weapon : MonoBehaviour, ExtendedEventListener<GameEvent>
     /// </summary>
     public virtual void OnDequip()
     {
+        currentlyEquipped = false;
         if (UserType == CharacterTypes.AI)
         {
             return;

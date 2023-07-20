@@ -49,7 +49,7 @@ public class DataManager : MonoBehaviour
             }
             else
             {
-                Debug.LogError("Weapon does not have ID or prefab");
+                Debug.LogError("Weapon-" + weaponReference.ID + " does not have ID or prefab");
             }
         }
 
@@ -64,7 +64,7 @@ public class DataManager : MonoBehaviour
             }
             else
             {
-                Debug.LogError("Attachment does not have ID or prefab");
+                Debug.LogError("Attachment-" + attachmentReference.ID + " does not have ID or prefab");
             }
         }
     }
