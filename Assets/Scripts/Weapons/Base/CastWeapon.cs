@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 /// <summary>
-/// Cast weapons cast AOESpell instances, they do not rotate based on player direction
+/// Cast weapons cast spell instances, they do not rotate based on player direction
 /// </summary>
 public class CastWeapon : Weapon
 {

@@ -403,7 +403,7 @@ public class Character : MonoBehaviour, IDamageable
     #endregion
 
     /// <summary>
-    /// Applies a movement modifier to the AI
+    /// Applies a movement modifier to the character
     /// </summary>
     /// <param name="scale"></param>
     public void ApplyMovementModifer(float scale)

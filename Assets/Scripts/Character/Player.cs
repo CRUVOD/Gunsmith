@@ -185,7 +185,6 @@ public class Player : Character
         playerInput = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
 
         Vector2 targetVelocity = playerInput.normalized * moveSpeed * movementModifier;
-        DebugText.instance.SetText((movementModifier).ToString());
 
         velocity.x = Mathf.SmoothDamp(velocity.x, targetVelocity.x, ref velocityXSmoothing, accelerationTimeGrounded);
         velocity.y = Mathf.SmoothDamp(velocity.y, targetVelocity.y, ref velocityYSmoothing, accelerationTimeGrounded);
